@@ -1,0 +1,167 @@
+"use client"
+
+import { useState } from "react"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { User, MapPin, Clock, BookOpen, Users, Calendar, CreditCard } from "lucide-react"
+import { formatTimeRange } from "@/lib/timeMapping"
+
+interface CourseItem {
+  seq: string
+  courseId: string
+  name: string
+  location: { name: string; id: string; building: string }
+  teachers: { name: string; id: string }[]
+  studentCount: number
+  classId: string
+  slot: {
+    day: number
+    rowIds: number[]
+  }
+  weeks: string
+  weekInterval: string
+  term: string
+  credit: number
+  category: string
+}
+
+interface CourseDetailModalProps {
+  course: CourseItem | null
+  open: boolean
+  onOpenChange: (open: boolean) => void
+}
+
+export function CourseDetailModal({ course, open, onOpenChange }: CourseDetailModalProps) {
+  if (!course) return null
+
+  const days = ["", "周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-md mx-4 sm:mx-auto">
+        <DialogHeader>
+          <DialogTitle className="text-lg font-bold text-slate-800">
+            {course.name}
+          </DialogTitle>
+          <DialogDescription className="text-sm text-slate-600">
+            {course.courseId} · {course.category}
+          </DialogDescription>
+        </DialogHeader>
+
+        <div className="space-y-4 py-4">
+          {/* 基本信息 */}
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <Clock className="w-4 h-4 text-pink-500 mt-0.5" />
+              <div>
+                <p className="text-sm font-medium text-slate-700">上课时间</p>
+                <p className="text-sm text-slate-600">
+                  {days[course.slot.day]} {formatTimeRange(course.slot.rowIds)}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <MapPin className="w-4 h-4 text-purple-500 mt-0.5" />
+              <div>
+                <p className="text-sm font-medium text-slate-700">上课地点</p>
+                <p className="text-sm text-slate-600">{course.location.name}</p>
+                <p className="text-xs text-slate-500">{course.location.building}</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <User className="w-4 h-4 text-blue-500 mt-0.5" />
+              <div>
+                <p className="text-sm font-medium text-slate-700">授课教师</p>
+                <p className="text-sm text-slate-600">
+                  {course.teachers.map(t => t.name).join("、")}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* 课程详情 */}
+          <div className="grid grid-cols-2 gap-3 pt-3 border-t border-slate-200">
+            <div className="flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-green-500" />
+              <div>
+                <p className="text-xs text-slate-500">班级</p>
+                <p className="text-sm font-medium text-slate-700">{course.classId}</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Users className="w-4 h-4 text-orange-500" />
+              <div>
+                <p className="text-xs text-slate-500">人数</p>
+                <p className="text-sm font-medium text-slate-700">{course.studentCount}人</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-indigo-500" />
+              <div>
+                <p className="text-xs text-slate-500">周次</p>
+                <p className="text-sm font-medium text-slate-700">{course.weeks}</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <CreditCard className="w-4 h-4 text-red-500" />
+              <div>
+                <p className="text-xs text-slate-500">学分</p>
+                <p className="text-sm font-medium text-slate-700">{course.credit}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="pt-3 border-t border-slate-200">
+            <Badge variant="outline" className="text-xs">
+              {course.weekInterval}
+            </Badge>
+          </div>
+        </div>
+
+        <div className="flex gap-2 pt-4 border-t border-slate-200">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="flex-1"
+            onClick={() => onOpenChange(false)}
+          >
+            关闭
+          </Button>
+        </div>
+      </DialogContent>
+    </Dialog>
+  )
+}
+
+// 用于课程卡片的点击包装器
+export function CourseClickWrapper({ 
+  children, 
+  course 
+}: { 
+  children: React.ReactNode
+  course: CourseItem 
+}) {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <>
+      <div 
+        className="cursor-pointer active:scale-95 transition-transform duration-150" 
+        onClick={() => setOpen(true)}
+      >
+        {children}
+      </div>
+      <CourseDetailModal 
+        course={course} 
+        open={open} 
+        onOpenChange={setOpen} 
+      />
+    </>
+  )
+}

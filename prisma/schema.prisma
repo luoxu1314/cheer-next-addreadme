@@ -1,0 +1,150 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider     = "mysql"
+    url          = env("DATABASE_URL")
+}
+
+model Update {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now()) @updatedAt()
+    detail    Json     @default("{}")
+    status    Int      @default(0)
+}
+
+model StudentMeta {
+    xs0101id  String   @id
+    xm        String
+    xh        String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now()) @updatedAt()
+}
+
+model TeacherMeta {
+    jg0101id  String   @id
+    jgxm      String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now()) @updatedAt()
+}
+
+model LocationMeta {
+    jsid      String   @id
+    jsmc      String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now()) @updatedAt()
+}
+
+model CourseMeta {
+    jx02id    String   @id
+    kcmc      String
+    kch       String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now()) @updatedAt()
+}
+
+model Teacher {
+    id            String    @id
+    name          String
+    title         String
+    facultyName   String
+    eduBackground String
+    tuitions      Tuition[]
+    createdAt     DateTime  @default(now())
+    updatedAt     DateTime  @default(now()) @updatedAt()
+}
+
+model Student {
+    id             String       @id
+    seq            Int
+    grade          String
+    name           String
+    facultyName    String
+    professionName String
+    className      String
+    sex            String
+    enrollments    Enrollment[]
+    createdAt      DateTime     @default(now())
+    updatedAt      DateTime     @default(now()) @updatedAt()
+}
+
+model Subject {
+    id                String   @id @unique
+    name              String
+    department        String
+    credit            Float
+    category          String
+    tuitionHour       Int
+    tuitionHourDetail String
+    courses           Course[]
+    tooOld            Boolean  @default(false)
+    unopenTerms       Json     @default("[]")
+    createdAt         DateTime @default(now())
+    updatedAt         DateTime @default(now()) @updatedAt()
+}
+
+model Course {
+    id          String       @id @unique
+    subject     Subject      @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+    subjectId   String
+    term        String
+    className   String
+    lessons     Lesson[]
+    electCount  Int
+    mergeCount  Int
+    enrollments Enrollment[]
+    createdAt   DateTime     @default(now())
+    updatedAt   DateTime     @default(now()) @updatedAt()
+}
+
+model Lesson {
+    id         String    @id
+    course     Course    @relation(fields: [courseId], references: [id], onDelete: Cascade)
+    courseId   String
+    timeSlot   String
+    location   Location  @relation(fields: [locationId], references: [id])
+    locationId String    @default("00default")
+    weeks      String
+    weekFreq   Int
+    tuition    Tuition[]
+    createdAt  DateTime  @default(now())
+    updatedAt  DateTime  @default(now()) @updatedAt()
+
+    @@unique([courseId, timeSlot, weeks])
+}
+
+model Enrollment {
+    student   Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+    studentId String
+    course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+    courseId  String
+    createdAt DateTime @default(now())
+
+    @@id([studentId, courseId])
+}
+
+model Tuition {
+    teacher   Teacher  @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+    teacherId String
+    lesson    Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+    lessonId  String
+    createdAt DateTime @default(now())
+
+    @@id([teacherId, lessonId])
+}
+
+model Location {
+    id                 String   @id @unique
+    name               String
+    category           String   @default("unknown")
+    seatCount          Int      @default(0)
+    availableSeatCount Int      @default(0)
+    examSeatCount      Int      @default(0)
+    campus             String   @default("unknown")
+    building           String   @default("unknown")
+    lessons            Lesson[]
+    createdAt          DateTime @default(now())
+    updatedAt          DateTime @default(now()) @updatedAt()
+}
