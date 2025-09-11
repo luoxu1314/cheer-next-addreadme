@@ -74,11 +74,11 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               <li className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-slate-400" />
-                <span className="text-sm text-slate-600">feedback@qike.app</span>
+                <span className="text-sm text-slate-600">huayemao4o@outlook.com</span>
               </li>
               <li>
                 <a
-                  href="https://github.com/qike-app"
+                  href="https://github.com/huayemao/cheer-next"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2 text-sm text-slate-600 hover:text-blue-600 transition-colors"
