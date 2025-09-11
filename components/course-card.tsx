@@ -32,22 +32,22 @@ interface CourseCardProps {
 export function CourseCard({ course, className = "" }: CourseCardProps) {
   return (
     <Card 
-      className={`h-full p-3 transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer bg-white/80 backdrop-blur-sm border border-white/60 shadow-lg ${className}`}
+      className={`h-full p-3 transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer bg-card/80 backdrop-blur-sm border border-border/60 shadow-lg ${className}`}
     >
       <div className="space-y-2">
-        <h3 className="font-bold text-sm leading-tight text-balance text-slate-800 line-clamp-2">
+        <h3 className="font-bold text-sm leading-tight text-balance text-foreground line-clamp-2">
           {course.name}
         </h3>
 
         <div className="space-y-1">
-          <div className="flex items-center gap-1.5 text-xs text-slate-600">
+          <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
             <User className="w-3 h-3 text-blue-500 flex-shrink-0" />
             <span className="font-medium truncate">
               {course.teachers[0]?.name || ''}
             </span>
           </div>
 
-          <div className="flex items-center gap-1.5 text-xs text-slate-600">
+          <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
             <MapPin className="w-3 h-3 text-purple-500 flex-shrink-0" />
             <span className="truncate">{course.location.name}</span>
           </div>

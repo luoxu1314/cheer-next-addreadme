@@ -47,13 +47,13 @@ export function SearchSection() {
   });
 
   return (
-    <section id="search" className="py-20 bg-white/50 backdrop-blur-md">
+    <section id="search" className="py-20 bg-secondary/20 backdrop-blur-md">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl font-bold text-foreground mb-4">
             快速查询课表
           </h2>
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-muted-foreground">
             输入学号、姓名或教室名称，快速查找课程信息
           </p>
         </div>
@@ -111,13 +111,13 @@ export function SearchSection() {
                     {filteredResults.map((result) => (
                       <div
                         key={`${result.type}-${result.id}`}
-                        className="p-4 rounded-lg border border-slate-200 hover:border-blue-300 hover:bg-blue-50 cursor-pointer transition-all duration-200"
+                        className="p-4 rounded-lg border border-border hover:border-blue-300 hover:bg-blue-50 dark:hover:bg-blue-950/20 cursor-pointer transition-all duration-200"
                         onClick={() => handleResultClick(result)}
                       >
                         <div className="flex items-center justify-between">
                           <div>
-                            <h3 className="font-medium text-slate-900">{result.name}</h3>
-                            <p className="text-sm text-slate-600">
+                            <h3 className="font-medium text-foreground">{result.name}</h3>
+                            <p className="text-sm text-muted-foreground">
                               {result.label} • {result.type === "student" ? "学生" : result.type === "teacher" ? "教师" : "教室"}
                             </p>
                           </div>
@@ -131,9 +131,9 @@ export function SearchSection() {
                 ) : (
                   searchQuery && !isLoading && (
                     <div className="text-center py-8">
-                      <Search className="h-12 w-12 text-slate-400 mx-auto mb-4" />
-                      <p className="text-slate-600">未找到相关结果</p>
-                      <p className="text-sm text-slate-500 mt-2">
+                      <Search className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                      <p className="text-muted-foreground">未找到相关结果</p>
+                      <p className="text-sm text-muted-foreground/70 mt-2">
                         请尝试其他关键词或检查拼写
                       </p>
                     </div>

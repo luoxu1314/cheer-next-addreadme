@@ -73,11 +73,12 @@ export default function TimeTable({
           onShowWeekendChange={setShowWeekend}
         />
 
-        <DesktopTimetable courses={courses} showWeekend={showWeekend} />
+        <DesktopTimetable courses={courses} showWeekend={showWeekend} firstColumnMode="time"/>
 
         <MobileTimetable
           courses={courses}
           showWeekend={showWeekend}
+          firstColumnMode="index"
         />
       </div>
     </div>

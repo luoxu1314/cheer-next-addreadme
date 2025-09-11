@@ -58,14 +58,14 @@ export function DesktopTimetable({ courses, showWeekend, firstColumnMode }: Desk
 
   return (
     <div className={`hidden lg:grid gap-4 ${showWeekend ? "grid-cols-8" : "grid-cols-6"}`}>
-      <div className="font-semibold text-center py-3 text-sm text-slate-600 bg-white/50 backdrop-blur-md rounded-xl border border-white/60 shadow-lg">
+      <div className="font-semibold text-center py-3 text-sm text-muted-foreground bg-card/50 backdrop-blur-md rounded-xl border border-border/50 shadow-lg">
         {firstColumnMode === "time" ? "时间" : "节次"}
       </div>
 
       {displayDays.map((day, dayIndex) => (
         <div
           key={day}
-          className="font-semibold text-center py-3 text-sm bg-gradient-to-br from-white/70 to-white/50 backdrop-blur-md rounded-xl border border-white/60 shadow-lg text-slate-700"
+          className="font-semibold text-center py-3 text-sm bg-gradient-to-br from-card/70 to-card/50 backdrop-blur-md rounded-xl border border-border/50 shadow-lg text-foreground"
         >
           {day}
         </div>
@@ -75,7 +75,7 @@ export function DesktopTimetable({ courses, showWeekend, firstColumnMode }: Desk
       {Array.from({ length: 12 }, (_, timeIndex) => [
         <div
           key={`time-${timeIndex}`}
-          className="text-xs text-slate-500 text-center py-2 font-mono bg-white/40 backdrop-blur-md rounded-lg border border-white/40"
+          className="text-xs text-muted-foreground text-center py-2 font-mono bg-secondary/40 backdrop-blur-md rounded-lg border border-border/40"
         >
           {firstColumnMode === "time" 
             ? formatTimeRange([timeIndex + 1])

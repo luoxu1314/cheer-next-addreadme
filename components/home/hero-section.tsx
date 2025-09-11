@@ -5,8 +5,8 @@ import { Calendar, Search, Users, Clock } from "lucide-react";
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.3),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(255,119,198,0.3),transparent_50%),radial-gradient(circle_at_40%_40%,rgba(120,219,255,0.2),transparent_50%)]"></div>
-      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] opacity-30"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.1),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(255,119,198,0.1),transparent_50%),radial-gradient(circle_at_40%_40%,rgba(120,219,255,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.2),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(255,119,198,0.2),transparent_50%),radial-gradient(circle_at_40%_40%,rgba(120,219,255,0.1),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-grid-slate-100 dark:bg-grid-slate-900 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] dark:[mask-image:linear-gradient(0deg,transparent,rgba(0,0,0,0.6))] opacity-30"></div>
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
         <div className="text-center">
@@ -23,11 +23,11 @@ export function HeroSection() {
             绮课
           </h1>
           
-          <p className="text-xl md:text-2xl text-slate-700 mb-4 font-medium">
+          <p className="text-xl md:text-2xl text-foreground mb-4 font-medium">
             中南大学专属课程表查询平台
           </p>
           
-          <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             为学生、教师提供便捷的课程信息查询服务，支持学生课表、教师课表、教室课表快速查找
           </p>
           
@@ -38,7 +38,7 @@ export function HeroSection() {
                 立即查询
               </Link>
             </Button>
-            <Button variant="outline" size="lg" className="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 px-8 py-3 rounded-full">
+            <Button variant="outline" size="lg" className="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 dark:border-purple-400 dark:text-purple-400 dark:hover:bg-purple-950/20 px-8 py-3 rounded-full">
               <Link href="#features">
                 了解更多
               </Link>
@@ -48,17 +48,17 @@ export function HeroSection() {
 
         {/* Stats */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="text-center p-6 bg-white/60 backdrop-blur-md rounded-2xl border border-white/50 shadow-lg">
+          <div className="text-center p-6 bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg">
             <div className="text-3xl font-bold text-blue-600 mb-2">10万+</div>
-            <div className="text-sm text-slate-600">学生用户</div>
+            <div className="text-sm text-muted-foreground">学生用户</div>
           </div>
-          <div className="text-center p-6 bg-white/60 backdrop-blur-md rounded-2xl border border-white/50 shadow-lg">
+          <div className="text-center p-6 bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg">
             <div className="text-3xl font-bold text-purple-600 mb-2">5000+</div>
-            <div className="text-sm text-slate-600">教师信息</div>
+            <div className="text-sm text-muted-foreground">教师信息</div>
           </div>
-          <div className="text-center p-6 bg-white/60 backdrop-blur-md rounded-2xl border border-white/50 shadow-lg">
+          <div className="text-center p-6 bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg">
             <div className="text-3xl font-bold text-pink-600 mb-2">1000+</div>
-            <div className="text-sm text-slate-600">教室资源</div>
+            <div className="text-sm text-muted-foreground">教室资源</div>
           </div>
         </div>
       </div>

@@ -41,10 +41,10 @@ export function CourseDetailModal({ course, open, onOpenChange }: CourseDetailMo
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-md mx-4 sm:mx-auto">
         <DialogHeader>
-          <DialogTitle className="text-lg font-bold text-slate-800">
+          <DialogTitle className="text-lg font-bold text-foreground">
             {course.name}
           </DialogTitle>
-          <DialogDescription className="text-sm text-slate-600">
+          <DialogDescription className="text-sm text-muted-foreground">
             {course.courseId} · {course.category}
           </DialogDescription>
         </DialogHeader>
@@ -55,8 +55,8 @@ export function CourseDetailModal({ course, open, onOpenChange }: CourseDetailMo
             <div className="flex items-start gap-3">
               <Clock className="w-4 h-4 text-pink-500 mt-0.5" />
               <div>
-                <p className="text-sm font-medium text-slate-700">上课时间</p>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm font-medium text-foreground">上课时间</p>
+                <p className="text-sm text-muted-foreground">
                   {days[course.slot.day]} {formatTimeRange(course.slot.rowIds)}
                 </p>
               </div>
@@ -65,17 +65,17 @@ export function CourseDetailModal({ course, open, onOpenChange }: CourseDetailMo
             <div className="flex items-start gap-3">
               <MapPin className="w-4 h-4 text-purple-500 mt-0.5" />
               <div>
-                <p className="text-sm font-medium text-slate-700">上课地点</p>
-                <p className="text-sm text-slate-600">{course.location.name}</p>
-                <p className="text-xs text-slate-500">{course.location.building}</p>
+                <p className="text-sm font-medium text-foreground">上课地点</p>
+                <p className="text-sm text-muted-foreground">{course.location.name}</p>
+                <p className="text-xs text-muted-foreground/70">{course.location.building}</p>
               </div>
             </div>
 
             <div className="flex items-start gap-3">
               <User className="w-4 h-4 text-blue-500 mt-0.5" />
               <div>
-                <p className="text-sm font-medium text-slate-700">授课教师</p>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm font-medium text-foreground">授课教师</p>
+                <p className="text-sm text-muted-foreground">
                   {course.teachers.map(t => t.name).join("、")}
                 </p>
               </div>
@@ -83,48 +83,48 @@ export function CourseDetailModal({ course, open, onOpenChange }: CourseDetailMo
           </div>
 
           {/* 课程详情 */}
-          <div className="grid grid-cols-2 gap-3 pt-3 border-t border-slate-200">
+          <div className="grid grid-cols-2 gap-3 pt-3 border-t border-border">
             <div className="flex items-center gap-2">
               <BookOpen className="w-4 h-4 text-green-500" />
               <div>
-                <p className="text-xs text-slate-500">班级</p>
-                <p className="text-sm font-medium text-slate-700">{course.classId}</p>
+                <p className="text-xs text-muted-foreground/70">班级</p>
+                <p className="text-sm font-medium text-foreground">{course.classId}</p>
               </div>
             </div>
 
             <div className="flex items-center gap-2">
               <Users className="w-4 h-4 text-orange-500" />
               <div>
-                <p className="text-xs text-slate-500">人数</p>
-                <p className="text-sm font-medium text-slate-700">{course.studentCount}人</p>
+                <p className="text-xs text-muted-foreground/70">人数</p>
+                <p className="text-sm font-medium text-foreground">{course.studentCount}人</p>
               </div>
             </div>
 
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4 text-indigo-500" />
               <div>
-                <p className="text-xs text-slate-500">周次</p>
-                <p className="text-sm font-medium text-slate-700">{course.weeks}</p>
+                <p className="text-xs text-muted-foreground/70">周次</p>
+                <p className="text-sm font-medium text-foreground">{course.weeks}</p>
               </div>
             </div>
 
             <div className="flex items-center gap-2">
               <CreditCard className="w-4 h-4 text-red-500" />
               <div>
-                <p className="text-xs text-slate-500">学分</p>
-                <p className="text-sm font-medium text-slate-700">{course.credit}</p>
+                <p className="text-xs text-muted-foreground/70">学分</p>
+                <p className="text-sm font-medium text-foreground">{course.credit}</p>
               </div>
             </div>
           </div>
 
-          <div className="pt-3 border-t border-slate-200">
+          <div className="pt-3 border-t border-border">
             <Badge variant="outline" className="text-xs">
               {course.weekInterval}
             </Badge>
           </div>
         </div>
 
-        <div className="flex gap-2 pt-4 border-t border-slate-200">
+        <div className="flex gap-2 pt-4 border-t border-border">
           <Button 
             variant="outline" 
             size="sm" 

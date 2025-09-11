@@ -59,15 +59,15 @@ export function MobileTimetable({ courses, showWeekend, firstColumnMode }: Mobil
 
   return (
     <div className="lg:hidden">
-      <div className="bg-white/60 backdrop-blur-md rounded-2xl border border-white/50 shadow-lg overflow-hidden">
-        <div className={`grid gap-0 ${showWeekend ? "grid-cols-8" : "grid-cols-6"} border-b border-white/50`}>
-          <div className="p-2 text-center font-semibold text-xs text-slate-600 border-r border-white/50 bg-white/30">
+      <div className="bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg overflow-hidden">
+        <div className={`grid gap-0 ${showWeekend ? "grid-cols-8" : "grid-cols-6"} border-b border-border/50`}>
+          <div className="p-2 text-center font-semibold text-xs text-muted-foreground border-r border-border/50 bg-secondary/30">
             {firstColumnMode === "time" ? "时间" : "节"}
           </div>
           {displayDays.map((day, index) => (
             <div
               key={day}
-              className="p-2 text-center font-semibold text-xs text-slate-700 border-r border-white/50 last:border-r-0"
+              className="p-2 text-center font-semibold text-xs text-foreground border-r border-border/50 last:border-r-0"
             >
               {displayDayAbbr[index]}
             </div>
@@ -76,8 +76,8 @@ export function MobileTimetable({ courses, showWeekend, firstColumnMode }: Mobil
 
         <div className="max-h-[70vh] overflow-y-auto">
           {Array.from({ length: 12 }, (_, timeIndex) => (
-            <div key={`mobile-time-${timeIndex}`} className={`grid gap-0 ${showWeekend ? "grid-cols-8" : "grid-cols-6"} border-t border-white/30`}>
-              <div className="p-2 text-center text-xs font-mono text-slate-500 border-r border-white/50 bg-white/30">
+            <div key={`mobile-time-${timeIndex}`} className={`grid gap-0 ${showWeekend ? "grid-cols-8" : "grid-cols-6"} border-t border-border/30`}>
+              <div className="p-2 text-center text-xs font-mono text-muted-foreground border-r border-border/50 bg-secondary/30">
                 {firstColumnMode === "time" 
                   ? `${timeIndex + 1}节`
                   : `${timeIndex + 1}`
@@ -91,20 +91,20 @@ export function MobileTimetable({ courses, showWeekend, firstColumnMode }: Mobil
                 return (
                   <div
                     key={`mobile-${day}-${timeIndex}`}
-                    className="min-h-[60px] p-1 border-r border-white/50 last:border-r-0"
+                    className="min-h-[60px] p-1 border-r border-border/50 last:border-r-0"
                   >
                     {coursesInThisSlot.map((course) => (
-                      <div key={course.seq} className="h-full bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-lg border border-blue-200/50 p-1.5 hover:shadow-md transition-all duration-200">
+                      <div key={course.seq} className="h-full bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-lg border border-border/50 p-1.5 hover:shadow-md transition-all duration-200">
                         <div className="space-y-1">
-                          <h4 className="font-bold text-[10px] leading-tight text-slate-800 line-clamp-2">
+                          <h4 className="font-bold text-[10px] leading-tight text-foreground line-clamp-2">
                             {course.name}
                           </h4>
                           <div className="space-y-0.5">
-                            <div className="flex items-center gap-1 text-[9px] text-slate-600">
+                            <div className="flex items-center gap-1 text-[9px] text-muted-foreground">
                               <User className="w-2 h-2 text-blue-500" />
                               <span className="truncate">{course.teachers[0]?.name || ''}</span>
                             </div>
-                            <div className="flex items-center gap-1 text-[9px] text-slate-600">
+                            <div className="flex items-center gap-1 text-[9px] text-muted-foreground">
                               <MapPin className="w-2 h-2 text-purple-500" />
                               <span className="truncate">{course.location.name}</span>
                             </div>
