@@ -24,6 +24,7 @@ interface CourseItem {
 interface MobileTimetableProps {
   courses: CourseItem[]
   showWeekend: boolean
+  firstColumnMode: "time" | "index"
 }
 
 const days = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
@@ -51,7 +52,7 @@ function groupCoursesByDayAndTime(courses: CourseItem[]) {
   return grouped
 }
 
-export function MobileTimetable({ courses, showWeekend }: MobileTimetableProps) {
+export function MobileTimetable({ courses, showWeekend, firstColumnMode }: MobileTimetableProps) {
   const groupedCourses = groupCoursesByDayAndTime(courses)
   const displayDays = showWeekend ? days : days.slice(0, 5)
   const displayDayAbbr = showWeekend ? dayAbbreviations : dayAbbreviations.slice(0, 5)
@@ -61,7 +62,7 @@ export function MobileTimetable({ courses, showWeekend }: MobileTimetableProps) 
       <div className="bg-white/60 backdrop-blur-md rounded-2xl border border-white/50 shadow-lg overflow-hidden">
         <div className={`grid gap-0 ${showWeekend ? "grid-cols-8" : "grid-cols-6"} border-b border-white/50`}>
           <div className="p-2 text-center font-semibold text-xs text-slate-600 border-r border-white/50 bg-white/30">
-          时间
+            {firstColumnMode === "time" ? "时间" : "节"}
           </div>
           {displayDays.map((day, index) => (
             <div
@@ -77,7 +78,10 @@ export function MobileTimetable({ courses, showWeekend }: MobileTimetableProps) 
           {Array.from({ length: 12 }, (_, timeIndex) => (
             <div key={`mobile-time-${timeIndex}`} className={`grid gap-0 ${showWeekend ? "grid-cols-8" : "grid-cols-6"} border-t border-white/30`}>
               <div className="p-2 text-center text-xs font-mono text-slate-500 border-r border-white/50 bg-white/30">
-                {timeIndex + 1}
+                {firstColumnMode === "time" 
+                  ? `${timeIndex + 1}节`
+                  : `${timeIndex + 1}`
+                }
               </div>
               {displayDays.map((day, dayIndex) => {
                 const dayKey = (dayIndex + 1).toString()

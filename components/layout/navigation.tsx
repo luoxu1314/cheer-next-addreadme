@@ -1,0 +1,228 @@
+"use client";
+
+import Link from "next/link";
+import React, { useState } from "react";
+import { Menu, X, Calendar, Search, Home, Moon, Sun } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
+import { useTheme } from "next-themes";
+
+export function Navigation() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  return (
+    <>
+      {/* Desktop Navigation */}
+      <nav className="hidden lg:flex fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-white/20 dark:border-slate-800/50 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center">
+              <Link href="/" className="flex items-center space-x-2">
+                <Calendar className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+                <span className="font-bold text-xl bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
+                  绮课
+                </span>
+              </Link>
+            </div>
+
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <Link href="/" className={navigationMenuTriggerStyle()}>
+                    <Home className="w-4 h-4 mr-2" />
+                    首页
+                  </Link>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger>
+                    <Search className="w-4 h-4 mr-2" />
+                    课表查询
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <div className="grid gap-3 p-6 w-[400px] md:w-[500px] lg:w-[600px] lg:grid-cols-2 bg-white dark:bg-slate-900">
+                      <div className="row-span-3">
+                        <div className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted dark:from-slate-800/50 dark:to-slate-800 p-6 no-underline outline-none focus:shadow-md">
+                          <div className="mb-2 mt-4 text-lg font-medium text-slate-900 dark:text-slate-100">
+                            快速查询
+                          </div>
+                          <p className="text-sm leading-tight text-muted-foreground dark:text-slate-400">
+                            输入学号、姓名或教室名称，快速查找课表信息
+                          </p>
+                        </div>
+                      </div>
+                      <NavigationMenuLink asChild>
+                        <a
+                          href="/search/student"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground dark:hover:bg-slate-800 dark:hover:text-slate-100"
+                        >
+                          <div className="text-sm font-medium leading-none">
+                            学生课表
+                          </div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground dark:text-slate-400">
+                            按学号或姓名查询学生个人课表
+                          </p>
+                        </a>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <a
+                          href="/search/teacher"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground dark:hover:bg-slate-800 dark:hover:text-slate-100"
+                        >
+                          <div className="text-sm font-medium leading-none">
+                            教师课表
+                          </div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground dark:text-slate-400">
+                            查询教师授课安排
+                          </p>
+                        </a>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <a
+                          href="/search/classroom"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground dark:hover:bg-slate-800 dark:hover:text-slate-100"
+                        >
+                          <div className="text-sm font-medium leading-none">
+                            教室课表
+                          </div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground dark:text-slate-400">
+                            查看教室使用安排
+                          </p>
+                        </a>
+                      </NavigationMenuLink>
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+            
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="ml-4"
+            >
+              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              <span className="sr-only">切换主题</span>
+            </Button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Navigation */}
+      <nav className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-white/20 dark:border-slate-800/50 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <Link href="/" className="flex items-center space-x-2">
+              <Calendar className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+              <span className="font-bold text-xl bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
+                绮课
+              </span>
+            </Link>
+
+            <div className="flex items-center space-x-2">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              >
+                <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                <span className="sr-only">切换主题</span>
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-white/20 dark:border-slate-800/50">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              <Link
+                href="/"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 hover:text-gray-900 dark:hover:text-gray-100"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                首页
+              </Link>
+              <Link
+                href="/search/student"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 hover:text-gray-900 dark:hover:text-gray-100"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                学生课表
+              </Link>
+              <Link
+                href="/search/teacher"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 hover:text-gray-900 dark:hover:text-gray-100"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                教师课表
+              </Link>
+              <Link
+                href="/search/classroom"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 hover:text-gray-900 dark:hover:text-gray-100"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                教室课表
+              </Link>
+            </div>
+          </div>
+        )}
+      </nav>
+
+      {/* Spacer for fixed navigation */}
+      <div className="h-16" />
+    </>
+  );
+}
+
+// ListItem component for navigation
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  );
+});
+ListItem.displayName = "ListItem";

@@ -2,90 +2,203 @@ import prisma from "@/lib/prisma";
 import { getTimetable } from "@/lib/server/service/getTimetable";
 import { OwnerType } from "@/lib/types/Owner";
 import { Metadata } from "next";
-import dynamic from "next/dynamic";
+import { Suspense } from "react";
 
 // https://beta.nextjs.org/docs/api-reference/segment-config#configrevalidate
 
-const TimeTable = dynamic(() => import("@/components/timetable"), {
-  ssr: false,
-  loading: () => <div className="flex items-center justify-center min-h-screen">Loading timetable...</div>
-});
+// Server component for SEO
+async function TimeTableContent({ 
+  type, 
+  id, 
+  term, 
+  grade 
+}: { 
+  type: string; 
+  id: string; 
+  term: string; 
+  grade: string; 
+}) {
+  const { courses, owner, terms } = await getTimetable(
+    type as OwnerType,
+    id,
+    term,
+    grade
+  );
+  
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.3),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(255,119,198,0.3),transparent_50%),radial-gradient(circle_at_40%_40%,rgba(120,219,255,0.2),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] opacity-30"></div>
+      
+      <div className="relative w-full max-w-7xl mx-auto p-4 lg:p-6 space-y-6">
+        <ClientTimetable 
+          terms={terms}
+          title={(owner.label || "") + owner.name}
+          courses={courses}
+          type={type}
+          id={id}
+        />
+      </div>
+    </div>
+  );
+}
+
+// Client component wrapper
+import dynamic from "next/dynamic";
+
+const ClientTimetable = dynamic(
+  () => import("@/components/timetable-client"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <div className="text-center space-y-4">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="text-slate-600">加载课表中...</p>
+        </div>
+      </div>
+    )
+  }
+);
 
 export async function generateMetadata({
   params,
 }: {
   params: { slug: string[] };
 }): Promise<Metadata> {
-  // read route params
   const { slug } = params;
   const [type, id, term, grade] = slug;
+  
   if (decodeURIComponent(type) === "[[...slug]]") {
-    return {};
+    return {
+      title: '绮课 - 中南大学课程表查询',
+      description: '中南大学学生、教师、教室课表查询平台'
+    };
   }
-  const { courses, owner, terms } = await getTimetable(
-    type as OwnerType,
-    id,
-    term,
-    grade
-  );
 
-  return {
-    title: `${owner.name}@${owner.label}`,
-    abstract:
-      "中南大学" +
-      `${owner.label}${owner.name}` +
-      (term ? `${term}学期` : "") +
-      "课表",
-    description:
-      "中南大学" +
-      `${owner.label}${owner.name}` +
-      (term ? `${term}学期` : "") +
-      "课表",
-  };
+  try {
+    const { courses, owner, terms } = await getTimetable(
+      type as OwnerType,
+      id,
+      term,
+      grade
+    );
+
+    const typeMap = {
+      student: '学生',
+      teacher: '教师',
+      location: '教室'
+    };
+
+    return {
+      title: `${owner.name} - ${typeMap[type as keyof typeof typeMap] || ''}课表`,
+      description: `中南大学${owner.label}${owner.name}${term ? `${term}学期` : ''}课程表查询，包含${courses.length}门课程信息`,
+      keywords: [
+        '中南大学',
+        '课程表',
+        owner.name,
+        owner.label,
+        term ? `${term}学期` : '',
+        typeMap[type as keyof typeof typeMap] || type
+      ],
+      openGraph: {
+        title: `${owner.name} - ${typeMap[type as keyof typeof typeMap] || ''}课表`,
+        description: `中南大学${owner.label}${owner.name}${term ? `${term}学期` : ''}课程表`,
+        type: 'website',
+        locale: 'zh_CN',
+      },
+      twitter: {
+        card: 'summary',
+        title: `${owner.name} - ${typeMap[type as keyof typeof typeMap] || ''}课表`,
+        description: `中南大学${owner.label}${owner.name}${term ? `${term}学期` : ''}课程表`,
+      }
+    };
+  } catch (error) {
+    return {
+      title: '绮课 - 课程表查询',
+      description: '中南大学课程表查询平台'
+    };
+  }
 }
 
 export default async function TimeTablePage({ params }: { params: { slug: string[] } }) {
   const { slug } = params;
   const [type, id, term, grade] = slug;
-  if (decodeURIComponent(type) === "[[...slug]]") {
-    return null;
-  }
-  const { courses, owner, terms } = await getTimetable(
-    type as OwnerType,
-    id,
-    term,
-    grade
-  );
-  const title = (owner.label || "") + owner.name;
   
+  if (decodeURIComponent(type) === "[[...slug]]") {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-slate-700 mb-2">参数错误</h1>
+          <p className="text-slate-500">请检查URL参数是否正确</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <TimeTable
-      terms={terms}
-      title={title}
-      courses={courses}
-      type={type}
-      id={id}
-    />
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="text-slate-600">加载课表中...</p>
+        </div>
+      </div>
+    }>
+      <TimeTableContent type={type} id={id} term={term} grade={grade} />
+    </Suspense>
   );
 }
 
 export async function generateStaticParams() {
-  const students = await prisma.student.findMany({
-    where: {
-      grade: {
-        gte: "2020",
+  try {
+    const students = await prisma.student.findMany({
+      where: {
+        grade: {
+          gte: "2020",
+        },
       },
-    },
-    distinct: ["className"],
-  });
-
-  const params = students
-    .filter((e, i) => i % 16 == 0)
-    .map((s) => {
-      return {
-        slug: ["student", s.id],
-      };
+      distinct: ["className"],
+      select: {
+        id: true,
+        name: true,
+        grade: true,
+        className: true,
+      },
+      take: 100, // Limit for build performance
     });
 
-  return params;
+    const teachers = await prisma.teacher.findMany({
+      select: {
+        id: true,
+        name: true,
+      },
+      take: 50,
+    });
+
+    const locations = await prisma.location.findMany({
+      select: {
+        id: true,
+        name: true,
+      },
+      take: 50,
+    });
+
+    const params = [
+      ...students.map((s) => ({
+        slug: ["student", s.id],
+      })),
+      ...teachers.map((t) => ({
+        slug: ["teacher", t.id],
+      })),
+      ...locations.map((l) => ({
+        slug: ["location", l.id],
+      })),
+    ];
+
+    return params;
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    return [];
+  }
 }

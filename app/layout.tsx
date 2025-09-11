@@ -3,11 +3,53 @@ import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+import { Navigation } from '@/components/layout/navigation'
+import { Footer } from '@/components/layout/footer'
+import { ThemeProvider } from '@/components/theme-provider'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: {
+    default: '绮课 - 中南大学课程表查询平台',
+    template: '%s | 绮课'
+  },
+  description: '绮课 - 专为中南大学学生打造的课程表查询平台，支持学生课表、教师课表、教室课表查询，提供便捷的课表管理服务。',
+  keywords: ['中南大学', '课程表', '课表查询', '学生课表', '教师课表', '教室查询', '绮课'],
+  authors: [{ name: '绮课团队' }],
+  creator: '绮课',
+  publisher: '绮课',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL('https://qike.app'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: '绮课 - 中南大学课程表查询平台',
+    description: '专为中南大学学生打造的课程表查询平台，支持学生课表、教师课表、教室课表查询',
+    url: 'https://qike.app',
+    siteName: '绮课',
+    locale: 'zh_CN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '绮课 - 中南大学课程表查询平台',
+    description: '专为中南大学学生打造的课程表查询平台',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 }
 
 export default function RootLayout({
@@ -16,9 +58,20 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        {children}
+    <html lang="zh-CN" suppressHydrationWarning>
+      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} min-h-screen flex flex-col`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navigation />
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>
