@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { User, MapPin, Clock, BookOpen, Users, Calendar, CreditCard } from "lucide-react"
 import { formatTimeRange } from "@/lib/timeMapping"
+import Link from "next/link"
 
 interface CourseItem {
   seq: string
@@ -164,6 +165,15 @@ export function CourseDetailModal({ course, courses = [], open, onOpenChange }: 
               上一个
             </Button>
           )}
+          <Link href={`/course/${currentCourse.courseId}`} className="w-full">
+            <Button
+              variant="default"
+              size="sm"
+              className={courses.length > 1 ? "flex-1 w-full" : "w-full"}
+            >
+              查看详情页
+            </Button>
+          </Link>
           <Button
             variant="outline"
             size="sm"

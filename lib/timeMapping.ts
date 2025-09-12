@@ -1,6 +1,6 @@
 export const timeMapping = {
   1: "08-00",
-  2: "09-40", 
+  2: "09-40",
   3: "10-00",
   4: "11-40",
   5: "14-00",
@@ -18,17 +18,17 @@ export type TimeSlotNumber = keyof typeof timeMapping
 export function getTimeRange(startSlot: number, endSlot: number): string {
   const startTime = timeMapping[startSlot as TimeSlotNumber]
   const endTime = timeMapping[endSlot as TimeSlotNumber]
-  
+
   if (!startTime || !endTime) return ""
-  
+
   return `${startTime.replace('-', ':')}-${endTime.replace('-', ':')}`
 }
 
 export function formatTimeRange(rowIds: number[]): string {
   if (rowIds.length === 0) return ""
-  
+
   const start = Math.min(...rowIds)
-  const end = Math.max(...rowIds)
-  
+  const end = Math.max(...rowIds) + 1
+
   return getTimeRange(start, end)
 }
