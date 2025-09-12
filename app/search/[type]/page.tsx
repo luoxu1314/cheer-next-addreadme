@@ -2,7 +2,11 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { Suspense } from "react";
 import { Loader2 } from "lucide-react";
-import TimetableClient  from "@/components/timetable-client";
+import TimetableClient from "@/components/timetable-client";
+import { type SearchResult } from "@/lib/actions/search";
+// 动态导入客户端组件
+const TypeSpecificSearchBox = dynamic(() => import('./search-box').then(m => m.TypeSpecificSearchBox), { ssr: false });
+import dynamic from 'next/dynamic';
 
 interface SearchPageProps {
   params: {
@@ -43,36 +47,71 @@ export async function generateMetadata({ params }: SearchPageProps): Promise<Met
 
 export default function SearchPage({ params, searchParams }: SearchPageProps) {
   const { type } = params;
-  const { q } = searchParams;
+  const { q: initialQuery } = searchParams;
 
   const validTypes = ["student", "teacher", "location"];
   if (!validTypes.includes(type)) {
     notFound();
   }
 
+  // 获取类型特定的标题和描述
+  const getTypeSpecificInfo = () => {
+    switch (type) {
+      case 'student':
+        return {
+          title: "学生课表查询",
+          description: "输入学号或姓名查询学生课程表"
+        };
+      case 'teacher':
+        return {
+          title: "教师课表查询",
+          description: "输入教师姓名查询教师授课表"
+        };
+      case 'location':
+        return {
+          title: "教室课表查询",
+          description: "输入教室名称查询教室使用情况"
+        };
+      default:
+        return {
+          title: "课表查询",
+          description: "输入关键词查询课程表信息"
+        };
+    }
+  };
+
+  const typeInfo = getTypeSpecificInfo();
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-background transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">
-            {type === "student" && "学生课表查询"}
-            {type === "teacher" && "教师课表查询"}
-            {type === "location" && "教室课表查询"}
+          <h1 className="text-3xl font-bold text-foreground mb-2">
+            {typeInfo.title}
           </h1>
-          <p className="text-slate-600">
-            {type === "student" && "输入学号或姓名查询学生课程表"}
-            {type === "teacher" && "输入教师姓名查询教师授课表"}
-            {type === "location" && "输入教室名称查询教室使用情况"}
+          <p className="text-muted-foreground mb-6">
+            {typeInfo.description}
           </p>
+          
+          {/* 搜索区域卡片 */}
+          <div className="max-w-md mx-auto bg-card p-6 rounded-lg shadow-sm border">
+            <TypeSpecificSearchBox 
+              type={type} 
+              initialQuery={initialQuery} 
+            />
+          </div>
         </div>
 
-        <Suspense fallback={
-          <div className="flex justify-center items-center h-64">
-            <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
-          </div>
-        }>
-          <TimetableClient terms={[]} title={""} courses={[]} type={type} id={q || ""} />
-        </Suspense>
+        {/* 仅当有初始查询参数时显示课表预览 */}
+        {initialQuery && (
+          <Suspense fallback={
+            <div className="flex justify-center items-center h-64">
+              <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
+            </div>
+          }>
+            <TimetableClient terms={[]} title={""} courses={[]} type={type} id={initialQuery} />
+          </Suspense>
+        )}
       </div>
     </div>
   );
