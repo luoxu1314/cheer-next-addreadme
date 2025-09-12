@@ -5,8 +5,20 @@ import { Calendar, Search, Users, Clock } from "lucide-react";
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,var(--chart-3)/10,transparent_50%),radial-gradient(circle_at_80%_20%,var(--chart-5)/10,transparent_50%),radial-gradient(circle_at_40%_40%,var(--chart-1)/5,transparent_50%)] dark:bg-[radial-gradient(circle_at_20%_80%,var(--chart-3)/20,transparent_50%),radial-gradient(circle_at_80%_20%,var(--chart-5)/20,transparent_50%),radial-gradient(circle_at_40%_40%,var(--chart-1)/10,transparent_50%)]"></div>
-      <div className="absolute inset-0 bg-grid-slate-100 dark:bg-grid-slate-900 [mask-image:linear-gradient(0deg,white,white/60)] dark:[mask-image:linear-gradient(0deg,transparent,black/60)] opacity-30"></div>
+      {/* Semantic Background Gradient - 使用天青色主题色 */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--chart-1)]/25 via-[var(--chart-2)]/20 to-[var(--chart-3)]/25 dark:from-[var(--chart-1)]/35 dark:via-[var(--chart-2)]/30 dark:to-[var(--chart-3)]/35"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[var(--chart-4)]/40 via-transparent to-transparent dark:from-[var(--chart-4)]/50"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-[var(--chart-5)]/40 via-transparent to-transparent dark:from-[var(--chart-5)]/50"></div>
+      <div className="absolute inset-0 bg-[conic-gradient(from_90deg_at_50%_50%,var(--tw-gradient-stops))] from-transparent via-[var(--primary)]/15 to-transparent dark:via-[var(--primary)]/25"></div>
+      
+      {/* Semantic Animated Orbs - 使用主色调 */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-[var(--primary)] via-[var(--chart-1)] to-[var(--chart-2)] rounded-full blur-3xl opacity-40 animate-float dark:opacity-50"></div>
+      <div className="absolute top-1/3 right-1/5 w-96 h-96 bg-gradient-to-r from-[var(--chart-2)] via-[var(--chart-3)] to-[var(--accent)] rounded-full blur-3xl opacity-40 animate-float animation-delay-1000 dark:opacity-50"></div>
+      <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-gradient-to-r from-[var(--chart-4)] via-[var(--chart-5)] to-[var(--primary)] rounded-full blur-3xl opacity-40 animate-float animation-delay-2000 dark:opacity-50"></div>
+      
+
+      
+      {/* Grid Pattern */}
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
         <div className="text-center">
