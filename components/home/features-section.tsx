@@ -24,7 +24,7 @@ const features = [
   {
     icon: Users,
     title: "多维度查询",
-    description: "支持学生课表、教师课表、教室课表三种查询模式"
+    description: "支持学生课表、教师课表、教室课表三种查询模式，还可以按院系专业浏览所有课程"
   }
 ];
 
@@ -48,16 +48,16 @@ export function FeaturesSection() {
               className="group relative bg-card p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-border/50"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-              
+
               <div className="relative">
                 <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <feature.icon className="h-8 w-8 text-white" />
                 </div>
-                
+
                 <h3 className="text-xl font-bold text-foreground mb-3">
                   {feature.title}
                 </h3>
-                
+
                 <p className="text-muted-foreground leading-relaxed">
                   {feature.description}
                 </p>
@@ -92,7 +92,7 @@ export function FeaturesSection() {
                 </li>
               </ul>
             </div>
-            
+
             <div className="text-center">
               <div className="bg-card rounded-2xl p-8 shadow-lg border border-border/50">
                 <div className="text-3xl font-bold text-primary mb-2">

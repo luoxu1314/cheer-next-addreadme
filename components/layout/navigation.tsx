@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
-import { Menu, X, Calendar, Search, Home, Moon, Sun } from "lucide-react";
+import { Menu, X, Calendar, Search, Home, Moon, Sun, Users } from "lucide-react";
 import { SearchDialog } from "@/components/search/search-dialog";
 import { Button } from "@/components/ui/button";
 import {
@@ -98,27 +98,34 @@ export function Navigation() {
                           </div>
                           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                             查看教室使用安排
-                          </p>
-                        </a>
-                      </NavigationMenuLink>
-                      <NavigationMenuLink asChild>
-                        <a
-                          href="/search/profession"
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primary/20 hover:text-muted-foreground focus:bg-accent focus:text-accent-foreground"
-                        >
-                          <div className="text-sm font-medium leading-none">
-                            专业课表
-                          </div>
-                          <p className="line-clamp-2 text-sm leading-snug">
-                            查询专业课程安排
-                          </p>
-                        </a>
-                      </NavigationMenuLink>
-                    </div>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
+                      </p>
+                    </a>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink asChild>
+                    <a
+                      href="/search/profession"
+                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primary/20 hover:text-muted-foreground focus:bg-accent focus:text-accent-foreground"
+                    >
+                      <div className="text-sm font-medium leading-none">
+                        专业课表
+                      </div>
+                      <p className="line-clamp-2 text-sm leading-snug">
+                        查询专业课程安排
+                      </p>
+                    </a>
+                  </NavigationMenuLink>
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <Link href="/departments" className={navigationMenuTriggerStyle()}>
+                <Users className="w-4 h-4 mr-2" />
+                院系列表
+              </Link>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
 
             <div className="mr-2">
               <SearchDialog />
@@ -207,6 +214,13 @@ export function Navigation() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 教室课表
+              </Link>
+              <Link
+                href="/departments"
+                className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                院系列表
               </Link>
             </div>
           </div>
