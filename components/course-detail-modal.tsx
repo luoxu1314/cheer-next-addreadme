@@ -64,12 +64,12 @@ export function CourseDetailModal({ course, courses = [], open, onOpenChange }: 
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md mx-4 sm:mx-auto">
+      <DialogContent className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl w-full mx-2 sm:mx-auto">
         <DialogHeader>
-          <DialogTitle className="text-lg font-bold text-foreground">
+          <DialogTitle className="text-xl sm:text-2xl font-bold text-foreground">
             {currentCourse.name}
           </DialogTitle>
-          <DialogDescription className="text-sm text-muted-foreground">
+          <DialogDescription className="text-sm sm:text-base text-muted-foreground">
             {currentCourse.courseId} · {currentCourse.category}
             {courses.length > 1 && (
               <span className="ml-2 text-xs opacity-70">
@@ -79,14 +79,14 @@ export function CourseDetailModal({ course, courses = [], open, onOpenChange }: 
           </DialogDescription>
         </DialogHeader>
 
-        <div className="space-y-4 py-4">
+        <div className="space-y-5 py-5">
           {/* 基本信息 */}
-          <div className="space-y-3">
+          <div className="space-y-4">
             <div className="flex items-start gap-3">
               <Clock className="w-4 h-4 text-chart-5 mt-0.5" />
               <div>
-                <p className="text-sm font-medium text-foreground">上课时间</p>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm sm:text-base font-medium text-foreground">上课时间</p>
+                <p className="text-sm sm:text-base text-muted-foreground">
                   {days[currentCourse.slot.day]} {formatTimeRange(currentCourse.slot.rowIds)}
                 </p>
               </div>
@@ -95,9 +95,9 @@ export function CourseDetailModal({ course, courses = [], open, onOpenChange }: 
             <div className="flex items-start gap-3">
               <MapPin className="w-4 h-4 text-chart-3 mt-0.5" />
               <div>
-                <p className="text-sm font-medium text-foreground">上课地点</p>
+                <p className="text-sm sm:text-base font-medium text-foreground">上课地点</p>
                 <p className="text-sm text-muted-foreground">{currentCourse.location.name}</p>
-                <p className="text-xs text-muted-foreground/70">{currentCourse.location.building}</p>
+                <p className="text-xs sm:text-sm text-muted-foreground/70">{currentCourse.location.building}</p>
               </div>
             </div>
 
@@ -113,11 +113,11 @@ export function CourseDetailModal({ course, courses = [], open, onOpenChange }: 
           </div>
 
           {/* 课程详情 */}
-          <div className="grid grid-cols-2 gap-3 pt-3 border-t border-border">
+          <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border">
             <div className="flex items-center gap-2">
               <BookOpen className="w-4 h-4 text-chart-4" />
               <div>
-                <p className="text-xs text-muted-foreground/70">班级</p>
+                <p className="text-xs sm:text-sm text-muted-foreground/70">班级</p>
                 <p className="text-sm font-medium text-foreground">{currentCourse.classId}</p>
               </div>
             </div>
@@ -126,7 +126,7 @@ export function CourseDetailModal({ course, courses = [], open, onOpenChange }: 
               <Users className="w-4 h-4 text-chart-4" />
               <div>
                 <p className="text-xs text-muted-foreground/70">人数</p>
-                <p className="text-sm font-medium text-foreground">{currentCourse.studentCount}人</p>
+                 <Link href={`/course/${currentCourse.courseId}`} className="text-sm font-medium text-foreground">{currentCourse.studentCount}人</Link>
               </div>
             </div>
 
@@ -147,14 +147,14 @@ export function CourseDetailModal({ course, courses = [], open, onOpenChange }: 
             </div>
           </div>
 
-          <div className="pt-3 border-t border-border">
-            <Badge variant="outline" className="text-xs">
-              {currentCourse.weekInterval}
+          <div className="pt-4 border-t border-border">
+            <Badge variant="outline" className="text-xs sm:text-sm">
+              {currentCourse.weekInterval}周
             </Badge>
           </div>
         </div>
 
-        <div className="flex gap-2 pt-4 border-t border-border">
+        <div className="flex gap-2 pt-5 border-t border-border">
           {courses.length > 1 && (
             <Button
               variant="outline"
@@ -177,7 +177,7 @@ export function CourseDetailModal({ course, courses = [], open, onOpenChange }: 
           <Button
             variant="outline"
             size="sm"
-            className={courses.length > 1 ? "flex-1" : "w-full"}
+            className={"flex-1"}
             onClick={() => onOpenChange(false)}
           >
             关闭
