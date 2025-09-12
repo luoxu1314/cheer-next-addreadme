@@ -205,8 +205,7 @@ async function CourseDetailContent({ id }: { id: string }) {
                       <TableRow>
                         <TableHead className="w-[60px]">序号</TableHead>
                         <TableHead>姓名</TableHead>
-                        <TableHead>年级</TableHead>
-                        <TableHead>专业</TableHead>
+                        <TableHead>班级</TableHead>
                         <TableHead>学院</TableHead>
                       </TableRow>
                     </TableHeader>
@@ -229,8 +228,7 @@ async function CourseDetailContent({ id }: { id: string }) {
                               <span>{enrollment.student.name}</span>
                             </Link>
                           </TableCell>
-                          <TableCell>{enrollment.student.grade}</TableCell>
-                          <TableCell>{enrollment.student.professionName}</TableCell>
+                          <TableCell>{enrollment.student.className}</TableCell>
                           <TableCell>{enrollment.student.facultyName}</TableCell>
                         </TableRow>
                       ))}
