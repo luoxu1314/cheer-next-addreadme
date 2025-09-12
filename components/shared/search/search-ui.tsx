@@ -107,7 +107,7 @@ export function SearchUI({
           </TabsList>
 
           <TabsContent value={activeTab} className="mt-4">
-            {renderSearchResults()}
+            {hasSearched && renderSearchResults()}
           </TabsContent>
         </Tabs>
       )}

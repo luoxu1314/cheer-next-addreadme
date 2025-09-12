@@ -58,7 +58,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="zh-CN" suppressHydrationWarning>
+    <html lang="zh-CN" suppressHydrationWarning style={{ scrollBehavior: 'smooth' }}>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} min-h-screen flex flex-col`}>
         <ThemeProvider
           attribute="class"
