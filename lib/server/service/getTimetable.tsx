@@ -88,7 +88,7 @@ export const getTimetableByProfessionName = unstable_cache(
 
     const owner = {
       name: professionName + '专业',
-      label: grade || grades[0]?.grade + '级',
+      label: "",
     }
 
     const { terms, courses } = await getTimetableByStudentId(student?.id, term)
