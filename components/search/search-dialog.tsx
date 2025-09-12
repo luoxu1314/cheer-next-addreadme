@@ -42,7 +42,7 @@ export function SearchDialog({ initialQuery }: SearchDialogProps) {
             快速搜索
           </DialogTitle>
           <p className="text-center text-muted-foreground mt-2">
-            输入学号、姓名或教室名称查找相关信息
+            输入学号、姓名、教室或专业名称查找相关信息
           </p>
         </DialogHeader>
         

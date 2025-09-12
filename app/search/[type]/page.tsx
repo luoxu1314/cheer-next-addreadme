@@ -49,7 +49,7 @@ export default function SearchPage({ params, searchParams }: SearchPageProps) {
   const { type } = params;
   const { q: initialQuery } = searchParams;
 
-  const validTypes = ["student", "teacher", "location"];
+  const validTypes = ["student", "teacher", "location", "profession"];
   if (!validTypes.includes(type)) {
     notFound();
   }
@@ -71,6 +71,11 @@ export default function SearchPage({ params, searchParams }: SearchPageProps) {
         return {
           title: "教室课表查询",
           description: "输入教室名称查询教室使用情况"
+        };
+      case 'profession':
+        return {
+          title: "专业课表查询",
+          description: "输入专业名称查询专业课程表"
         };
       default:
         return {

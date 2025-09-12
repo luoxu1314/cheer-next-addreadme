@@ -101,16 +101,29 @@ export function Navigation() {
                           </p>
                         </a>
                       </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <a
+                          href="/search/profession"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primary/20 hover:text-muted-foreground focus:bg-accent focus:text-accent-foreground"
+                        >
+                          <div className="text-sm font-medium leading-none">
+                            专业课表
+                          </div>
+                          <p className="line-clamp-2 text-sm leading-snug">
+                            查询专业课程安排
+                          </p>
+                        </a>
+                      </NavigationMenuLink>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
-            
+
             <div className="mr-2">
               <SearchDialog />
             </div>
-            
+
             <Button
               variant="ghost"
               size="icon"
@@ -137,7 +150,7 @@ export function Navigation() {
 
             <div className="flex items-center space-x-2">
               <SearchDialog />
-              
+
               <Button
                 variant="ghost"
                 size="icon"

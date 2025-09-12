@@ -19,7 +19,7 @@ export function SearchSection() {
             快速查询课表
           </h2>
           <p className="text-lg text-muted-foreground">
-            输入学号、姓名或教室名称，快速查找课程信息
+            输入学号、姓名、教室或专业名称，快速查找课程信息
           </p>
         </div>
 
@@ -27,7 +27,7 @@ export function SearchSection() {
           <CardHeader>
             <CardTitle>搜索课程表</CardTitle>
             <CardDescription>
-              支持学生、教师、教室三种查询方式
+              支持学生、教师、教室、专业四种查询方式
             </CardDescription>
           </CardHeader>
           <CardContent>

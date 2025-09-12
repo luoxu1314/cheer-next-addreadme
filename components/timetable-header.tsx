@@ -8,6 +8,10 @@ interface TimetableHeaderProps {
   onTermChange: (term: string) => void
   showWeekend: boolean
   onShowWeekendChange: (show: boolean) => void
+  type?: string
+  grades?: string[]
+  currentGrade?: string
+  onGradeChange?: (grade: string) => void
 }
 
 export function TimetableHeader({
@@ -16,7 +20,11 @@ export function TimetableHeader({
   currentTerm,
   onTermChange,
   showWeekend,
-  onShowWeekendChange
+  onShowWeekendChange,
+  type,
+  grades = [],
+  currentGrade = '',
+  onGradeChange
 }: TimetableHeaderProps) {
   return (
     <div className="text-center space-y-4 p-8 rounded-3xl bg-white/40 backdrop-blur-xl border border-white/50 shadow-2xl shadow-accent/10">
@@ -43,6 +51,22 @@ export function TimetableHeader({
               ))}
             </SelectContent>
           </Select>
+          
+          {/* 专业课表添加年级选择器 */}
+          {type === 'profession' && grades.length > 0 && onGradeChange && (
+            <Select value={currentGrade} onValueChange={onGradeChange}>
+              <SelectTrigger className="w-[120px] bg-white/60 backdrop-blur-md border-white/50 shadow-lg rounded-xl">
+                <SelectValue placeholder="选择年级" />
+              </SelectTrigger>
+              <SelectContent>
+                {grades.map((grade) => (
+                  <SelectItem key={grade} value={grade}>
+                    {grade}级
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
         </div>
       )}
 

@@ -23,8 +23,13 @@ export const getTimetable = unstable_cache(
       [OwnerType.teacher]: getTimetableByTeacherId,
       [OwnerType.student]: getTimetableByStudentId,
       [OwnerType.location]: getTimetableByLocationId,
+      [OwnerType.profession]: getTimetableByProfessionName,
     } as const
-    const { courses, owner, terms } = await fnMapping[type as keyof typeof fnMapping](id, term)
+    // 根据类型调用不同的函数，并传递正确的参数
+    const result = await fnMapping[type as keyof typeof fnMapping](id, term, grade);
+    const { courses, owner, terms } = result;
+    // 确保grades存在，如果不存在则设为空数组
+    const grades = 'grades' in result ? result.grades : [];
 
     return JSON.parse(
       JSON.stringify({
@@ -35,6 +40,7 @@ export const getTimetable = unstable_cache(
           Array.from(
             new Set((courses as CourseItem[]).map((e) => e.term))
           )?.sort((a: string, b: string) => b.localeCompare(a)),
+        grades
       })
     )
   }
@@ -42,12 +48,25 @@ export const getTimetable = unstable_cache(
 
 export const getTimetableByProfessionName = unstable_cache(
   async (id: string, term?: string, grade?: string) => {
-    const professionName = decodeURIComponent(id)
+    // 从ID中分离专业名称和年级
+    let professionName = decodeURIComponent(id);
+    let parsedGrade = grade;
+
+    // 如果ID中包含'-'，则尝试从中解析年级
+    if (id.includes('-')) {
+      const parts = id.split('-');
+      const lastPart = parts[parts.length - 1];
+      // 检查最后一部分是否为有效的年级格式（如2020、2021等）
+      if (/^20\d{2}$/.test(lastPart)) {
+        parsedGrade = lastPart;
+        professionName = decodeURIComponent(parts.slice(0, -1).join('-'));
+      }
+    }
 
     const student = await prisma.student.findFirstOrThrow({
       where: {
         professionName,
-        grade,
+        grade: parsedGrade,
       },
       orderBy: {
         grade: 'desc',
@@ -74,18 +93,16 @@ export const getTimetableByProfessionName = unstable_cache(
 
     const { terms, courses } = await getTimetableByStudentId(student?.id, term)
 
-    return JSON.parse(
-      JSON.stringify({
-        courses,
-        owner,
-        terms:
-          terms ||
-          (Array.from(new Set(courses?.map((e) => e.term)))?.sort(
-            (a: string, b: string) => b.localeCompare(a)
-          ) as string[]),
+    return {
+      courses,
+      owner,
+      terms:
+        terms ||
+        (Array.from(new Set(courses?.map((e) => e.term)))?.sort(
+          (a: string, b: string) => b.localeCompare(a)
+        ) as string[]),
 
-        grades: grades.map((e) => e.grade),
-      })
-    )
+      grades: grades.map((e) => e.grade),
+    }
   }
 )

@@ -86,7 +86,7 @@ export function SearchUI({
       {/* 标签页（仅在showTabs为true时显示） */}
       {showTabs && setActiveTab && (
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="grid w-full grid-cols-4 mt-4">
+          <TabsList className="grid w-full grid-cols-5 mt-4">
             <TabsTrigger value="all">全部</TabsTrigger>
             <TabsTrigger value="student">
               <User className="h-4 w-4 mr-2" />
@@ -99,6 +99,10 @@ export function SearchUI({
             <TabsTrigger value="location">
               <Building2 className="h-4 w-4 mr-2" />
               教室
+            </TabsTrigger>
+            <TabsTrigger value="profession">
+              <Users className="h-4 w-4 mr-2" />
+              专业
             </TabsTrigger>
           </TabsList>
 

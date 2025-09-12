@@ -34,6 +34,7 @@ interface TimetableClientProps {
   courses: CourseItem[];
   type: string;
   id: string;
+  grades?: string[];
 }
 
 export default function TimetableClient({
@@ -42,55 +43,55 @@ export default function TimetableClient({
   courses,
   type,
   id,
+  grades = [],
 }: TimetableClientProps) {
   const [showWeekend, setShowWeekend] = useState(true);
   const [firstColumnMode, setFirstColumnMode] = useState<"time" | "index">("time");
   const router = useRouter();
   const pathname = usePathname();
 
-  // 从 URL 解析当前 term
+  // 从 URL 解析当前 term 和 grade
   const pathParts = pathname.split("/").filter(Boolean);
-  // URL 格式: /table/[type]/[id]/[term]/[grade]
+  // URL 格式: /table/[type]/[id]/[term]
   const currentTerm = pathParts[3] || terms[0] || "";
-  const currentGrade = pathParts[4] || "";
+
+  // 对于专业课表，从id中解析年级信息
+  let currentGrade = "";
+  let professionName = id;
+  if (type === 'profession' && id.includes('-')) {
+    const parts = id.split('-');
+    currentGrade = parts[parts.length - 1];
+    professionName = parts.slice(0, -1).join('-');
+  }
 
   const handleTermChange = (newTerm: string) => {
     const basePath = `/table/${type}/${id}`;
-    const newPath = currentGrade
-      ? `${basePath}/${newTerm}/${currentGrade}`
-      : `${basePath}/${newTerm}`;
+    const newPath = `${basePath}/${newTerm}`;
+    router.push(newPath);
+  };
+
+  const handleGradeChange = (newGrade: string) => {
+    const newId = `${professionName}-${newGrade}`;
+    const basePath = `/table/${type}/${newId}`;
+    const newPath = currentTerm ? `${basePath}/${currentTerm}` : basePath;
     router.push(newPath);
   };
 
   return (
     <div className="space-y-6">
       {/* Header with improved SEO structure */}
-      <div className="text-center space-y-4 p-6 lg:p-8 rounded-3xl bg-muted/20 backdrop-blur-xl border border-white/50 shadow-2xl shadow-accent/10">
-        <div className="flex items-center justify-center gap-2 mb-2">
-          <div className="p-3 rounded-2xl bg-gradient-to-br from-primary to-accent shadow-lg">
-            <Calendar className="w-8 h-8 text-white" />
-          </div>
-          <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-primary via-accent to-gradient-pink-end bg-clip-text text-transparent">
-            {title}
-          </h1>
-        </div>
-        {terms.length > 0 && (
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-            <Select value={currentTerm} onValueChange={handleTermChange}>
-              <SelectTrigger className="w-[180px] bg-white/60 backdrop-blur-md border-white/50 shadow-lg rounded-xl">
-                <SelectValue placeholder="选择学期" />
-              </SelectTrigger>
-              <SelectContent>
-                {terms.map((term) => (
-                  <SelectItem key={term} value={term}>
-                    {term}学期
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-        )}
-      </div>
+      <TimetableHeader
+        title={title}
+        terms={terms}
+        currentTerm={currentTerm}
+        onTermChange={handleTermChange}
+        showWeekend={showWeekend}
+        onShowWeekendChange={setShowWeekend}
+        type={type}
+        grades={grades}
+        currentGrade={currentGrade}
+        onGradeChange={handleGradeChange}
+      />
 
       {/* Settings Sidebar for Desktop */}
       <SettingsSidebar

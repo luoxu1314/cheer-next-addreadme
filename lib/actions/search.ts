@@ -54,6 +54,17 @@ export async function searchAction(query: string): Promise<SearchResult[]> {
       });
     }
     
+    // 处理专业结果
+    if (results[3] && Array.isArray(results[3])) {
+      results[3].forEach((profession: any) => {
+        allResults.push({
+          id: encodeURIComponent(profession.professionName),
+          name: profession.professionName || "未知专业",
+          label: `${profession.facultyName || "未知学院"} • ${profession.grade || "未知年级"}`,
+          type: "profession"
+        });
+      });
+    }
     return allResults;
   } catch (error) {
     console.error("搜索失败:", error);

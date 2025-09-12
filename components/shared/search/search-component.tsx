@@ -77,6 +77,8 @@ export function SearchComponent({
         return <Users className="h-4 w-4 mr-2" />;
       case 'location':
         return <Building2 className="h-4 w-4 mr-2" />;
+      case 'profession':
+        return <Users className="h-4 w-4 mr-2" />;
       default:
         return null;
     }
@@ -91,6 +93,8 @@ export function SearchComponent({
         return '教师';
       case 'location':
         return '教室';
+      case 'profession':
+        return '专业';
       default:
         return '未知';
     }
@@ -130,6 +134,11 @@ export function SearchComponent({
         return {
           placeholder: '请输入教室名称...',
           description: '输入教室名称查找教室信息'
+        };
+      case 'profession':
+        return {
+          placeholder: '请输入专业名称...',
+          description: '输入专业名称查找专业课程信息'
         };
       default:
         return {

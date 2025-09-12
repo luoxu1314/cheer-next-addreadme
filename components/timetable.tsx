@@ -31,6 +31,7 @@ interface TimeTableProps {
   courses: CourseItem[];
   type: string;
   id: string;
+  grades?: string[];
 }
 
 export default function TimeTable({
@@ -39,22 +40,38 @@ export default function TimeTable({
   courses,
   type,
   id,
+  grades = [],
 }: TimeTableProps) {
   const [showWeekend, setShowWeekend] = useState(true);
   const router = useRouter();
   const pathname = usePathname();
 
-  // 从 URL 解析当前 term
+  // 从 URL 解析当前 term 和 grade
   const pathParts = pathname.split("/").filter(Boolean);
-  // URL 格式: /table/[type]/[id]/[term]/[grade]
+  // URL 格式: /table/[type]/[id]/[term]
   const currentTerm = pathParts[3] || terms[0] || "";
-  const currentGrade = pathParts[4] || "";
+  
+  // 对于专业课表，从id中解析年级信息
+  let currentGrade = pathParts[4] || "";
+  let professionName = id;
+  if (type === 'profession' && id.includes('-')) {
+    const parts = id.split('-');
+    currentGrade = parts[parts.length - 1];
+    professionName = parts.slice(0, -1).join('-');
+  }
 
   const handleTermChange = (newTerm: string) => {
     const basePath = `/table/${type}/${id}`;
     const newPath = currentGrade
       ? `${basePath}/${newTerm}/${currentGrade}`
       : `${basePath}/${newTerm}`;
+    router.push(newPath);
+  };
+
+  const handleGradeChange = (newGrade: string) => {
+    const newId = `${professionName}-${newGrade}`;
+    const basePath = `/table/${type}/${newId}`;
+    const newPath = currentTerm ? `${basePath}/${currentTerm}` : basePath;
     router.push(newPath);
   };
 
@@ -71,6 +88,10 @@ export default function TimeTable({
           onTermChange={handleTermChange}
           showWeekend={showWeekend}
           onShowWeekendChange={setShowWeekend}
+          type={type}
+          grades={grades}
+          currentGrade={currentGrade}
+          onGradeChange={handleGradeChange}
         />
 
         <DesktopTimetable courses={courses} showWeekend={showWeekend} firstColumnMode="time"/>
