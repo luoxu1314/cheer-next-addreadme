@@ -141,17 +141,17 @@ export const themes: Record<ThemeName, Theme> = {
     name: 'purple',
     label: '沉光紫',
     colors: {
-      // 主要颜色
-      primary: '#977AA1',
+      // 主要颜色 - 基于#977AA1稍微提高饱和度
+      primary: '#8B5A9E',
       'primary-foreground': '#ffffff',
       
-      // 次要颜色
-      secondary: '#AAA1C8',
+      // 次要颜色 - 基于#AAA1C8稍微提高饱和度
+      secondary: '#9B92C7',
       'secondary-foreground': '#ffffff',
       
-      // 强调色
-      accent: '#d6c6e0',
-      'accent-foreground': '#0f172a',
+      // 强调色 - 基于#d6c6e0稍微提高饱和度
+      accent: '#C7B3D9',
+      'accent-foreground': '#1e293b',
       
       // 背景色
       background: '#ffffff',
@@ -166,8 +166,8 @@ export const themes: Record<ThemeName, Theme> = {
       'popover-foreground': '#0f172a',
       
       // 静音/禁用色
-      muted: '#f5e7e9',
-      'muted-foreground': '#957ba1',
+      muted: '#f1f5f9',
+      'muted-foreground': '#64748b',
       
       // 破坏性操作颜色
       destructive: '#ef4444',
@@ -176,40 +176,40 @@ export const themes: Record<ThemeName, Theme> = {
       // 边框和输入框
       border: '#e2e8f0',
       input: '#e2e8f0',
-      ring: '#977AA1',
+      ring: '#8B5A9E',
       
-      // 图表颜色
-      chart1: '#977AA1',
-      chart2: '#AAA1C8',
-      chart3: '#d6c6e0',
-      chart4: '#957ba1',
-      chart5: '#f5e7e9',
+      // 图表颜色 - 基于提供的色值创建渐变
+      chart1: '#8B5A9E',
+      chart2: '#9B92C7',
+      chart3: '#C7B3D9',
+      chart4: '#D6C6E0',
+      chart5: '#F5E7E9',
       
-      // 暗黑模式颜色
-      'dark-primary': '#AAA1C8',
+      // 暗黑模式颜色 - 基于原色值提高饱和度
+      'dark-primary': '#A78BFA',
       'dark-primary-foreground': '#0f172a',
-      'dark-secondary': '#d6c6e0',
+      'dark-secondary': '#C4B5FD',
       'dark-secondary-foreground': '#0f172a',
-      'dark-accent': '#977AA1',
-      'dark-accent-foreground': '#ffffff',
+      'dark-accent': '#DDD6FE',
+      'dark-accent-foreground': '#0f172a',
       'dark-background': '#0f172a',
       'dark-foreground': '#f8fafc',
       'dark-card': '#1e293b',
       'dark-card-foreground': '#f8fafc',
       'dark-popover': '#0f172a',
       'dark-popover-foreground': '#f8fafc',
-      'dark-muted': '#334155',
-      'dark-muted-foreground': '#AAA1C8',
+      'dark-muted': '#1e293b',
+      'dark-muted-foreground': '#94a3b8',
       'dark-destructive': '#f87171',
       'dark-destructive-foreground': '#0f172a',
       'dark-border': '#334155',
       'dark-input': '#1e293b',
-      'dark-ring': '#AAA1C8',
-      'dark-chart-1': '#AAA1C8',
-      'dark-chart-2': '#d6c6e0',
-      'dark-chart-3': '#977AA1',
-      'dark-chart-4': '#957ba1',
-      'dark-chart-5': '#f5e7e9',
+      'dark-ring': '#A78BFA',
+      'dark-chart-1': '#A78BFA',
+      'dark-chart-2': '#C4B5FD',
+      'dark-chart-3': '#DDD6FE',
+      'dark-chart-4': '#EDE9FE',
+      'dark-chart-5': '#F5E7E9',
     },
   }
 };
