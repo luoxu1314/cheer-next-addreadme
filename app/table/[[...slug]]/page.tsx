@@ -158,7 +158,7 @@ export async function generateStaticParams() {
     const students = await prisma.student.findMany({
       where: {
         grade: {
-          gte: "2020",
+          gte: "2023",
         },
       },
       distinct: ["className"],
@@ -168,7 +168,7 @@ export async function generateStaticParams() {
         grade: true,
         className: true,
       },
-      take: 100, // Limit for build performance
+      take: 40, // Limit for build performance
     });
 
     const teachers = await prisma.teacher.findMany({
@@ -176,7 +176,7 @@ export async function generateStaticParams() {
         id: true,
         name: true,
       },
-      take: 50,
+      take: 10,
     });
 
     const locations = await prisma.location.findMany({
@@ -184,7 +184,7 @@ export async function generateStaticParams() {
         id: true,
         name: true,
       },
-      take: 50,
+      take: 10,
     });
 
     const params = [
