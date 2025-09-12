@@ -23,15 +23,16 @@ interface CourseItem {
 }
 
 interface CourseCardProps {
-  course: CourseItem
+  courses: CourseItem[]
   className?: string
 }
 
 
 
-export function CourseCard({ course, className = "" }: CourseCardProps) {
+export function CourseCard({ courses, className = "" }: CourseCardProps) {
+  const course = courses[0]
   return (
-    <Card 
+    <Card
       className={`h-full p-3 transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer bg-card/80 backdrop-blur-sm border border-border/60 shadow-lg ${className}`}
     >
       <div className="space-y-2">
@@ -56,12 +57,18 @@ export function CourseCard({ course, className = "" }: CourseCardProps) {
         <Badge variant="outline" className="text-[10px] px-1.5 py-0" title={course.weeks}>
           <span className="truncate">{course.category}</span>
         </Badge>
+        {courses.length > 1 && (
+          <Badge className="absolute -top-2 -right-2 text-[9px] h-5">
+            +{courses.length - 1}
+          </Badge>
+        )}
       </div>
     </Card>
   )
 }
 
-export function MobileCourseCard({ course }: CourseCardProps) {
+export function MobileCourseCard({ courses }: CourseCardProps) {
+  const course = courses[0]
   return (
     <div className="h-full bg-gradient-to-br from-chart-1/10 to-chart-3/10 rounded-lg border border-primary/20 p-1.5 hover:shadow-md transition-all duration-200">
       <div className="space-y-1">

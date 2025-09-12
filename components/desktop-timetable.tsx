@@ -1,4 +1,3 @@
-import { Card } from "@/components/ui/card"
 import { CourseCard } from "@/components/course-card"
 import { CourseClickWrapper } from "@/components/course-detail-modal"
 import { formatTimeRange } from "@/lib/timeMapping"
@@ -33,13 +32,13 @@ const days = ["周一", "周二", "周三", "周四", "周五", "周六", "周�
 // 将课程按天和时间段分组
 function groupCoursesByDayAndTime(courses: CourseItem[]) {
   const grouped: { [key: string]: { [key: string]: CourseItem[] } } = {}
-  
+
   courses.forEach(course => {
     const dayKey = course.slot.day.toString()
     if (!grouped[dayKey]) {
       grouped[dayKey] = {}
     }
-    
+
     course.slot.rowIds.forEach(rowId => {
       const timeKey = rowId.toString()
       if (!grouped[dayKey][timeKey]) {
@@ -48,7 +47,7 @@ function groupCoursesByDayAndTime(courses: CourseItem[]) {
       grouped[dayKey][timeKey].push(course)
     })
   })
-  
+
   return grouped
 }
 
@@ -77,7 +76,7 @@ export function DesktopTimetable({ courses, showWeekend, firstColumnMode }: Desk
           key={`time-${timeIndex}`}
           className="text-xs text-muted-foreground text-center py-2 font-mono bg-muted/80 backdrop-blur-md rounded-lg border border-border/40"
         >
-          {firstColumnMode === "time" 
+          {firstColumnMode === "time"
             ? formatTimeRange([timeIndex + 1])
             : `${timeIndex + 1}`
           }
@@ -88,12 +87,13 @@ export function DesktopTimetable({ courses, showWeekend, firstColumnMode }: Desk
           const coursesInThisSlot = groupedCourses[dayKey]?.[timeKey] || []
 
           return (
-            <div key={`${day}-${timeIndex}`} className="min-h-[80px] p-1">
-              {coursesInThisSlot.map((course) => (
-                <CourseClickWrapper key={course.seq} course={course}>
-                  <CourseCard course={course} />
+            <div key={`${day}-${timeIndex}`} className="min-h-[80px] p-1 relative">
+              {coursesInThisSlot.length > 0 && (
+                <CourseClickWrapper key={coursesInThisSlot[0].seq} course={coursesInThisSlot[0]} courses={coursesInThisSlot}>
+                  <CourseCard courses={coursesInThisSlot}>
+                  </CourseCard>
                 </CourseClickWrapper>
-              ))}
+              )}
             </div>
           )
         }),
