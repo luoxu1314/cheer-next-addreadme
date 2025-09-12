@@ -94,22 +94,22 @@ export function MobileTimetable({ courses, showWeekend, firstColumnMode }: Mobil
                     className="min-h-[60px] p-1 border-r border-border/50 last:border-r-0"
                   >
                     {coursesInThisSlot.map((course) => (
-                      <div key={course.seq} className="h-full bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-lg border border-border/50 p-1.5 hover:shadow-md transition-all duration-200">
+                      <div key={course.seq} className="h-full bg-gradient-to-br from-chart-1/10 to-chart-3/10 rounded-lg border border-border/50 p-1.5 hover:shadow-md transition-all duration-200">
                         <div className="space-y-1">
                           <h4 className="font-bold text-[10px] leading-tight text-foreground line-clamp-2">
                             {course.name}
                           </h4>
                           <div className="space-y-0.5">
                             <div className="flex items-center gap-1 text-[9px] text-muted-foreground">
-                              <User className="w-2 h-2 text-blue-500" />
+                              <User className="w-2 h-2 text-chart-1" />
                               <span className="truncate">{course.teachers[0]?.name || ''}</span>
                             </div>
                             <div className="flex items-center gap-1 text-[9px] text-muted-foreground">
-                              <MapPin className="w-2 h-2 text-purple-500" />
+                              <MapPin className="w-2 h-2 text-chart-3" />
                               <span className="truncate">{course.location.name}</span>
                             </div>
                           </div>
-                          <div className="w-2 h-2 bg-blue-500 rounded-full ml-auto"></div>
+                          <div className="w-2 h-2 bg-chart-1 rounded-full ml-auto"></div>
                         </div>
                       </div>
                     ))}

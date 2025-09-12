@@ -106,7 +106,7 @@ export default function SearchPage({ params, searchParams }: SearchPageProps) {
         {initialQuery && (
           <Suspense fallback={
             <div className="flex justify-center items-center h-64">
-              <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
+              <Loader2 className="h-8 w-8 animate-spin text-primary" />
             </div>
           }>
             <TimetableClient terms={[]} title={""} courses={[]} type={type} id={initialQuery} />

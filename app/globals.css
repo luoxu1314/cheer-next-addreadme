@@ -4,75 +4,79 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color tokens for more vibrant and modern design */
-  --background: oklch(0.99 0.005 264); /* Subtle blue-tinted white */
-  --foreground: oklch(0.15 0.02 264); /* Deep blue-gray text */
-  --card: oklch(0.98 0.01 264); /* Light blue-tinted card background */
-  --card-foreground: oklch(0.25 0.02 264); /* Medium blue-gray card text */
-  --popover: oklch(0.99 0.005 264);
-  --popover-foreground: oklch(0.25 0.02 264);
-  --primary: oklch(0.45 0.2 264); /* Vibrant blue primary */
-  --primary-foreground: oklch(0.98 0.01 264);
-  --secondary: oklch(0.85 0.08 160); /* Soft green accent */
-  --secondary-foreground: oklch(0.15 0.02 264);
-  --muted: oklch(0.96 0.01 264);
-  --muted-foreground: oklch(0.45 0.02 264);
-  --accent: oklch(0.65 0.25 320); /* Purple accent for highlights */
-  --accent-foreground: oklch(0.98 0.01 264);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.92 0.02 264); /* Subtle blue border */
-  --input: oklch(0.98 0.01 264);
-  --ring: oklch(0.45 0.2 264 / 0.3); /* Blue focus ring */
-  --chart-1: oklch(0.55 0.25 264); /* Vibrant blue */
-  --chart-2: oklch(0.6 0.22 160); /* Fresh green */
-  --chart-3: oklch(0.65 0.25 320); /* Purple */
-  --chart-4: oklch(0.7 0.25 40); /* Orange */
-  --chart-5: oklch(0.6 0.25 0); /* Pink-red */
-  --radius: 0.75rem; /* Increased border radius for modern look */
-  --sidebar: oklch(1 0 0);
-  --sidebar-foreground: oklch(0.35 0 0);
-  --sidebar-primary: oklch(0.6 0.15 264);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.9 0 0);
-  --sidebar-accent-foreground: oklch(0.35 0 0);
-  --sidebar-border: oklch(0.9 0 0);
-  --sidebar-ring: oklch(0.6 0.15 264 / 0.5);
+  /* Refined and elegant color palette */
+  --background: oklch(0.98 0.002 250); /* Soft, warm white background */
+  --foreground: oklch(0.2 0.03 250); /* Deep navy-blue text for better readability */
+  --card: oklch(1 0.001 250); /* Clean white card background */
+  --card-foreground: oklch(0.3 0.02 250); /* Medium navy text for cards */
+  --popover: oklch(1 0.001 250);
+  --popover-foreground: oklch(0.3 0.02 250);
+  --primary: oklch(0.55 0.12 250); /* Soft blue primary with lower saturation */
+  --primary-foreground: oklch(1 0.001 250);
+  --secondary: oklch(0.8 0.1 330); /* Lighter lavender secondary */
+  --secondary-foreground: oklch(0.15 0.03 250);
+  --muted: oklch(0.96 0.005 250);
+  --muted-foreground: oklch(0.45 0.02 250);
+  --accent: oklch(0.7 0.15 300); /* Subtle purple accent with lower saturation */
+  --accent-foreground: oklch(1 0.001 250);
+  --destructive: oklch(0.55 0.22 30); /* Refined red for errors */
+  --destructive-foreground: oklch(1 0.001 250);
+  --border: oklch(0.92 0.01 250); /* Subtle border color */
+  --input: oklch(1 0.001 250);
+  --ring: oklch(0.55 0.12 250 / 0.3); /* Blue focus ring */
+  --chart-1: oklch(0.55 0.2 250); /* Blue */
+  --chart-2: oklch(0.65 0.12 330); /* Lavender */
+  --chart-3: oklch(0.7 0.18 300); /* Purple */
+  --chart-4: oklch(0.8 0.15 70); /* Soft gold */
+  --chart-5: oklch(0.65 0.15 345); /* Soft pink */
+  --gradient-gold-end: oklch(0.75 0.18 60); /* End color for gold gradient */
+  --gradient-pink-end: oklch(0.65 0.2 340); /* End color for pink gradient */
+  --radius: 0.75rem; /* Modern border radius */
+  --sidebar: oklch(1 0.001 250);
+  --sidebar-foreground: oklch(0.3 0.02 250);
+  --sidebar-primary: oklch(0.5 0.15 250);
+  --sidebar-primary-foreground: oklch(1 0.001 250);
+  --sidebar-accent: oklch(0.95 0.01 250);
+  --sidebar-accent-foreground: oklch(0.3 0.02 250);
+  --sidebar-border: oklch(0.92 0.01 250);
+  --sidebar-ring: oklch(0.5 0.15 250 / 0.5);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.2 0 0);
-  --card-foreground: oklch(0.9 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.55 0.15 264);
-  --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.55 0.15 264);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.55 0.15 264 / 0.5);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  --background: oklch(0.18 0.01 250); /* Elegant dark background, not too black */
+  --foreground: oklch(0.98 0.002 250); /* Light text for dark mode */
+  --card: oklch(0.24 0.01 250); /* Slightly lighter card background */
+  --card-foreground: oklch(0.95 0.001 250); /* Light text for cards */
+  --popover: oklch(0.18 0.01 250);
+  --popover-foreground: oklch(0.98 0.002 250);
+  --primary: oklch(0.8 0.08 250); /* Softer blue primary for dark mode with lower saturation */
+  --primary-foreground: oklch(0.18 0.01 250);
+  --secondary: oklch(0.8 0.08 330); /* Brighter lavender secondary for dark mode */
+  --secondary-foreground: oklch(0.18 0.01 250);
+  --muted: oklch(0.25 0.005 250);
+  --muted-foreground: oklch(0.7 0.01 250);
+  --accent: oklch(0.7 0.1 300); /* Softer purple accent for dark mode with lower saturation */
+  --accent-foreground: oklch(0.18 0.01 250);
+  --destructive: oklch(0.6 0.18 30); /* Red for errors in dark mode */
+  --destructive-foreground: oklch(0.18 0.01 250);
+  --border: oklch(0.25 0.005 250); /* Border color for dark mode */
+  --input: oklch(0.24 0.01 250);
+  --ring: oklch(0.8 0.08 250 / 0.3); /* Focus ring for dark mode */
+  --chart-1: oklch(0.7 0.15 250); /* Blue for charts in dark mode */
+  --chart-2: oklch(0.7 0.1 330); /* Lavender for charts */
+  --chart-3: oklch(0.65 0.12 300); /* Purple for charts */
+  --chart-4: oklch(0.75 0.12 70); /* Gold for charts */
+  --chart-5: oklch(0.65 0.1 345); /* Pink for charts */
+  --gradient-gold-end: oklch(0.75 0.18 60); /* End color for gold gradient */
+  --gradient-pink-end: oklch(0.65 0.2 340); /* End color for pink gradient */
+  --sidebar: oklch(0.22 0.01 250);
+  --sidebar-foreground: oklch(0.98 0.002 250);
+  --sidebar-primary: oklch(0.7 0.15 250);
+  --sidebar-primary-foreground: oklch(0.18 0.01 250);
+  --sidebar-accent: oklch(0.25 0.005 250);
+  --sidebar-accent-foreground: oklch(0.98 0.002 250);
+  --sidebar-border: oklch(0.25 0.005 250);
+  --sidebar-ring: oklch(0.7 0.15 250 / 0.5);
 }
 
 @theme inline {
@@ -127,26 +131,26 @@
 
 @layer utilities {
   .gradient-blue {
-    background: linear-gradient(135deg, oklch(0.85 0.15 264) 0%, oklch(0.9 0.1 264) 100%);
+    background: linear-gradient(135deg, var(--chart-1) 0%, var(--primary) 100%);
   }
 
-  .gradient-green {
-    background: linear-gradient(135deg, oklch(0.85 0.15 160) 0%, oklch(0.9 0.1 160) 100%);
+  .gradient-lavender {
+    background: linear-gradient(135deg, var(--chart-2) 0%, var(--secondary) 100%);
   }
 
   .gradient-purple {
-    background: linear-gradient(135deg, oklch(0.85 0.15 320) 0%, oklch(0.9 0.1 320) 100%);
+    background: linear-gradient(135deg, var(--chart-3) 0%, var(--accent) 100%);
   }
 
-  .gradient-orange {
-    background: linear-gradient(135deg, oklch(0.85 0.15 40) 0%, oklch(0.9 0.1 40) 100%);
+  .gradient-gold {
+    background: linear-gradient(135deg, var(--chart-4) 0%, var(--gradient-gold-end) 100%);
   }
 
   .gradient-pink {
-    background: linear-gradient(135deg, oklch(0.85 0.15 0) 0%, oklch(0.9 0.1 0) 100%);
+    background: linear-gradient(135deg, var(--chart-5) 0%, var(--gradient-pink-end) 100%);
   }
 
-  .gradient-teal {
-    background: linear-gradient(135deg, oklch(0.85 0.15 200) 0%, oklch(0.9 0.1 200) 100%);
+  .gradient-blue-lavender {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   }
 }

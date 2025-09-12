@@ -47,10 +47,10 @@ export function FeaturesSection() {
               key={index}
               className="group relative bg-card p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-border/50"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
               
               <div className="relative">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <feature.icon className="h-8 w-8 text-white" />
                 </div>
                 
@@ -75,19 +75,19 @@ export function FeaturesSection() {
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
-                  <Check className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
+                  <Check className="h-5 w-5 text-chart-4 mt-0.5 mr-3 flex-shrink-0" />
                   <span className="text-foreground">支持周末显示切换</span>
                 </li>
                 <li className="flex items-start">
-                  <Check className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
+                  <Check className="h-5 w-5 text-chart-4 mt-0.5 mr-3 flex-shrink-0" />
                   <span className="text-foreground">时间/序号显示模式切换</span>
                 </li>
                 <li className="flex items-start">
-                  <Check className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
+                  <Check className="h-5 w-5 text-chart-4 mt-0.5 mr-3 flex-shrink-0" />
                   <span className="text-foreground">深色/浅色主题支持</span>
                 </li>
                 <li className="flex items-start">
-                  <Check className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
+                  <Check className="h-5 w-5 text-chart-4 mt-0.5 mr-3 flex-shrink-0" />
                   <span className="text-foreground">课程详情一键查看</span>
                 </li>
               </ul>
@@ -95,7 +95,7 @@ export function FeaturesSection() {
             
             <div className="text-center">
               <div className="bg-card rounded-2xl p-8 shadow-lg border border-border/50">
-                <div className="text-3xl font-bold text-blue-600 mb-2">
+                <div className="text-3xl font-bold text-primary mb-2">
                   完全免费
                 </div>
                 <p className="text-muted-foreground">

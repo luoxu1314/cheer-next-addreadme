@@ -26,7 +26,7 @@ async function TimeTableContent({
   );
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-primary/5 to-accent/5 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.3),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(255,119,198,0.3),transparent_50%),radial-gradient(circle_at_40%_40%,rgba(120,219,255,0.2),transparent_50%)]"></div>
       <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] opacity-30"></div>
       
@@ -53,7 +53,7 @@ const ClientTimetable = dynamic(
     loading: () => (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center space-y-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
           <p className="text-slate-600">加载课表中...</p>
         </div>
       </div>
@@ -140,7 +140,7 @@ export default async function TimeTablePage({ params }: { params: { slug: string
     <Suspense fallback={
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center space-y-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
           <p className="text-slate-600">加载课表中...</p>
         </div>
       </div>

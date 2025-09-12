@@ -147,7 +147,7 @@ export function TypeSpecificSearchBox({ type, initialQuery }: TypeSpecificSearch
         <Button
           onClick={handleSearch}
           disabled={isLoading || !searchQuery.trim()}
-          className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8 p-0 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
+          className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8 p-0 bg-gradient-to-r from-primary to-accent hover:from-primary hover:to-accent text-white"
         >
           {isLoading ? (
             <Loader2 className="h-4 w-4 animate-spin" />

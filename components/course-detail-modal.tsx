@@ -53,7 +53,7 @@ export function CourseDetailModal({ course, open, onOpenChange }: CourseDetailMo
           {/* 基本信息 */}
           <div className="space-y-3">
             <div className="flex items-start gap-3">
-              <Clock className="w-4 h-4 text-pink-500 mt-0.5" />
+              <Clock className="w-4 h-4 text-chart-5 mt-0.5" />
               <div>
                 <p className="text-sm font-medium text-foreground">上课时间</p>
                 <p className="text-sm text-muted-foreground">
@@ -63,7 +63,7 @@ export function CourseDetailModal({ course, open, onOpenChange }: CourseDetailMo
             </div>
 
             <div className="flex items-start gap-3">
-              <MapPin className="w-4 h-4 text-purple-500 mt-0.5" />
+              <MapPin className="w-4 h-4 text-chart-3 mt-0.5" />
               <div>
                 <p className="text-sm font-medium text-foreground">上课地点</p>
                 <p className="text-sm text-muted-foreground">{course.location.name}</p>
@@ -72,7 +72,7 @@ export function CourseDetailModal({ course, open, onOpenChange }: CourseDetailMo
             </div>
 
             <div className="flex items-start gap-3">
-              <User className="w-4 h-4 text-blue-500 mt-0.5" />
+              <User className="w-4 h-4 text-chart-1 mt-0.5" />
               <div>
                 <p className="text-sm font-medium text-foreground">授课教师</p>
                 <p className="text-sm text-muted-foreground">
@@ -85,7 +85,7 @@ export function CourseDetailModal({ course, open, onOpenChange }: CourseDetailMo
           {/* 课程详情 */}
           <div className="grid grid-cols-2 gap-3 pt-3 border-t border-border">
             <div className="flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-green-500" />
+              <BookOpen className="w-4 h-4 text-chart-4" />
               <div>
                 <p className="text-xs text-muted-foreground/70">班级</p>
                 <p className="text-sm font-medium text-foreground">{course.classId}</p>
@@ -93,7 +93,7 @@ export function CourseDetailModal({ course, open, onOpenChange }: CourseDetailMo
             </div>
 
             <div className="flex items-center gap-2">
-              <Users className="w-4 h-4 text-orange-500" />
+              <Users className="w-4 h-4 text-chart-4" />
               <div>
                 <p className="text-xs text-muted-foreground/70">人数</p>
                 <p className="text-sm font-medium text-foreground">{course.studentCount}人</p>
@@ -101,7 +101,7 @@ export function CourseDetailModal({ course, open, onOpenChange }: CourseDetailMo
             </div>
 
             <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-indigo-500" />
+              <Calendar className="w-4 h-4 text-accent" />
               <div>
                 <p className="text-xs text-muted-foreground/70">周次</p>
                 <p className="text-sm font-medium text-foreground">{course.weeks}</p>
@@ -109,7 +109,7 @@ export function CourseDetailModal({ course, open, onOpenChange }: CourseDetailMo
             </div>
 
             <div className="flex items-center gap-2">
-              <CreditCard className="w-4 h-4 text-red-500" />
+              <CreditCard className="w-4 h-4 text-destructive" />
               <div>
                 <p className="text-xs text-muted-foreground/70">学分</p>
                 <p className="text-sm font-medium text-foreground">{course.credit}</p>

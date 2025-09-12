@@ -12,14 +12,14 @@ export function HeroSection() {
         <div className="text-center">
           <div className="flex justify-center mb-6">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-              <div className="relative p-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-3xl opacity-30 animate-pulse"></div>
+              <div className="relative p-4 bg-gradient-to-br from-primary to-accent rounded-full shadow-2xl">
                 <Calendar className="h-12 w-12 text-white" />
               </div>
             </div>
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary via-accent to-gradient-pink-end bg-clip-text text-transparent mb-6">
             绮课
           </h1>
           
@@ -32,13 +32,13 @@ export function HeroSection() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-full shadow-lg">
+            <Button asChild size="lg" className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-white px-8 py-3 rounded-full shadow-lg">
               <Link href="/search/student">
                 <Search className="mr-2 h-5 w-5" />
                 立即查询
               </Link>
             </Button>
-            <Button variant="outline" size="lg" className="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 dark:border-purple-400 dark:text-purple-400 dark:hover:bg-purple-950/20 px-8 py-3 rounded-full">
+            <Button variant="outline" size="lg" className="border-2 border-accent text-accent hover:bg-accent/10 dark:border-accent dark:text-accent dark:hover:bg-accent/10 px-8 py-3 rounded-full">
               <Link href="#features">
                 了解更多
               </Link>
@@ -49,15 +49,15 @@ export function HeroSection() {
         {/* Stats */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div className="text-center p-6 bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg">
-            <div className="text-3xl font-bold text-blue-600 mb-2">10万+</div>
+            <div className="text-3xl font-bold text-primary mb-2">10万+</div>
             <div className="text-sm text-muted-foreground">学生用户</div>
           </div>
           <div className="text-center p-6 bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg">
-            <div className="text-3xl font-bold text-purple-600 mb-2">5000+</div>
+            <div className="text-3xl font-bold text-accent mb-2">5000+</div>
             <div className="text-sm text-muted-foreground">教师信息</div>
           </div>
           <div className="text-center p-6 bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg">
-            <div className="text-3xl font-bold text-pink-600 mb-2">1000+</div>
+            <div className="text-3xl font-bold text-gradient-pink-end mb-2">1000+</div>
             <div className="text-sm text-muted-foreground">教室资源</div>
           </div>
         </div>

@@ -78,7 +78,7 @@ export function SearchSection() {
               <Button 
                 onClick={handleSearch} 
                 disabled={isLoading}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                className="bg-gradient-to-r from-primary to-accent hover:from-primary hover:to-accent"
               >
                 {isLoading ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
@@ -111,7 +111,7 @@ export function SearchSection() {
                     {filteredResults.map((result) => (
                       <div
                         key={`${result.type}-${result.id}`}
-                        className="p-4 rounded-lg border border-border hover:border-blue-300 hover:bg-blue-50 dark:hover:bg-blue-950/20 cursor-pointer transition-all duration-200"
+                        className="p-4 rounded-lg border border-border hover:border-primary/50 hover:bg-primary/5 dark:hover:bg-primary/10 cursor-pointer transition-all duration-200"
                         onClick={() => handleResultClick(result)}
                       >
                         <div className="flex items-center justify-between">

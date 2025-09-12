@@ -41,14 +41,14 @@ export function CourseCard({ course, className = "" }: CourseCardProps) {
 
         <div className="space-y-1">
           <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            <User className="w-3 h-3 text-blue-500 flex-shrink-0" />
+            <User className="w-3 h-3 text-chart-1 flex-shrink-0" />
             <span className="font-medium truncate">
               {course.teachers[0]?.name || ''}
             </span>
           </div>
 
           <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            <MapPin className="w-3 h-3 text-purple-500 flex-shrink-0" />
+            <MapPin className="w-3 h-3 text-chart-3 flex-shrink-0" />
             <span className="truncate">{course.location.name}</span>
           </div>
         </div>
@@ -63,22 +63,22 @@ export function CourseCard({ course, className = "" }: CourseCardProps) {
 
 export function MobileCourseCard({ course }: CourseCardProps) {
   return (
-    <div className="h-full bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-lg border border-blue-200/50 p-1.5 hover:shadow-md transition-all duration-200">
+    <div className="h-full bg-gradient-to-br from-chart-1/10 to-chart-3/10 rounded-lg border border-primary/20 p-1.5 hover:shadow-md transition-all duration-200">
       <div className="space-y-1">
         <h4 className="font-bold text-[10px] leading-tight text-slate-800 line-clamp-2">
           {course.name}
         </h4>
         <div className="space-y-0.5">
           <div className="flex items-center gap-1 text-[9px] text-slate-600">
-            <User className="w-2 h-2 text-blue-500" />
+            <User className="w-2 h-2 text-chart-1" />
             <span className="truncate">{course.teachers[0]?.name || ''}</span>
           </div>
           <div className="flex items-center gap-1 text-[9px] text-slate-600">
-            <MapPin className="w-2 h-2 text-purple-500" />
+            <MapPin className="w-2 h-2 text-chart-3" />
             <span className="truncate">{course.weeks}</span>
           </div>
         </div>
-        <div className="w-2 h-2 bg-blue-500 rounded-full ml-auto"></div>
+        <div className="w-2 h-2 bg-chart-1 rounded-full ml-auto"></div>
       </div>
     </div>
   )

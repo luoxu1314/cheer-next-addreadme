@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Calendar, Mail, Github, Heart } from "lucide-react";
-
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -11,14 +10,14 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2">
-              <Calendar className="h-8 w-8 text-blue-600" />
+              <Calendar className="h-8 w-8 text-primary" />
               <span className="font-bold text-xl text-foreground">绮课</span>
             </div>
             <p className="mt-4 text-sm text-muted-foreground max-w-md">
               绮课是专为中南大学师生打造的课程表查询平台，致力于提供便捷、准确、实时的课表查询服务。
             </p>
             <div className="mt-4 flex items-center space-x-2 text-sm text-muted-foreground">
-              <Heart className="h-4 w-4 text-red-500" />
+              <Heart className="h-4 w-4 text-destructive" />
               <span>用心服务每一位中南人</span>
             </div>
           </div>
@@ -32,7 +31,7 @@ export function Footer() {
               <li>
                 <Link 
                   href="/" 
-                  className="text-sm text-muted-foreground hover:text-blue-600 transition-colors"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   首页
                 </Link>
@@ -40,7 +39,7 @@ export function Footer() {
               <li>
                 <Link 
                   href="/search/student" 
-                  className="text-sm text-muted-foreground hover:text-blue-600 transition-colors"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   学生课表
                 </Link>
@@ -48,7 +47,7 @@ export function Footer() {
               <li>
                 <Link 
                   href="/search/teacher" 
-                  className="text-sm text-muted-foreground hover:text-blue-600 transition-colors"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   教师课表
                 </Link>
@@ -56,7 +55,7 @@ export function Footer() {
               <li>
                 <Link 
                   href="/search/classroom" 
-                  className="text-sm text-muted-foreground hover:text-blue-600 transition-colors"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   教室课表
                 </Link>
@@ -79,7 +78,7 @@ export function Footer() {
                   href="https://github.com/huayemao/cheer-next"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-blue-600 transition-colors"
+                  className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   <Github className="h-4 w-4" />
                   <span>GitHub</span>

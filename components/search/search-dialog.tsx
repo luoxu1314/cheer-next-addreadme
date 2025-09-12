@@ -104,7 +104,7 @@ export function SearchDialog({ initialQuery }: SearchDialogProps) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden">
         <DialogHeader className="p-6 pb-0">
-          <DialogTitle className="text-2xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
+          <DialogTitle className="text-2xl font-bold text-center bg-gradient-to-r from-primary to-accent dark:from-primary dark:to-accent bg-clip-text text-transparent">
             快速搜索
           </DialogTitle>
           <p className="text-center text-muted-foreground mt-2">
@@ -142,7 +142,7 @@ export function SearchDialog({ initialQuery }: SearchDialogProps) {
             <Button
               onClick={handleSearch}
               disabled={isLoading || !searchQuery.trim()}
-              className="min-w-[120px] bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
+              className="min-w-[120px] bg-gradient-to-r from-primary to-accent hover:from-primary hover:to-accent text-white"
             >
               {isLoading ? (
                 <>
