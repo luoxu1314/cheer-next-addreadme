@@ -6,7 +6,6 @@ import { TimetableHeader } from "@/components/timetable-header";
 import { DesktopTimetable } from "@/components/desktop-timetable";
 import { MobileTimetable } from "@/components/mobile-timetable";
 import { SettingsSidebar } from "@/components/layout/settings-sidebar";
-import { MobileSettings } from "@/components/layout/settings-sidebar";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calendar } from "lucide-react";
 
@@ -66,7 +65,7 @@ export default function TimetableClient({
   return (
     <div className="space-y-6">
       {/* Header with improved SEO structure */}
-      <div className="text-center space-y-4 p-6 lg:p-8 rounded-3xl bg-white/40 backdrop-blur-xl border border-white/50 shadow-2xl shadow-accent/10">
+      <div className="text-center space-y-4 p-6 lg:p-8 rounded-3xl bg-muted/20 backdrop-blur-xl border border-white/50 shadow-2xl shadow-accent/10">
         <div className="flex items-center justify-center gap-2 mb-2">
           <div className="p-3 rounded-2xl bg-gradient-to-br from-primary to-accent shadow-lg">
             <Calendar className="w-8 h-8 text-white" />
@@ -75,7 +74,6 @@ export default function TimetableClient({
             {title}
           </h1>
         </div>
-        
         {terms.length > 0 && (
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <Select value={currentTerm} onValueChange={handleTermChange}>
@@ -92,16 +90,6 @@ export default function TimetableClient({
             </Select>
           </div>
         )}
-
-        {/* Mobile Settings */}
-        <div className="lg:hidden">
-          <MobileSettings
-            showWeekend={showWeekend}
-            onShowWeekendChange={setShowWeekend}
-            firstColumnMode={firstColumnMode}
-            onFirstColumnModeChange={setFirstColumnMode}
-          />
-        </div>
       </div>
 
       {/* Settings Sidebar for Desktop */}
@@ -114,12 +102,11 @@ export default function TimetableClient({
 
       {/* Timetable Content */}
       <div className="space-y-6">
-        <DesktopTimetable 
-          courses={courses} 
-          showWeekend={showWeekend} 
+        <DesktopTimetable
+          courses={courses}
+          showWeekend={showWeekend}
           firstColumnMode={firstColumnMode}
         />
-        
         <MobileTimetable
           courses={courses}
           showWeekend={showWeekend}
