@@ -25,8 +25,8 @@ export function Navigation() {
     <>
       {/* Desktop Navigation */}
       <nav className="hidden lg:flex fixed top-0 left-0 right-0 z-50 bg-sidebar backdrop-blur-md border-b border-white/20 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+        <div className="max-w-7xl min-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex gap-4 justify-around items-center h-16">
             <div className="flex items-center">
               <Link href="/" className="flex items-center space-x-2">
                 <Calendar className="h-8 w-8 text-primary" />
@@ -36,7 +36,7 @@ export function Navigation() {
               </Link>
             </div>
 
-            <NavigationMenu>
+            <NavigationMenu className="ml-auto">
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <Link href="/" className={navigationMenuTriggerStyle()}>
