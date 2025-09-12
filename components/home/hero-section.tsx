@@ -5,8 +5,8 @@ import { Calendar, Search, Users, Clock } from "lucide-react";
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.1),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(255,119,198,0.1),transparent_50%),radial-gradient(circle_at_40%_40%,rgba(120,219,255,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.2),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(255,119,198,0.2),transparent_50%),radial-gradient(circle_at_40%_40%,rgba(120,219,255,0.1),transparent_50%)]"></div>
-      <div className="absolute inset-0 bg-grid-slate-100 dark:bg-grid-slate-900 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] dark:[mask-image:linear-gradient(0deg,transparent,rgba(0,0,0,0.6))] opacity-30"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,var(--chart-3)/10,transparent_50%),radial-gradient(circle_at_80%_20%,var(--chart-5)/10,transparent_50%),radial-gradient(circle_at_40%_40%,var(--chart-1)/5,transparent_50%)] dark:bg-[radial-gradient(circle_at_20%_80%,var(--chart-3)/20,transparent_50%),radial-gradient(circle_at_80%_20%,var(--chart-5)/20,transparent_50%),radial-gradient(circle_at_40%_40%,var(--chart-1)/10,transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-grid-slate-100 dark:bg-grid-slate-900 [mask-image:linear-gradient(0deg,white,white/60)] dark:[mask-image:linear-gradient(0deg,transparent,black/60)] opacity-30"></div>
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
         <div className="text-center">

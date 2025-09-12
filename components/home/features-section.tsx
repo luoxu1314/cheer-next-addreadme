@@ -67,7 +67,7 @@ export function FeaturesSection() {
         </div>
 
         {/* Additional Benefits */}
-        <div className="mt-16 bg-gradient-to-r from-secondary/50 to-accent/50 rounded-2xl p-8 border border-border/50">
+        <div className="mt-16 bg-gradient-to-r from-secondary/30 to-accent/30 dark:from-secondary/50 dark:to-accent/50 rounded-2xl p-8 border border-border/50">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-2xl font-bold text-foreground mb-4">
