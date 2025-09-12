@@ -38,7 +38,7 @@ export function HeroSection() {
                 立即查询
               </Link>
             </Button>
-            <Button variant="outline" size="lg" className="border-2 border-accent text-accent hover:bg-accent/10 dark:border-accent dark:text-accent dark:hover:bg-accent/10 px-8 py-3 rounded-full">
+            <Button variant="outline" size="lg" className="border-2 border-accent text-accent hover:bg-accent/10 px-8 py-3 rounded-full">
               <Link href="#features">
                 了解更多
               </Link>
