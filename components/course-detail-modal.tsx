@@ -169,19 +169,11 @@ export function CourseDetailModal({ course, courses = [], open, onOpenChange }: 
             <Button
               variant="default"
               size="sm"
-              className={courses.length > 1 ? "flex-1 w-full" : "w-full"}
+              className={courses.length > 1 ? "flex-1" : "ml-auto"}
             >
               查看详情页
             </Button>
           </Link>
-          <Button
-            variant="outline"
-            size="sm"
-            className={"flex-1"}
-            onClick={() => onOpenChange(false)}
-          >
-            关闭
-          </Button>
           {courses.length > 1 && (
             <Button
               variant="outline"
