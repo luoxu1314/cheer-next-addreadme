@@ -26,12 +26,13 @@ async function TimeTableContent({
   } = await getTimetable(type as OwnerType, id, term, grade);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-primary/5 to-accent/5 relative overflow-hidden">
-      {/* 现代磨砂质感渐变背景 */}
-      {/* Semantic Background Gradient - 使用天青色主题色 */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--chart-1)]/25 via-[var(--chart-2)]/20 to-[var(--chart-3)]/25 dark:from-[var(--chart-1)]/15 dark:via-[var(--chart-2)]/10 dark:to-[var(--chart-3)]/10"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[var(--chart-4)]/40 via-transparent to-transparent dark:from-[var(--chart-4)]/40"></div>
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-primary/5 to-accent/5 relative overflow-hidden pt-16">
+
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--chart-1)]/25 via-[var(--chart-2)]/20 to-[var(--chart-3)]/25 dark:from-[var(--chart-1)]/35 dark:via-[var(--chart-2)]/30 dark:to-[var(--chart-3)]/35"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[var(--chart-4)]/40 via-transparent to-transparent dark:from-[var(--chart-4)]/50"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-[var(--chart-5)]/40 via-transparent to-transparent dark:from-[var(--chart-5)]/50"></div>
       <div className="absolute inset-0 bg-[conic-gradient(from_90deg_at_50%_50%,var(--tw-gradient-stops))] from-transparent via-[var(--primary)]/15 to-transparent dark:via-[var(--primary)]/25"></div>
+      
 
       <div className="relative w-full max-w-7xl mx-auto p-4 lg:p-6 space-y-6">
         <ClientTimetable

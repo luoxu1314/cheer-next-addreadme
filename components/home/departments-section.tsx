@@ -32,7 +32,7 @@ export async function DepartmentsSection() {
                 href={`/departments/${encodeURIComponent(department)}`}
                 className="group"
               >
-                <div className="bg-white/70 backdrop-blur-md rounded-2xl p-6 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:translate-y-[-4px]">
+                <div className="bg-card backdrop-blur-md rounded-2xl p-6 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:translate-y-[-4px]">
                   <div className="flex items-start justify-between mb-4">
                     <h3 className="text-xl font-bold text-foreground">{department}</h3>
                     <span className="bg-primary/10 text-primary font-medium rounded-full px-3 py-1 text-sm">

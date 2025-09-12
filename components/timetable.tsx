@@ -76,7 +76,7 @@ export default function TimeTable({
   };
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden transition-colors duration-300">
+    <div className="min-h-screen bg-background pt-16 relative overflow-hidden transition-colors duration-300">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,var(--primary)/15,transparent_50%),radial-gradient(circle_at_80%_20%,var(--secondary)/15,transparent_50%),radial-gradient(circle_at_40%_40%,var(--accent)/10,transparent_50%)]"></div>
       <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] opacity-30 transition-colors duration-300"></div>
 

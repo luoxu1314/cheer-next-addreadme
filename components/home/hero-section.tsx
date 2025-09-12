@@ -4,7 +4,7 @@ import { Calendar, Search, Users, Clock } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden pt-16 min-h-screen">
       {/* Semantic Background Gradient - 使用天青色主题色 */}
       <div className="absolute inset-0 bg-gradient-to-br from-[var(--chart-1)]/25 via-[var(--chart-2)]/20 to-[var(--chart-3)]/25 dark:from-[var(--chart-1)]/35 dark:via-[var(--chart-2)]/30 dark:to-[var(--chart-3)]/35"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[var(--chart-4)]/40 via-transparent to-transparent dark:from-[var(--chart-4)]/50"></div>
@@ -15,10 +15,7 @@ export function HeroSection() {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-[var(--primary)] via-[var(--chart-1)] to-[var(--chart-2)] rounded-full blur-3xl opacity-40 animate-float dark:opacity-50"></div>
       <div className="absolute top-1/3 right-1/5 w-96 h-96 bg-gradient-to-r from-[var(--chart-2)] via-[var(--chart-3)] to-[var(--accent)] rounded-full blur-3xl opacity-40 animate-float animation-delay-1000 dark:opacity-50"></div>
       <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-gradient-to-r from-[var(--chart-4)] via-[var(--chart-5)] to-[var(--primary)] rounded-full blur-3xl opacity-40 animate-float animation-delay-2000 dark:opacity-50"></div>
-      
 
-      
-      {/* Grid Pattern */}
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
         <div className="text-center">

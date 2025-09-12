@@ -3,10 +3,23 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
-  /* 天青色主题 - 基于提供的色值 #3d8e86、#66889e、#108b96、#a4c9cc、#87c0ca */
+  /* 动态主题颜色 - 将通过JavaScript动态设置 */
+  --primary: #1496a0;
+  --secondary: #43b3a8;
+  --accent: #72a3c5;
+  --chart-1: #1496a0;
+  --chart-2: #43b3a8;
+  --chart-3: #72a3c5;
+  --chart-4: #92d0d9;
+  --chart-5: #b2dde5;
+  
   /* 磨砂质感渐变背景 - 增强版 */
-  --glass-gradient-primary: linear-gradient(135deg, rgba(20, 150, 160, 0.35) 0%, rgba(67, 179, 168, 0.3) 50%, rgba(114, 163, 197, 0.35) 100%);
+  --glass-gradient-primary: linear-gradient(135deg, rgba(var(--primary-rgb), 0.35) 0%, rgba(var(--secondary-rgb), 0.3) 50%, rgba(var(--accent-rgb), 0.35) 100%);
   --glass-radial-gradient-1: radial-gradient(circle at 20% 70%, var(--chart-3)/55, transparent 35%);
   --glass-radial-gradient-2: radial-gradient(circle at 80% 30%, var(--chart-5)/55, transparent 35%);
   --glass-radial-gradient-3: radial-gradient(circle at 40% 50%, var(--chart-1)/50, transparent 35%);
@@ -20,26 +33,7 @@
   --card-foreground: #334155; /* 卡片文本 */
   --popover: #ffffff;
   --popover-foreground: #334155;
-  --primary: #1496a0; /* 主天青色 - 柔和明亮 */
-  --primary-foreground: #ffffff;
-  --secondary: #43b3a8; /* 次要天青色 - 柔和明亮 */
-  --secondary-foreground: #ffffff;
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --accent: #72a3c5; /* 蓝灰色 - 柔和明亮 */
-  --accent-foreground: #ffffff;
-  --destructive: #e11d48;
-  --destructive-foreground: #ffffff;
-  --border: #e2e8f0;
-  --input: #ffffff;
-  --ring: #1496a030; /* 半透明主色 */
-  --chart-1: #1496a0; /* 主天青色 */
-  --chart-2: #43b3a8; /* 次要天青色 */
-  --chart-3: #72a3c5; /* 蓝灰色 */
-  --chart-4: #92d0d9; /* 浅天青色 - 柔和明亮 */
-  --chart-5: #b2dde5; /* 极浅天青色 - 柔和明亮 */
-  --gradient-gold-end: #92d0d9; /* 渐变结束色 */
-  --gradient-pink-end: #b2dde5; /* 渐变结束色 */
+  --border: oklch(0.922 0 0);
   --radius: 0.75rem; /* 现代圆角 */
   --sidebar: #ffffff;
   --sidebar-foreground: #334155;
@@ -88,7 +82,7 @@
   --sidebar-border: #4a5568;
   --sidebar-ring: #22d3ee50;
   /* 深色模式磨砂质感 - 增强版 */
-  --glass-dark-gradient-primary: linear-gradient(135deg, rgba(34, 211, 238, 0.3) 0%, rgba(79, 209, 197, 0.25) 50%, rgba(148, 163, 184, 0.3) 100%);
+  --glass-dark-gradient-primary: linear-gradient(135deg, rgba(var(--primary-rgb), 0.3) 0%, rgba(var(--secondary-rgb), 0.25) 50%, rgba(var(--accent-rgb), 0.3) 100%);
   --glass-dark-radial-gradient-1: radial-gradient(circle at 20% 70%, var(--chart-3)/45, transparent 35%);
   --glass-dark-radial-gradient-2: radial-gradient(circle at 80% 30%, var(--chart-5)/45, transparent 35%);
   --glass-dark-radial-gradient-3: radial-gradient(circle at 40% 50%, var(--chart-1)/40, transparent 35%);

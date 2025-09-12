@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
-import { Menu, X, Calendar, Search, Home, Moon, Sun, Users } from "lucide-react";
+import { Menu, X, Calendar, Search, Home, Users, Palette, Moon, Sun } from "lucide-react";
 import { SearchDialog } from "@/components/search/search-dialog";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
+import { ThemeSelector } from "@/components/theme-selector";
 
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -24,7 +25,7 @@ export function Navigation() {
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className="hidden lg:flex fixed top-0 left-0 right-0 z-50 bg-sidebar backdrop-blur-md border-b border-white/20 shadow-sm">
+      <nav className="hidden lg:flex fixed top-0 left-0 right-0 z-50 bg-card/60 backdrop-blur-md border-b border-white/20 shadow-sm">
         <div className="max-w-7xl min-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex gap-4 justify-around items-center h-16">
             <div className="flex items-center">
@@ -39,14 +40,14 @@ export function Navigation() {
             <NavigationMenu className="ml-auto">
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <Link href="/" className={navigationMenuTriggerStyle()}>
+                  <Link href="/" className={navigationMenuTriggerStyle()+' bg-transparent'}>
                     <Home className="w-4 h-4 mr-2" />
                     首页
                   </Link>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="group">
+                  <NavigationMenuTrigger className="group bg-transparent">
                     <Search className="w-4 h-4 mr-2" />
                     课表查询
                   </NavigationMenuTrigger>
@@ -99,53 +100,59 @@ export function Navigation() {
                           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                             查看教室使用安排
                       </p>
-                    </a>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <a
-                      href="/search/profession"
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primary/20 hover:text-muted-foreground focus:bg-accent focus:text-accent-foreground"
-                    >
-                      <div className="text-sm font-medium leading-none">
-                        专业课表
-                      </div>
-                      <p className="line-clamp-2 text-sm leading-snug">
-                        查询专业课程安排
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                </div>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
+                        </a>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <a
+                          href="/search/profession"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primary/20 hover:text-muted-foreground focus:bg-accent focus:text-accent-foreground"
+                        >
+                          <div className="text-sm font-medium leading-none">
+                            专业课表
+                          </div>
+                          <p className="line-clamp-2 text-sm leading-snug">
+                            查询专业课程安排
+                          </p>
+                        </a>
+                      </NavigationMenuLink>
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
 
-            <NavigationMenuItem>
-              <Link href="/departments" className={navigationMenuTriggerStyle()}>
-                <Users className="w-4 h-4 mr-2" />
-                院系列表
-              </Link>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+                <NavigationMenuItem>
+                  <Link href="/departments" className={navigationMenuTriggerStyle()+ " bg-transparent"}>
+                    <Users className="w-4 h-4 mr-2" />
+                    院系列表
+                  </Link>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
 
             <div className="mr-2">
               <SearchDialog />
             </div>
 
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            >
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all" />
-              <span className="sr-only">切换主题</span>
-            </Button>
+            <div className="flex items-center space-x-2">
+              <ThemeSelector />
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              >
+                {theme === "dark" ? (
+                  <Sun className="h-[1.2rem] w-[1.2rem]" />
+                ) : (
+                  <Moon className="h-[1.2rem] w-[1.2rem]" />
+                )}
+                <span className="sr-only">切换暗黑模式</span>
+              </Button>
+            </div>
           </div>
         </div>
       </nav>
 
       {/* Mobile Navigation */}
-      <nav className="lg:hidden fixed top-0 left-0 right-0 z-50  backdrop-blur-md border-b border-white/20 shadow-sm bg-sidebar">
+      <nav className="lg:hidden fixed top-0 left-0 right-0 z-50  backdrop-blur-md border-b border-white/20 shadow-sm bg-card/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="flex items-center space-x-2">
@@ -157,15 +164,18 @@ export function Navigation() {
 
             <div className="flex items-center space-x-2">
               <SearchDialog />
-
+              <ThemeSelector />
               <Button
-                variant="ghost"
+                variant="outline"
                 size="icon"
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               >
-                <Sun className="h-5 w-5 rotate-0 scale-100 transition-all" />
-                <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all" />
-                <span className="sr-only">切换主题</span>
+                {theme === "dark" ? (
+                  <Sun className="h-[1.2rem] w-[1.2rem]" />
+                ) : (
+                  <Moon className="h-[1.2rem] w-[1.2rem]" />
+                )}
+                <span className="sr-only">切换暗黑模式</span>
               </Button>
               <Button
                 variant="ghost"
@@ -227,8 +237,7 @@ export function Navigation() {
         )}
       </nav>
 
-      {/* Spacer for fixed navigation */}
-      <div className="h-16" />
+
     </>
   );
 }

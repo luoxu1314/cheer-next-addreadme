@@ -27,7 +27,7 @@ export function TimetableHeader({
   onGradeChange
 }: TimetableHeaderProps) {
   return (
-    <div className="text-center space-y-4 p-8 rounded-3xl bg-white/40 backdrop-blur-xl border border-white/50 shadow-2xl shadow-accent/10">
+    <div className="text-center space-y-4 p-8 rounded-3xl bg-muted/20 dark:bg-muted-10 backdrop-blur-xl border border-white/50 shadow-2xl shadow-accent/10">
       <div className="flex items-center justify-center gap-2 mb-2">
         <div className="p-3 rounded-2xl bg-gradient-to-br from-primary to-accent shadow-lg">
           <Calendar className="w-8 h-8 text-white" />
@@ -69,13 +69,6 @@ export function TimetableHeader({
           )}
         </div>
       )}
-
-      <div className="flex justify-center lg:hidden">
-        <WeekendToggle 
-          showWeekend={showWeekend} 
-          onToggle={() => onShowWeekendChange(!showWeekend)} 
-        />
-      </div>
     </div>
   )
 }

@@ -19,7 +19,7 @@ export default async function DepartmentsPage() {
   const departments = Object.keys(departmentsData).sort();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-primary/5 to-accent/5 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-primary/5 to-accent/5 relative overflow-hidden pt-16">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,var(--chart-3)/30,transparent_50%),radial-gradient(circle_at_80%_20%,var(--chart-5)/30,transparent_50%),radial-gradient(circle_at_40%_40%,var(--chart-1)/20,transparent_50%)]"></div>
       <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,white/60)] opacity-30"></div>
       
@@ -46,7 +46,7 @@ export default async function DepartmentsPage() {
                 href={`/departments/${encodeURIComponent(department)}`}
                 className="group"
               >
-                <div className="bg-white/70 backdrop-blur-md rounded-2xl p-6 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:translate-y-[-4px]">
+                <div className="bg-card backdrop-blur-md rounded-2xl p-6 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:translate-y-[-4px]">
                   <div className="flex items-start justify-between mb-4">
                     <h2 className="text-xl font-bold text-foreground">{department}</h2>
                     <span className="bg-primary/10 text-primary font-medium rounded-full px-3 py-1 text-sm">
