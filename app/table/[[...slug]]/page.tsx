@@ -27,8 +27,9 @@ async function TimeTableContent({
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/5 via-primary/5 to-accent/5 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,var(--chart-3)/30,transparent_50%),radial-gradient(circle_at_80%_20%,var(--chart-5)/30,transparent_50%),radial-gradient(circle_at_40%_40%,var(--chart-1)/20,transparent_50%)]"></div>
-      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,white/60)] opacity-30"></div>
+      {/* 现代磨砂质感渐变背景 */}
+      <div className="absolute inset-0 bg-[var(--glass-effect)] dark:bg-[var(--glass-dark-effect)]"></div>
+      <div className="absolute inset-0 [mask-image:linear-gradient(0deg,white,white/60)] opacity-20 dark:opacity-10"></div>
 
       <div className="relative w-full max-w-7xl mx-auto p-4 lg:p-6 space-y-6">
         <ClientTimetable

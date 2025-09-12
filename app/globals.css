@@ -4,79 +4,97 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Refined and elegant color palette */
-  --background: oklch(0.98 0.002 250); /* Soft, warm white background */
-  --foreground: oklch(0.2 0.03 250); /* Deep navy-blue text for better readability */
-  --card: oklch(1 0.001 250); /* Clean white card background */
-  --card-foreground: oklch(0.3 0.02 250); /* Medium navy text for cards */
-  --popover: oklch(1 0.001 250);
-  --popover-foreground: oklch(0.3 0.02 250);
-  --primary: oklch(0.55 0.12 250); /* Soft blue primary with lower saturation */
-  --primary-foreground: oklch(1 0.001 250);
-  --secondary: oklch(0.8 0.1 330); /* Lighter lavender secondary */
-  --secondary-foreground: oklch(0.15 0.03 250);
-  --muted: oklch(0.96 0.005 250);
-  --muted-foreground: oklch(0.45 0.02 250);
-  --accent: oklch(0.7 0.15 300); /* Subtle purple accent with lower saturation */
-  --accent-foreground: oklch(1 0.001 250);
-  --destructive: oklch(0.55 0.22 30); /* Refined red for errors */
-  --destructive-foreground: oklch(1 0.001 250);
-  --border: oklch(0.92 0.01 250); /* Subtle border color */
-  --input: oklch(1 0.001 250);
-  --ring: oklch(0.55 0.12 250 / 0.3); /* Blue focus ring */
-  --chart-1: oklch(0.55 0.2 250); /* Blue */
-  --chart-2: oklch(0.65 0.12 330); /* Lavender */
-  --chart-3: oklch(0.7 0.18 300); /* Purple */
-  --chart-4: oklch(0.8 0.15 70); /* Soft gold */
-  --chart-5: oklch(0.65 0.15 345); /* Soft pink */
-  --gradient-gold-end: oklch(0.75 0.18 60); /* End color for gold gradient */
-  --gradient-pink-end: oklch(0.65 0.2 340); /* End color for pink gradient */
-  --radius: 0.75rem; /* Modern border radius */
-  --sidebar: oklch(1 0.001 250);
-  --sidebar-foreground: oklch(0.3 0.02 250);
-  --sidebar-primary: oklch(0.5 0.15 250);
-  --sidebar-primary-foreground: oklch(1 0.001 250);
-  --sidebar-accent: oklch(0.95 0.01 250);
-  --sidebar-accent-foreground: oklch(0.3 0.02 250);
-  --sidebar-border: oklch(0.92 0.01 250);
-  --sidebar-ring: oklch(0.5 0.15 250 / 0.5);
+  /* 天青色主题 - 基于提供的色值 #3d8e86、#66889e、#108b96、#a4c9cc、#87c0ca */
+  /* 磨砂质感渐变背景 - 增强版 */
+  --glass-gradient-primary: linear-gradient(135deg, rgba(20, 150, 160, 0.35) 0%, rgba(67, 179, 168, 0.3) 50%, rgba(114, 163, 197, 0.35) 100%);
+  --glass-radial-gradient-1: radial-gradient(circle at 20% 70%, var(--chart-3)/55, transparent 35%);
+  --glass-radial-gradient-2: radial-gradient(circle at 80% 30%, var(--chart-5)/55, transparent 35%);
+  --glass-radial-gradient-3: radial-gradient(circle at 40% 50%, var(--chart-1)/50, transparent 35%);
+  --glass-radial-gradient-4: radial-gradient(circle at 60% 80%, var(--chart-2)/45, transparent 40%);
+  --glass-radial-gradient-5: radial-gradient(circle at 70% 40%, var(--chart-4)/40, transparent 45%);
+  --glass-backdrop-filter: backdrop-blur(8px);
+  --glass-effect: var(--glass-gradient-primary), var(--glass-radial-gradient-1), var(--glass-radial-gradient-2), var(--glass-radial-gradient-3), var(--glass-radial-gradient-4), var(--glass-radial-gradient-5);
+  --background: #f5f8fa; /* 略微加深的背景色，增强渐变效果 */
+  --foreground: #1e293b; /* 深色文本 */
+  --card: #ffffff; /* 卡片背景 */
+  --card-foreground: #334155; /* 卡片文本 */
+  --popover: #ffffff;
+  --popover-foreground: #334155;
+  --primary: #1496a0; /* 主天青色 - 柔和明亮 */
+  --primary-foreground: #ffffff;
+  --secondary: #43b3a8; /* 次要天青色 - 柔和明亮 */
+  --secondary-foreground: #ffffff;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #72a3c5; /* 蓝灰色 - 柔和明亮 */
+  --accent-foreground: #ffffff;
+  --destructive: #e11d48;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #ffffff;
+  --ring: #1496a030; /* 半透明主色 */
+  --chart-1: #1496a0; /* 主天青色 */
+  --chart-2: #43b3a8; /* 次要天青色 */
+  --chart-3: #72a3c5; /* 蓝灰色 */
+  --chart-4: #92d0d9; /* 浅天青色 - 柔和明亮 */
+  --chart-5: #b2dde5; /* 极浅天青色 - 柔和明亮 */
+  --gradient-gold-end: #92d0d9; /* 渐变结束色 */
+  --gradient-pink-end: #b2dde5; /* 渐变结束色 */
+  --radius: 0.75rem; /* 现代圆角 */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #334155;
+  --sidebar-primary: #108b96;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f1f5f9;
+  --sidebar-accent-foreground: #334155;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #108b9650;
 }
 
 .dark {
-  --background: oklch(0.18 0.01 250); /* Elegant dark background, not too black */
-  --foreground: oklch(0.98 0.002 250); /* Light text for dark mode */
-  --card: oklch(0.24 0.01 250); /* Slightly lighter card background */
-  --card-foreground: oklch(0.95 0.001 250); /* Light text for cards */
-  --popover: oklch(0.18 0.01 250);
-  --popover-foreground: oklch(0.98 0.002 250);
-  --primary: oklch(0.8 0.08 250); /* Softer blue primary for dark mode with lower saturation */
-  --primary-foreground: oklch(0.18 0.01 250);
-  --secondary: oklch(0.8 0.08 330); /* Brighter lavender secondary for dark mode */
-  --secondary-foreground: oklch(0.18 0.01 250);
-  --muted: oklch(0.25 0.005 250);
-  --muted-foreground: oklch(0.7 0.01 250);
-  --accent: oklch(0.7 0.1 300); /* Softer purple accent for dark mode with lower saturation */
-  --accent-foreground: oklch(0.18 0.01 250);
-  --destructive: oklch(0.6 0.18 30); /* Red for errors in dark mode */
-  --destructive-foreground: oklch(0.18 0.01 250);
-  --border: oklch(0.25 0.005 250); /* Border color for dark mode */
-  --input: oklch(0.24 0.01 250);
-  --ring: oklch(0.8 0.08 250 / 0.3); /* Focus ring for dark mode */
-  --chart-1: oklch(0.7 0.15 250); /* Blue for charts in dark mode */
-  --chart-2: oklch(0.7 0.1 330); /* Lavender for charts */
-  --chart-3: oklch(0.65 0.12 300); /* Purple for charts */
-  --chart-4: oklch(0.75 0.12 70); /* Gold for charts */
-  --chart-5: oklch(0.65 0.1 345); /* Pink for charts */
-  --gradient-gold-end: oklch(0.75 0.18 60); /* End color for gold gradient */
-  --gradient-pink-end: oklch(0.65 0.2 340); /* End color for pink gradient */
-  --sidebar: oklch(0.22 0.01 250);
-  --sidebar-foreground: oklch(0.98 0.002 250);
-  --sidebar-primary: oklch(0.7 0.15 250);
-  --sidebar-primary-foreground: oklch(0.18 0.01 250);
-  --sidebar-accent: oklch(0.25 0.005 250);
-  --sidebar-accent-foreground: oklch(0.98 0.002 250);
-  --sidebar-border: oklch(0.25 0.005 250);
-  --sidebar-ring: oklch(0.7 0.15 250 / 0.5);
+  /* 天青色主题深色模式 - 调整为更舒适的暗黑模式 */
+  --background: #1a202c; /* 调整为较浅的深色背景 */
+  --foreground: #f8fafc; /* 浅色文本 */
+  --card: #2d3748; /* 调整为较浅的卡片背景 */
+  --card-foreground: #e2e8f0; /* 卡片文本 */
+  --popover: #1a202c;
+  --popover-foreground: #f8fafc;
+  --primary: #22d3ee; /* 明亮天青色 */
+  --primary-foreground: #1a202c;
+  --secondary: #4fd1c5;
+  --secondary-foreground: #1a202c;
+  --muted: #2d3748;
+  --muted-foreground: #94a3b8;
+  --accent: #94a3b8; /* 浅灰蓝色 */
+  --accent-foreground: #1a202c;
+  --destructive: #f43f5e;
+  --destructive-foreground: #f8fafc;
+  --border: #4a5568; /* 调整为较浅的边框颜色 */
+  --input: #2d3748;
+  --ring: #22d3ee30;
+  --chart-1: #22d3ee;
+  --chart-2: #4fd1c5;
+  --chart-3: #94a3b8;
+  --chart-4: #93c5fd;
+  --chart-5: #bfdbfe;
+  --gradient-gold-end: #4fd1c5;
+  --gradient-pink-end: #93c5fd;
+  --sidebar: #2d3748;
+  --sidebar-foreground: #f8fafc;
+  --sidebar-primary: #22d3ee;
+  --sidebar-primary-foreground: #1a202c;
+  --sidebar-accent: #4a5568;
+  --sidebar-accent-foreground: #f8fafc;
+  --sidebar-border: #4a5568;
+  --sidebar-ring: #22d3ee50;
+  /* 深色模式磨砂质感 - 增强版 */
+  --glass-dark-gradient-primary: linear-gradient(135deg, rgba(34, 211, 238, 0.3) 0%, rgba(79, 209, 197, 0.25) 50%, rgba(148, 163, 184, 0.3) 100%);
+  --glass-dark-radial-gradient-1: radial-gradient(circle at 20% 70%, var(--chart-3)/45, transparent 35%);
+  --glass-dark-radial-gradient-2: radial-gradient(circle at 80% 30%, var(--chart-5)/45, transparent 35%);
+  --glass-dark-radial-gradient-3: radial-gradient(circle at 40% 50%, var(--chart-1)/40, transparent 35%);
+  --glass-dark-radial-gradient-4: radial-gradient(circle at 60% 80%, var(--chart-2)/35, transparent 40%);
+  --glass-dark-radial-gradient-5: radial-gradient(circle at 70% 40%, var(--chart-4)/30, transparent 45%);
+  --glass-dark-effect: var(--glass-dark-gradient-primary), var(--glass-dark-radial-gradient-1), var(--glass-dark-radial-gradient-2), var(--glass-dark-radial-gradient-3), var(--glass-dark-radial-gradient-4), var(--glass-dark-radial-gradient-5);
 }
 
 @theme inline {
