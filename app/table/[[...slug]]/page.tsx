@@ -197,19 +197,19 @@ export async function generateStaticParams() {
       take: 10,
     });
 
-    const locations = await prisma.location.findMany({
-      select: {
-        id: true,
-        name: true,
-      },
-      distinct: ["name"],
-      where: {
-        id: {
-          not: "00default",
-        },
-      },
-      take: 10,
-    });
+    // const locations = await prisma.location.findMany({
+    //   select: {
+    //     id: true,
+    //     name: true,
+    //   },
+    //   distinct: ["name"],
+    //   where: {
+    //     id: {
+    //       not: "00default",
+    //     },
+    //   },
+    //   take: 10,
+    // });
 
     const params = [
       ...students.map((s) => ({
@@ -218,9 +218,9 @@ export async function generateStaticParams() {
       ...teachers.map((t) => ({
         slug: ["teacher", t.id],
       })),
-      ...locations.map((l) => ({
-        slug: ["location", l.id],
-      })),
+      // ...locations.map((l) => ({
+      //   slug: ["location", l.id],
+      // })),
     ];
 
     return params;
