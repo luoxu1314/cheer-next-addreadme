@@ -7,6 +7,11 @@ const features = [
     description: "完美适配手机、平板、电脑等各种设备，随时随地查看课表"
   },
   {
+    icon: Smartphone,
+    title: "优异用户体验",
+    description: "精心设计的界面和交互，让查询和浏览课程信息变得轻松愉悦"
+  },
+  {
     icon: Zap,
     title: "快速查询",
     description: "输入学号或姓名即可秒查课表，无需等待，支持模糊搜索"
@@ -14,17 +19,17 @@ const features = [
   {
     icon: Shield,
     title: "数据准确",
-    description: "与学校教务系统实时同步，确保课表信息的准确性和时效性"
-  },
-  {
-    icon: Clock,
-    title: "实时更新",
-    description: "课程调整、教室变更等信息第一时间更新，不错过任何变化"
+    description: "完整的课程、开课数据，确保信息的准确性和完整性"
   },
   {
     icon: Users,
     title: "多维度查询",
     description: "支持学生课表、教师课表、教室课表三种查询模式，还可以按院系专业浏览所有课程"
+  },
+  {
+    icon: Check,
+    title: "丰富拓展功能",
+    description: "后续将添加院系数据分析和选课相关报表功能，为学习和教学提供更多支持"
   }
 ];
 

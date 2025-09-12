@@ -28,7 +28,7 @@ export function HeroSection() {
           </p>
           
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            为学生、教师提供便捷的课程信息查询服务，支持学生课表、教师课表、教室课表快速查找
+            为学生、教师提供便捷的课程信息查询服务，支持学生课表、教师课表、教室课表快速查找，提供完整的课程、开课数据和优异的用户体验
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
