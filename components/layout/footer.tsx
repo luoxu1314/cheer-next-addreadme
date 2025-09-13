@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { Calendar, Mail, Github, Heart } from "lucide-react";
+import { Calendar, Mail, Github, Heart, MessageCircle } from "lucide-react";
+import { contactConfig } from "@/lib/config/contact.config";
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -71,11 +73,11 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               <li className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">huayemao4o@outlook.com</span>
+                <span className="text-sm text-muted-foreground">{contactConfig.email}</span>
               </li>
               <li>
                 <a
-                  href="https://github.com/huayemao/cheer-next"
+                  href={contactConfig.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -84,6 +86,19 @@ export function Footer() {
                   <span>GitHub</span>
                 </a>
               </li>
+              {contactConfig.qqGroups.map((group, index) => (
+                <li key={index}>
+                  <a
+                    href={group.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    <span>{group.name}: {group.number}</span>
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
