@@ -123,7 +123,7 @@ export function CourseDetailModal({
                   上课地点
                 </p>
                 {currentCourse.location.name!=='无'? (
-                  <Link className="underline" href={`/tables/location/${currentCourse.location.id}`}>
+                  <Link className="underline" href={`/table/location/${currentCourse.location.id}`}>
                     <span className="text-sm text-muted-foreground">
                       {currentCourse.location.name}
                     </span> · 
