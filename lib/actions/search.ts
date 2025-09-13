@@ -60,7 +60,7 @@ export async function searchAction(query: string): Promise<SearchResult[]> {
         allResults.push({
           id: encodeURIComponent(profession.professionName),
           name: profession.professionName || "未知专业",
-          label: `${profession.facultyName || "未知学院"} • ${profession.grade || "未知年级"}`,
+          label: `${profession.facultyName || "未知学院"}`,
           type: "profession"
         });
       });

@@ -55,7 +55,7 @@ export function SearchUI({
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onKeyPress={handleKeyPress}
-          className={`w-full pr-12 ${compact ? 'text-base' : 'text-lg'}`}
+          className={`w-full pr-12 ${compact ? 'text-base' : 'text-lg'} bg-gradient-to-r from-background via-background to-accent/10 border-2 border-primary/20 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all duration-300 shadow-lg hover:shadow-xl`}
         />
 
         <Button
@@ -86,23 +86,25 @@ export function SearchUI({
       {/* 标签页（仅在showTabs为true时显示） */}
       {showTabs && setActiveTab && (
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="grid w-full grid-cols-5 mt-4">
-            <TabsTrigger value="all">全部</TabsTrigger>
-            <TabsTrigger value="student">
-              <User className="h-4 w-4 mr-2" />
-              学生
+          <TabsList className="grid w-full grid-cols-5 mt-4 gap-1">
+            <TabsTrigger value="all" className="text-xs sm:text-sm md:text-base px-1 sm:px-2 md:px-3">
+              全部
             </TabsTrigger>
-            <TabsTrigger value="teacher">
-              <Users className="h-4 w-4 mr-2" />
-              教师
+            <TabsTrigger value="student" className="text-xs sm:text-sm md:text-base px-1 sm:px-2 md:px-3">
+              <User className="h-3 w-3 sm:h-4 sm:w-4 md:h-4 md:w-4 mr-0 sm:mr-1" />
+              <span className="hidden sm:inline">学生</span>
             </TabsTrigger>
-            <TabsTrigger value="location">
-              <Building2 className="h-4 w-4 mr-2" />
-              教室
+            <TabsTrigger value="teacher" className="text-xs sm:text-sm md:text-base px-1 sm:px-2 md:px-3">
+              <Users className="h-3 w-3 sm:h-4 sm:w-4 md:h-4 md:w-4 mr-0 sm:mr-1" />
+              <span className="hidden sm:inline">教师</span>
             </TabsTrigger>
-            <TabsTrigger value="profession">
-              <Users className="h-4 w-4 mr-2" />
-              专业
+            <TabsTrigger value="location" className="text-xs sm:text-sm md:text-base px-1 sm:px-2 md:px-3">
+              <Building2 className="h-3 w-3 sm:h-4 sm:w-4 md:h-4 md:w-4 mr-0 sm:mr-1" />
+              <span className="hidden sm:inline">教室</span>
+            </TabsTrigger>
+            <TabsTrigger value="profession" className="text-xs sm:text-sm md:text-base px-1 sm:px-2 md:px-3">
+              <Users className="h-3 w-3 sm:h-4 sm:w-4 md:h-4 md:w-4 mr-0 sm:mr-1" />
+              <span className="hidden sm:inline">专业</span>
             </TabsTrigger>
           </TabsList>
 
