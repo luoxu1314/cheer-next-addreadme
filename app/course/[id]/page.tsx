@@ -218,13 +218,17 @@ async function CourseDetailContent({ id }: { id: string }) {
                               href={`/table/student/${enrollment.student.id}`}
                               className="flex items-center gap-2 hover:text-primary transition-colors"
                             >
-                              <Avatar className="h-8 w-8">
-                                <img
-                                  src={`/placeholder-user.jpg`}
-                                  alt={enrollment.student.name}
-                                  className="object-cover"
-                                />
-                              </Avatar>
+                              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                                enrollment.student.sex === '男' 
+                                  ? 'bg-blue-100 dark:bg-blue-900/30' 
+                                  : 'bg-pink-100 dark:bg-pink-900/30'
+                              }`}>
+                                <User className={`w-4 h-4 ${
+                                  enrollment.student.sex === '男' 
+                                    ? 'text-blue-600 dark:text-blue-400' 
+                                    : 'text-pink-600 dark:text-pink-400'
+                                }`} />
+                              </div>
                               <span>{enrollment.student.name}</span>
                             </Link>
                           </TableCell>
