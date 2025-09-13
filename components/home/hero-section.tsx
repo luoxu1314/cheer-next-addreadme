@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Calendar, Search, Users, Clock } from "lucide-react";
+import { homeConfig } from "@/lib/config/home.config";
 
 export function HeroSection() {
   return (
@@ -29,27 +30,27 @@ export function HeroSection() {
           </div>
           
           <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary via-accent to-gradient-pink-end bg-clip-text text-transparent mb-6">
-            绮课
+            {homeConfig.hero.title}
           </h1>
           
           <p className="text-xl md:text-2xl text-foreground mb-4 font-medium">
-            中南大学专属课程表查询平台
+            {homeConfig.hero.subtitle}
           </p>
           
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            为学生、教师提供便捷的课程信息查询服务，支持学生课表、教师课表、教室课表快速查找，提供完整的课程、开课数据和优异的用户体验
+            {homeConfig.hero.description}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-white px-8 py-3 rounded-full shadow-lg">
               <Link href="#search">
                 <Search className="mr-2 h-5 w-5" />
-                立即查询
+                {homeConfig.hero.searchButton}
               </Link>
             </Button>
             <Button variant="outline" size="lg" className="border-2 border-accent text-accent hover:bg-accent/10 px-8 py-3 rounded-full">
               <Link href="#features">
-                了解更多
+                {homeConfig.hero.learnMoreButton}
               </Link>
             </Button>
           </div>
@@ -58,15 +59,15 @@ export function HeroSection() {
         {/* Stats */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div className="text-center p-6 bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg">
-            <div className="text-3xl font-bold text-primary mb-2">10万+</div>
+            <div className="text-3xl font-bold text-primary mb-2">{homeConfig.hero.stats.students}</div>
             <div className="text-sm text-muted-foreground">学生用户</div>
           </div>
           <div className="text-center p-6 bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg">
-            <div className="text-3xl font-bold text-accent mb-2">5000+</div>
+            <div className="text-3xl font-bold text-accent mb-2">{homeConfig.hero.stats.teachers}</div>
             <div className="text-sm text-muted-foreground">教师信息</div>
           </div>
           <div className="text-center p-6 bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg">
-            <div className="text-3xl font-bold text-gradient-pink-end mb-2">1000+</div>
+            <div className="text-3xl font-bold text-gradient-pink-end mb-2">{homeConfig.hero.stats.classrooms}</div>
             <div className="text-sm text-muted-foreground">教室资源</div>
           </div>
         </div>
