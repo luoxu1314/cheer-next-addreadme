@@ -19,14 +19,14 @@ export default async function DepartmentsPage() {
   const departments = Object.keys(departmentsData).sort();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-primary/5 to-accent/5 relative overflow-hidden pt-16">
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-primary/5 to-secondary/5 relative overflow-hidden pt-16">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,var(--chart-3)/30,transparent_50%),radial-gradient(circle_at_80%_20%,var(--chart-5)/30,transparent_50%),radial-gradient(circle_at_40%_40%,var(--chart-1)/20,transparent_50%)]"></div>
       <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,white/60)] opacity-30"></div>
       
       <div className="relative w-full max-w-7xl mx-auto p-4 lg:p-8 space-y-8">
         {/* 页面标题 */}
         <div className="text-center space-y-4">
-          <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-primary via-accent to-gradient-pink-end bg-clip-text text-transparent">
+          <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-primary   to-secondary bg-clip-text text-transparent">
             院系列表
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">

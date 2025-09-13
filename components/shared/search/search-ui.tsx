@@ -55,13 +55,13 @@ export function SearchUI({
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onKeyPress={handleKeyPress}
-          className={`w-full pr-12 ${compact ? 'text-base' : 'text-lg'} bg-gradient-to-r from-background via-background to-accent/10 border-2 border-primary/20 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all duration-300 shadow-lg hover:shadow-xl`}
+          className={`w-full pr-12 ${compact ? 'text-base' : 'text-lg'} bg-gradient-to-r from-background via-background to-secondary/10 border-2 border-primary/20 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all duration-300 shadow-lg hover:shadow-xl`}
         />
 
         <Button
           onClick={handleSearch}
           disabled={isLoading || !searchQuery.trim()}
-          className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8 p-0 bg-gradient-to-r from-primary to-accent hover:from-primary hover:to-accent text-white"
+          className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8 p-0 bg-gradient-to-r from-primary to-secondary hover:from-primary hover:to-secondary text-white"
         >
           {isLoading ? (
             <Loader2 className="h-4 w-4 animate-spin" />
@@ -134,7 +134,7 @@ export function SearchUI({
               <div
                 key={`${result.type}-${result.id}`}
                 onClick={() => handleResultSelect(result)}
-                className={`px-6 py-4 hover:bg-accent/30 cursor-pointer flex items-center justify-between transition-colors ${compact ? '' : 'border-b border-border last:border-0'}`}
+                className={`px-6 py-4 hover:bg-secondary/30 cursor-pointer flex items-center justify-between transition-colors ${compact ? '' : 'border-b border-border last:border-0'}`}
               >
                 <div className="text-left flex items-center">
                   {getIconForType(result.type)}

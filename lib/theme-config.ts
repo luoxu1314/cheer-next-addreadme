@@ -14,15 +14,15 @@ export const themes: Record<ThemeName, Theme> = {
     colors: {
       // 主要颜色
       primary: '#1496a0',
-      'primary-foreground': '#215490',
+      'primary-foreground': '#ffffff',
       
       // 次要颜色
       secondary: '#43b3a8',
-      'secondary-foreground': '#ffffff',
+      'secondary-foreground': '#e8fbfc',
       
       // 强调色
-      accent: '#72a3c5',
-      'accent-foreground': '#3d4c6e',
+      accent: '#ddeced',
+      'accent-foreground': '#126361',
       
       // 背景色
       background: '#ffffff',
@@ -56,9 +56,9 @@ export const themes: Record<ThemeName, Theme> = {
       chart4: '#92d0d9',
       chart5: '#b2dde5',
       // 暗黑模式颜色
-      'dark-primary': '#22d3ee',
-      'dark-primary-foreground': '#0f172a',
-      'dark-secondary': '#4fd1c5',
+      'dark-primary': '#0fb0c9',
+      'dark-primary-foreground': '#bfe6fe',
+      'dark-secondary': '#44958e',
       'dark-secondary-foreground': '#0f172a',
       'dark-accent': '#94a3b8',
       'dark-accent-foreground': '#0f172a',
@@ -92,7 +92,7 @@ export const themes: Record<ThemeName, Theme> = {
       secondary: '#7b9dc8',
       'secondary-foreground': '#ffffff',
       accent: '#818cf8',
-      'accent-foreground': '#0f172a',
+      'accent-foreground': '#dfe2ff',
       background: '#ffffff',
       foreground: '#0f172a',
       card: '#ffffff',

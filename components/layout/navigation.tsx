@@ -31,7 +31,7 @@ export function Navigation() {
             <div className="flex items-center">
               <Link href="/" className="flex items-center space-x-2">
                 <Calendar className="h-8 w-8 text-primary" />
-                <span className="font-bold text-xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                <span className="font-bold text-xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                   绮课
                 </span>
               </Link>
@@ -66,12 +66,12 @@ export function Navigation() {
                       <NavigationMenuLink asChild>
                         <a
                           href="/search/student"
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primary/20 hover:text-muted-foreground focus:bg-accent focus:text-accent-foreground"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primary/20 hover:text-accent-foreground focus:bg-secondary focus:text-secondary-foreground"
                         >
                           <div className="text-sm font-medium leading-none">
                             学生课表
                           </div>
-                          <p className="line-clamp-2 text-sm leading-snug">
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                             按学号或姓名查询学生个人课表
                           </p>
                         </a>
@@ -79,12 +79,12 @@ export function Navigation() {
                       <NavigationMenuLink asChild>
                         <a
                           href="/search/teacher"
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primary/20 hover:text-muted-foreground focus:bg-accent focus:text-accent-foreground"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primary/20 hover:text-accent-foreground focus:bg-secondary focus:text-secondary-foreground"
                         >
                           <div className="text-sm font-medium leading-none">
                             教师课表
                           </div>
-                          <p className="line-clamp-2 text-sm leading-snug">
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                             查询教师授课安排
                           </p>
                         </a>
@@ -92,7 +92,7 @@ export function Navigation() {
                       <NavigationMenuLink asChild>
                         <a
                           href="/search/classroom"
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primary/20 hover:text-muted-foreground focus:bg-accent focus:text-accent-foreground"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primary/20 hover:text-accent-foreground focus:bg-secondary focus:text-secondary-foreground"
                         >
                           <div className="text-sm font-medium leading-none">
                             教室课表
@@ -105,12 +105,12 @@ export function Navigation() {
                       <NavigationMenuLink asChild>
                         <a
                           href="/search/profession"
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primary/20 hover:text-muted-foreground focus:bg-accent focus:text-accent-foreground"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primary/20 hover:text-accent-foreground focus:bg-secondary focus:text-secondary-foreground"
                         >
                           <div className="text-sm font-medium leading-none">
                             专业课表
                           </div>
-                          <p className="line-clamp-2 text-sm leading-snug">
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                             查询专业课程安排
                           </p>
                         </a>
@@ -157,7 +157,7 @@ export function Navigation() {
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="flex items-center space-x-2">
               <Calendar className="h-8 w-8 text-primary" />
-              <span className="font-bold text-xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              <span className="font-bold text-xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                 绮课
               </span>
             </Link>
@@ -199,35 +199,35 @@ export function Navigation() {
             <div className="px-2 pt-2 pb-3 space-y-1">
               <Link
                 href="/"
-                className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
+                className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-secondary hover:text-secondary-foreground"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 首页
               </Link>
               <Link
                 href="/search/student"
-                className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
+                className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-secondary hover:text-secondary-foreground"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 学生课表
               </Link>
               <Link
                 href="/search/teacher"
-                className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
+                className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-secondary hover:text-secondary-foreground"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 教师课表
               </Link>
               <Link
                 href="/search/classroom"
-                className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
+                className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-secondary hover:text-secondary-foreground"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 教室课表
               </Link>
               <Link
                 href="/department"
-                className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
+                className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-secondary hover:text-secondary-foreground"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 院系列表
@@ -253,7 +253,7 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-secondary hover:text-secondary-foreground focus:bg-secondary focus:text-secondary-foreground",
             className
           )}
           {...props}

@@ -14,7 +14,7 @@ export function HeroSection() {
       
       {/* Semantic Animated Orbs - 使用主色调 */}
       <div className="absolute top-20 md:top-1/5 left-1/6 md:left-1/5 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-[var(--primary)] via-[var(--chart-1)] to-[var(--chart-2)] rounded-full blur-3xl opacity-40 animate-float dark:opacity-50"></div>
-      <div className="absolute top-12 md:top-1/7 right-1/5 w-64 h-64 md:w-96 md:h-96 bg-gradient-to-r from-[var(--chart-2)] via-[var(--chart-3)] to-[var(--accent)] rounded-full blur-3xl opacity-40 animate-float animation-delay-1000 dark:opacity-50"></div>
+      <div className="absolute top-12 md:top-1/7 right-1/5 w-64 h-64 md:w-96 md:h-96 bg-gradient-to-r from-[var(--chart-2)] via-[var(--chart-3)] to-[var(--secondary)] rounded-full blur-3xl opacity-40 animate-float animation-delay-1000 dark:opacity-50"></div>
       <div className="absolute bottom-32  md:bottom-1/5 left-1/4 w-64 h-64 md:w-96 md:h-96 bg-gradient-to-r from-[var(--chart-4)] via-[var(--chart-5)] to-[var(--primary)] rounded-full blur-3xl opacity-40 animate-float animation-delay-2000 dark:opacity-50"></div>
 
       
@@ -22,14 +22,14 @@ export function HeroSection() {
         <div className="text-center">
           <div className="flex justify-center mb-6">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-3xl opacity-30 animate-pulse"></div>
-              <div className="relative p-4 bg-gradient-to-br from-primary to-accent rounded-full shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full blur-3xl opacity-30 animate-pulse"></div>
+              <div className="relative p-4 bg-gradient-to-br from-primary to-secondary rounded-full shadow-2xl">
                 <Calendar className="h-12 w-12 text-white" />
               </div>
             </div>
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary via-accent to-gradient-pink-end bg-clip-text text-transparent mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-secondary bg-clip-text text-transparent mb-6">
             {homeConfig.hero.title}
           </h1>
           
@@ -42,13 +42,13 @@ export function HeroSection() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-white px-8 py-3 rounded-full shadow-lg">
+            <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white px-8 py-3 rounded-full shadow-lg">
               <Link href="#search">
                 <Search className="mr-2 h-5 w-5" />
                 {homeConfig.hero.searchButton}
               </Link>
             </Button>
-            <Button variant="outline" size="lg" className="border-2 border-accent text-accent hover:bg-accent/10 px-8 py-3 rounded-full">
+            <Button variant="outline" size="lg" className="rounded-full">
               <Link href="#features">
                 {homeConfig.hero.learnMoreButton}
               </Link>
@@ -63,7 +63,7 @@ export function HeroSection() {
             <div className="text-sm text-muted-foreground">学生用户</div>
           </div>
           <div className="text-center p-6 bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg">
-            <div className="text-3xl font-bold text-accent mb-2">{homeConfig.hero.stats.teachers}</div>
+            <div className="text-3xl font-bold text-secondary mb-2">{homeConfig.hero.stats.teachers}</div>
             <div className="text-sm text-muted-foreground">教师信息</div>
           </div>
           <div className="text-center p-6 bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg">

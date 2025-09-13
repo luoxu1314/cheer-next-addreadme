@@ -38,7 +38,7 @@ export function SearchDialog({ initialQuery }: SearchDialogProps) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden">
         <DialogHeader className="p-6 pb-0">
-          <DialogTitle className="text-2xl font-bold text-center bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          <DialogTitle className="text-2xl font-bold text-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             快速搜索
           </DialogTitle>
           <p className="text-center text-muted-foreground mt-2">

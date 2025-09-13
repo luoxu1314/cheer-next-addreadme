@@ -26,7 +26,7 @@ async function TimeTableContent({
   } = await getTimetable(type as OwnerType, id, term, grade);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-primary/5 to-accent/5 relative overflow-hidden pt-16">
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-primary/5 to-secondary/5 relative overflow-hidden pt-16">
 
       <div className="absolute inset-0 bg-gradient-to-br from-[var(--chart-1)]/25 via-[var(--chart-2)]/20 to-[var(--chart-3)]/25 dark:from-[var(--chart-1)]/35 dark:via-[var(--chart-2)]/30 dark:to-[var(--chart-3)]/35"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[var(--chart-4)]/40 via-transparent to-transparent dark:from-[var(--chart-4)]/50"></div>

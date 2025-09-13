@@ -42,7 +42,7 @@ async function CourseDetailContent({ id }: { id: string }) {
   const days = ['', '周一', '周二', '周三', '周四', '周五', '周六', '周日']
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-primary/5 to-accent/5 relative overflow-hidden pt-16">
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-primary/5 to-secondary/5 relative overflow-hidden pt-16">
       {/* 现代磨砂质感渐变背景 */}
       <div className="absolute inset-0 bg-[var(--glass-effect)] dark:bg-[var(--glass-dark-effect)]"></div>
       <div className="absolute inset-0 [mask-image:linear-gradient(0deg,white,white/60)] opacity-20 dark:opacity-10"></div>

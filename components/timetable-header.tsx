@@ -36,10 +36,10 @@ export function TimetableHeader({
   return (
     <div className="text-center space-y-4 p-6 md:p-8 rounded-3xl bg-muted/20 dark:bg-muted-10 backdrop-blur-xl border border-white/50 shadow-2xl shadow-accent/10">
       <div className="flex items-center justify-center gap-2 mb-2">
-        <div className="p-3 rounded-2xl bg-gradient-to-br from-primary to-accent shadow-lg">
+        <div className="p-3 rounded-2xl bg-gradient-to-br from-primary to-secondary shadow-lg">
           <Calendar className="w-7 h-7 md:w-8 md:h-8 text-white" />
         </div>
-        <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-primary via-accent to-gradient-pink-end bg-clip-text text-transparent">
+        <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-primary   to-secondary bg-clip-text text-transparent">
           {title}
         </h1>
       </div>
@@ -77,7 +77,7 @@ export function TimetableHeader({
           <Button
             asChild
             size="lg"
-            className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-white px-8 py-3 rounded-full shadow-lg"
+            className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white px-8 py-3 rounded-full shadow-lg"
           >
             <a href="#timetable-content">
               开始
