@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { User, MapPin } from "lucide-react";
 import { CourseClickWrapper } from "@/components/course-detail-modal";
+import { formatTimeRange } from "@/lib/timeMapping";
 
 interface CourseItem {
   seq: string;
@@ -64,15 +65,17 @@ export function MobileTimetable({
     ? dayAbbreviations
     : dayAbbreviations.slice(0, 5);
 
+    const firstColWidth =(firstColumnMode === "time" || showWeekend)? 36:24
+
   return (
     <div className="lg:hidden">
       <div className="bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg overflow-hidden">
         <div
           className={`grid gap-0  border-b border-border/50`}
           style={{
-            gridTemplateColumns: showWeekend
-              ? "24px repeat(7, minmax(0, 1fr))"
-              : "28px repeat(5, minmax(0, 1fr))",
+            gridTemplateColumns: showWeekend && firstColumnMode === "time"
+              ? `${firstColWidth}px repeat(7, minmax(0, 1fr))`
+              : `${firstColWidth}px repeat(5, minmax(0, 1fr))`,
           }}
         >
           <div className="p-2 text-center  font-semibold text-xs text-muted-foreground border-r border-border/50 bg-secondary/30">
@@ -95,13 +98,13 @@ export function MobileTimetable({
               className={`grid gap-0 border-t border-border/30`}
               style={{
                 gridTemplateColumns: showWeekend
-                  ? "24px repeat(7, minmax(0, 1fr))"
-                  : "28px repeat(5, minmax(0, 1fr))",
+                  ? `${firstColWidth}px repeat(7, minmax(0, 1fr))`
+                  : `${firstColWidth}px repeat(5, minmax(0, 1fr))`,
               }}
             >
-              <div className="p-2 text-xs flex justify-center items-center font-mono text-muted-foreground border-r border-border/50 bg-secondary/30">
+              <div className="p-1 text-[9px] flex justify-center items-center font-mono text-muted-foreground border-r border-border/50 bg-secondary/30">
                 {firstColumnMode === "time"
-                  ? `${timeIndex + 1}节`
+                  ? formatTimeRange([timeIndex + 1])
                   : `${timeIndex + 1}`}
               </div>
               {displayDays.map((day, dayIndex) => {
@@ -147,8 +150,7 @@ export function MobileTimetable({
                                 <span className="truncate">
                                   {coursesInThisSlot[0].weeks}{" "}
                                 </span>
-                                <span
-                                >
+                                <span>
                                   {coursesInThisSlot[0].weekInterval}周
                                 </span>
                               </div>
