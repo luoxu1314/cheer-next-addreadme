@@ -14,7 +14,7 @@ export const themes: Record<ThemeName, Theme> = {
     colors: {
       // 主要颜色
       primary: '#1496a0',
-      'primary-foreground': '#ffffff',
+      'primary-foreground': '#215490',
       
       // 次要颜色
       secondary: '#43b3a8',
@@ -22,7 +22,7 @@ export const themes: Record<ThemeName, Theme> = {
       
       // 强调色
       accent: '#72a3c5',
-      'accent-foreground': '#ffffff',
+      'accent-foreground': '#3d4c6e',
       
       // 背景色
       background: '#ffffff',
