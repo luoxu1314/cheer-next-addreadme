@@ -74,7 +74,7 @@ export function DesktopTimetable({ courses, showWeekend, firstColumnMode }: Desk
       {Array.from({ length: 12 }, (_, timeIndex) => [
         <div
           key={`time-${timeIndex}`}
-          className="text-xs text-muted-foreground text-center py-2 font-mono bg-muted/80 backdrop-blur-md rounded-lg border border-border/40"
+          className="text-xs  text-muted-foreground flex justify-center items-center py-2 font-mono bg-muted/80 backdrop-blur-md rounded-lg border border-border/40"
         >
           {firstColumnMode === "time"
             ? formatTimeRange([timeIndex + 1])

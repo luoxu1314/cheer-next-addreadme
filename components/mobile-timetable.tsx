@@ -88,7 +88,7 @@ export function MobileTimetable({
           ))}
         </div>
 
-        <div className="">
+        <div className="overflow-y-auto max-h-[70vh]">
           {Array.from({ length: 12 }, (_, timeIndex) => (
             <div
               key={`mobile-time-${timeIndex}`}
@@ -99,7 +99,7 @@ export function MobileTimetable({
                   : "28px repeat(5, 1fr)",
               }}
             >
-              <div className="p-2 text-center text-xs align-middle  font-mono text-muted-foreground border-r border-border/50 bg-secondary/30">
+              <div className="p-2 text-xs flex justify-center items-center font-mono text-muted-foreground border-r border-border/50 bg-secondary/30">
                 {firstColumnMode === "time"
                   ? `${timeIndex + 1}节`
                   : `${timeIndex + 1}`}
@@ -143,7 +143,17 @@ export function MobileTimetable({
                                   {coursesInThisSlot[0].location.name}
                                 </span>
                               </div>
+                              <div className="flex flex-col items-center gap-1 text-[9px] text-muted-foreground">
+                                <span className="truncate">
+                                  {coursesInThisSlot[0].weeks}{" "}
+                                </span>
+                                <span
+                                >
+                                  {coursesInThisSlot[0].weekInterval}周
+                                </span>
+                              </div>
                             </div>
+
                             {coursesInThisSlot.length > 1 && (
                               <Badge className="ml-auto bg-chart-1 rounded-full text-[8px] h-4">
                                 +{coursesInThisSlot.length - 1}

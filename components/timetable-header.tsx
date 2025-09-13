@@ -1,17 +1,24 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Calendar, ToggleLeft, ToggleRight } from "lucide-react"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Calendar, ToggleLeft, ToggleRight } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface TimetableHeaderProps {
-  title: string
-  terms: string[]
-  currentTerm: string
-  onTermChange: (term: string) => void
-  showWeekend: boolean
-  onShowWeekendChange: (show: boolean) => void
-  type?: string
-  grades?: string[]
-  currentGrade?: string
-  onGradeChange?: (grade: string) => void
+  title: string;
+  terms: string[];
+  currentTerm: string;
+  onTermChange: (term: string) => void;
+  showWeekend: boolean;
+  onShowWeekendChange: (show: boolean) => void;
+  type?: string;
+  grades?: string[];
+  currentGrade?: string;
+  onGradeChange?: (grade: string) => void;
 }
 
 export function TimetableHeader({
@@ -23,8 +30,8 @@ export function TimetableHeader({
   onShowWeekendChange,
   type,
   grades = [],
-  currentGrade = '',
-  onGradeChange
+  currentGrade = "",
+  onGradeChange,
 }: TimetableHeaderProps) {
   return (
     <div className="text-center space-y-4 p-8 rounded-3xl bg-muted/20 dark:bg-muted-10 backdrop-blur-xl border border-white/50 shadow-2xl shadow-accent/10">
@@ -36,7 +43,7 @@ export function TimetableHeader({
           {title}
         </h1>
       </div>
-      
+
       {terms.length > 0 && (
         <div className="flex justify-center items-center gap-4">
           <Select value={currentTerm} onValueChange={onTermChange}>
@@ -51,9 +58,9 @@ export function TimetableHeader({
               ))}
             </SelectContent>
           </Select>
-          
+
           {/* 专业课表添加年级选择器 */}
-          {type === 'profession' && grades.length > 0 && onGradeChange && (
+          {type === "profession" && grades.length > 0 && onGradeChange && (
             <Select value={currentGrade} onValueChange={onGradeChange}>
               <SelectTrigger className="w-[120px] bg-white/60 backdrop-blur-md border-white/50 shadow-lg rounded-xl">
                 <SelectValue placeholder="选择年级" />
@@ -67,15 +74,24 @@ export function TimetableHeader({
               </SelectContent>
             </Select>
           )}
+          <Button
+            asChild
+            size="lg"
+            className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-white px-8 py-3 rounded-full shadow-lg"
+          >
+            <a href="#timetable-content">
+              开始
+            </a>
+          </Button>
         </div>
       )}
     </div>
-  )
+  );
 }
 
 interface WeekendToggleProps {
-  showWeekend: boolean
-  onToggle: () => void
+  showWeekend: boolean;
+  onToggle: () => void;
 }
 
 export function WeekendToggle({ showWeekend, onToggle }: WeekendToggleProps) {
@@ -91,5 +107,5 @@ export function WeekendToggle({ showWeekend, onToggle }: WeekendToggleProps) {
       </button>
       <span className="text-sm font-medium text-slate-700">7天</span>
     </div>
-  )
+  );
 }

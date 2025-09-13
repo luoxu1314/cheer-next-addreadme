@@ -7,6 +7,10 @@ html {
   scroll-behavior: smooth;
 }
 
+#timetable-content {
+  scroll-margin-top: 80px; /* 根据你固定导航栏的高度调整 */
+}
+
 :root {
   /* 动态主题颜色 - 将通过JavaScript动态设置 */
   --primary: #1496a0;

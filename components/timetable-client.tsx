@@ -102,7 +102,7 @@ export default function TimetableClient({
       />
 
       {/* Timetable Content */}
-      <div className="space-y-6">
+      <div id="timetable-content" className="space-y-6">
         <DesktopTimetable
           courses={courses}
           showWeekend={showWeekend}

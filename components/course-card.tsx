@@ -55,7 +55,7 @@ export function CourseCard({ courses, className = "" }: CourseCardProps) {
         </div>
 
         <Badge variant="outline" className="text-[10px] px-1.5 py-0" title={course.weeks}>
-          <span className="truncate">{course.category}</span>
+          <span className="truncate">{course.weeks} {course.weekInterval}周</span>
         </Badge>
         {courses.length > 1 && (
           <Badge className="absolute -top-2 -right-2 text-[9px] h-5">
