@@ -71,8 +71,8 @@ export function MobileTimetable({
           className={`grid gap-0  border-b border-border/50`}
           style={{
             gridTemplateColumns: showWeekend
-              ? "24px repeat(7, 1fr)"
-              : "28px repeat(5, 1fr)",
+              ? "24px repeat(7, minmax(0, 1fr))"
+              : "28px repeat(5, minmax(0, 1fr))",
           }}
         >
           <div className="p-2 text-center  font-semibold text-xs text-muted-foreground border-r border-border/50 bg-secondary/30">
@@ -95,8 +95,8 @@ export function MobileTimetable({
               className={`grid gap-0 border-t border-border/30`}
               style={{
                 gridTemplateColumns: showWeekend
-                  ? "24px repeat(7, 1fr)"
-                  : "28px repeat(5, 1fr)",
+                  ? "24px repeat(7, minmax(0, 1fr))"
+                  : "28px repeat(5, minmax(0, 1fr))",
               }}
             >
               <div className="p-2 text-xs flex justify-center items-center font-mono text-muted-foreground border-r border-border/50 bg-secondary/30">
