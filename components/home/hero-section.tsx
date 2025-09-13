@@ -12,9 +12,9 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-[conic-gradient(from_90deg_at_50%_50%,var(--tw-gradient-stops))] from-transparent via-[var(--primary)]/15 to-transparent dark:via-[var(--primary)]/25"></div>
       
       {/* Semantic Animated Orbs - 使用主色调 */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-[var(--primary)] via-[var(--chart-1)] to-[var(--chart-2)] rounded-full blur-3xl opacity-40 animate-float dark:opacity-50"></div>
-      <div className="absolute top-1/3 right-1/5 w-96 h-96 bg-gradient-to-r from-[var(--chart-2)] via-[var(--chart-3)] to-[var(--accent)] rounded-full blur-3xl opacity-40 animate-float animation-delay-1000 dark:opacity-50"></div>
-      <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-gradient-to-r from-[var(--chart-4)] via-[var(--chart-5)] to-[var(--primary)] rounded-full blur-3xl opacity-40 animate-float animation-delay-2000 dark:opacity-50"></div>
+      <div className="absolute top-20 md:top-1/5 left-1/6 md:left-1/5 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-[var(--primary)] via-[var(--chart-1)] to-[var(--chart-2)] rounded-full blur-3xl opacity-40 animate-float dark:opacity-50"></div>
+      <div className="absolute top-12 md:top-1/7 right-1/5 w-64 h-64 md:w-96 md:h-96 bg-gradient-to-r from-[var(--chart-2)] via-[var(--chart-3)] to-[var(--accent)] rounded-full blur-3xl opacity-40 animate-float animation-delay-1000 dark:opacity-50"></div>
+      <div className="absolute bottom-32  md:bottom-1/5 left-1/4 w-64 h-64 md:w-96 md:h-96 bg-gradient-to-r from-[var(--chart-4)] via-[var(--chart-5)] to-[var(--primary)] rounded-full blur-3xl opacity-40 animate-float animation-delay-2000 dark:opacity-50"></div>
 
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
