@@ -30,7 +30,7 @@ export async function DepartmentsSection() {
             return (
               <Link
                 key={department}
-                href={`/departments/${encodeURIComponent(department)}`}
+                href={`/department/${encodeURIComponent(department)}`}
                 className="group"
               >
                 <div className="bg-card backdrop-blur-md rounded-2xl p-6 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:translate-y-[-4px]">
@@ -57,7 +57,7 @@ export async function DepartmentsSection() {
 
         {/* 查看全部按钮 */}
         <div className="flex justify-center mt-10">
-          <Link href="/departments" className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+          <Link href="/department" className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
             <Users className="w-5 h-5 mr-2" />
             {homeConfig.departments.viewAll}
             <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -28,7 +28,7 @@ export default async function ProfessionsPage({ params }: { params: { department
 
         <div className="relative w-full max-w-7xl mx-auto p-4 lg:p-8 space-y-8">
           {/* 返回按钮 */}
-          <Link href="/departments" className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+          <Link href="/department" className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
             <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
             </svg>
@@ -85,7 +85,7 @@ export default async function ProfessionsPage({ params }: { params: { department
         <div className="text-center p-8">
           <h1 className="text-2xl font-bold text-foreground mb-4">无法获取专业信息</h1>
           <p className="text-muted-foreground mb-6">请检查院系名称是否正确，或稍后再试</p>
-          <Link href="/departments" className="inline-flex items-center bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+          <Link href="/department" className="inline-flex items-center bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium transition-colors">
             返回院系列表
           </Link>
         </div>

@@ -43,7 +43,7 @@ export default async function DepartmentsPage() {
             return (
               <Link
                 key={department}
-                href={`/departments/${encodeURIComponent(department)}`}
+                href={`/department/${encodeURIComponent(department)}`}
                 className="group"
               >
                 <div className="bg-card backdrop-blur-md rounded-2xl p-6 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:translate-y-[-4px]">

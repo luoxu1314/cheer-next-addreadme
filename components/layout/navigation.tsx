@@ -120,7 +120,7 @@ export function Navigation() {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link href="/departments" className={navigationMenuTriggerStyle()+ " bg-transparent"}>
+                  <Link href="/department" className={navigationMenuTriggerStyle()+ " bg-transparent"}>
                     <Users className="w-4 h-4 mr-2" />
                     院系列表
                   </Link>
@@ -226,7 +226,7 @@ export function Navigation() {
                 教室课表
               </Link>
               <Link
-                href="/departments"
+                href="/department"
                 className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
