@@ -122,12 +122,20 @@ export function CourseDetailModal({
                 <p className="text-sm sm:text-base font-medium text-foreground">
                   上课地点
                 </p>
-                <p className="text-sm text-muted-foreground">
-                  {currentCourse.location.name}
-                </p>
-                <p className="text-xs sm:text-sm text-muted-foreground/70">
-                  {currentCourse.location.building}
-                </p>
+                {currentCourse.location.name!=='无'? (
+                  <Link className="underline" href={`/tables/location/${currentCourse.location.id}`}>
+                    <span className="text-sm text-muted-foreground">
+                      {currentCourse.location.name}
+                    </span> · 
+                    <span className="text-xs sm:text-sm text-muted-foreground/70">
+                      {currentCourse.location.building}
+                    </span>
+                  </Link>
+                ) : (
+                  <p className="text-sm text-muted-foreground">
+                    暂无
+                  </p>
+                )}
               </div>
             </div>
 
