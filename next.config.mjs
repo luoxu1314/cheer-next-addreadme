@@ -30,8 +30,6 @@ const nextConfig = {
       // 6. 课程详情
       { source: '/courses/:courseId', destination: '/course/:courseId', permanent: true },
       
-      // 7. 搜索页面（带查询参数）
-      { source: '/search', destination: '/search', permanent: true },
     ];
   },
 }
