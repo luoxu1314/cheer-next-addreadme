@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Calendar, Search, Users, Clock } from "lucide-react";
+import { Calendar, Search, Users, Clock, AlertTriangle } from "lucide-react";
 import { homeConfig } from "@/lib/config/home.config";
 
 export function HeroSection() {
@@ -69,6 +69,19 @@ export function HeroSection() {
           <div className="text-center p-6 bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg">
             <div className="text-3xl font-bold text-gradient-pink-end mb-2">{homeConfig.hero.stats.classrooms}</div>
             <div className="text-sm text-muted-foreground">教室资源</div>
+          </div>
+        </div>
+
+        {/* 重要提示 */}
+        <div className="mt-12 max-w-2xl mx-auto">
+          <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4">
+            <div className="flex items-center">
+              <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-400 mr-3 flex-shrink-0" />
+              <div className="text-sm text-amber-800 dark:text-amber-200">
+                <p className="font-medium">重要提示</p>
+                <p className="mt-1">本站数据仅供参考，不可替代中南大学教务系统，请以<a href="http://csujwc.its.csu.edu.cn/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">官方教务系统</a>信息为准。</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

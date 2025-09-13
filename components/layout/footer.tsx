@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Calendar, Mail, Github, Heart, MessageCircle } from "lucide-react";
+import { Calendar, Mail, Github, Heart, MessageCircle, ExternalLink } from "lucide-react";
 import { contactConfig } from "@/lib/config/contact.config";
 
 export function Footer() {
@@ -61,6 +61,37 @@ export function Footer() {
                 >
                   教室课表
                 </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Friendly Links */}
+          <div>
+            <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">
+              友情链接
+            </h3>
+            <ul className="mt-4 space-y-3">
+              <li>
+                <a
+                  href="https://huayemao.run"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  <span>花野猫的数字花园</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="http://csujwc.its.csu.edu.cn/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  <span>中南大学教务系统</span>
+                </a>
               </li>
             </ul>
           </div>
