@@ -11,6 +11,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  output: 'standalone',
   async redirects() {
     return [
       // 旧项目URL结构重定向映射

@@ -2,9 +2,9 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Cheer Next - Premium Timetable',
+    name: 'Cheer Next - 绮课',
     short_name: 'Cheer Timetable',
-    description: 'Premium timetable application for course management and scheduling',
+    description: '绮课 application for course management and scheduling',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',
