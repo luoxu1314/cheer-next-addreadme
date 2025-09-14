@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, Eye, Tag } from "lucide-react";
 
 interface BlogPostPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -25,7 +25,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps) {
-  const post = await getBlogPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) {
     return {
@@ -48,7 +49,8 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = await getBlogPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getBlogPostBySlug(slug);
 
   if (!post || !post.published) {
     notFound();
@@ -141,7 +143,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     url={`${process.env.NEXT_PUBLIC_SITE_URL || ""}/blog/${
                       post.slug
                     }`}
-                    summary={post.summary}
+                    summary={post.excerpt}
                   />
                 </div>
               </div>

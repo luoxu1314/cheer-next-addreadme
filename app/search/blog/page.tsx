@@ -13,18 +13,17 @@ interface BlogPost {
   id: string
   title: string
   slug: string
-  summary: string
   content: string
-  coverImage: string | null
-  tags: string[]
+  excerpt?: string
+  coverImage?: string
+  published: boolean
+  featured: boolean
   views: number
-  createdAt: string
-  updatedAt: string
-  publishedAt: string | null
-  author: {
-    id: string
-    username: string
-  }
+  tags: string[]
+  meta: Record<string, any>
+  createdAt: Date
+  updatedAt: Date
+  publishedAt?: Date
 }
 
 export default function BlogSearchPage() {

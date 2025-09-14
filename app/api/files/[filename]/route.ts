@@ -15,7 +15,7 @@ export async function GET(
       )
     }
 
-    return new NextResponse(file.blobData, {
+    return new NextResponse(file.blobData as any, {
       headers: {
         'Content-Type': file.mimeType,
         'Cache-Control': 'public, max-age=31536000',

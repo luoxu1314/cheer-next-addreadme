@@ -94,15 +94,19 @@ const components = {
       {...props}
     />
   ),
-  img: ({ className, ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    <Image
-      className={cn('rounded-lg my-4', className)}
-      {...props}
-      alt={props.alt || ''}
-      width={800}
-      height={400}
-    />
-  ),
+  img: ({ className, src, ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => {
+    if (!src) return null
+    return (
+      <Image
+        className={cn('rounded-lg my-4', className)}
+        src={src}
+        {...props}
+        alt={props.alt || ''}
+        width={800}
+        height={400}
+      />
+    )
+  },
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
     <div className="overflow-x-auto my-4">
       <table

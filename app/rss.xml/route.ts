@@ -19,7 +19,7 @@ export async function GET() {
     ${posts.posts.map(post => `
     <item>
       <title><![CDATA[${post.title}]]></title>
-      <description><![CDATA[${post.summary}]]></description>
+      <description><![CDATA[${post.excerpt || post.content.substring(0, 200)}]]></description>
       <link>${baseUrl}/blog/${post.slug}</link>
       <guid>${baseUrl}/blog/${post.slug}</guid>
       <pubDate>${new Date(post.publishedAt || post.createdAt).toUTCString()}</pubDate>

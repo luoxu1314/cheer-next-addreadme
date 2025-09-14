@@ -1,5 +1,5 @@
 import prisma from '@/lib/prisma'
-import type { BlogPostCreate, BlogPostUpdate } from '@/lib/types/blog'
+import type { BlogPost, BlogPostCreate, BlogPostUpdate } from '@/lib/types/blog'
 
 export async function getBlogPosts(options: {
   published?: boolean
@@ -7,7 +7,7 @@ export async function getBlogPosts(options: {
   offset?: number
   tag?: string
   search?: string
-} = {}): Promise<{ posts: any[]; total: number; hasMore: boolean }> {
+} = {}): Promise<{ posts: BlogPost[]; total: number; hasMore: boolean }> {
   const { published = true, limit = 10, offset = 0, tag, search } = options
 
   const where: any = { published }
@@ -35,13 +35,13 @@ export async function getBlogPosts(options: {
   ])
 
   return {
-    posts,
+    posts: posts as BlogPost[],
     total,
     hasMore: offset + limit < total
   }
 }
 
-export async function getBlogPostBySlug(slug: string) {
+export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
   const post = await prisma.blogPost.findUnique({
     where: { slug }
   })
@@ -53,7 +53,22 @@ export async function getBlogPostBySlug(slug: string) {
   return {
     ...post,
     views: post.views + 1
-  }
+  } as BlogPost
+}
+
+export async function getBlogPostById(id: string): Promise<BlogPost | null> {
+  const post = await prisma.blogPost.findUnique({
+    where: { id }
+  })
+
+  if (!post) return null
+
+  await incrementBlogPostViews(post.id)
+
+  return {
+    ...post,
+    views: post.views + 1
+  } as BlogPost
 }
 
 export async function incrementBlogPostViews(postId: string): Promise<void> {
@@ -63,16 +78,16 @@ export async function incrementBlogPostViews(postId: string): Promise<void> {
   })
 }
 
-export async function createBlogPost(data: BlogPostCreate) {
+export async function createBlogPost(data: BlogPostCreate): Promise<BlogPost> {
   return prisma.blogPost.create({
     data: {
       ...data,
       publishedAt: data.published ? new Date() : null,
     }
-  })
+  }) as Promise<BlogPost>
 }
 
-export async function updateBlogPost(id: string, data: BlogPostUpdate) {
+export async function updateBlogPost(id: string, data: BlogPostUpdate): Promise<BlogPost> {
   const updateData: any = { ...data }
 
   if (data.published !== undefined) {
@@ -82,11 +97,11 @@ export async function updateBlogPost(id: string, data: BlogPostUpdate) {
   return prisma.blogPost.update({
     where: { id },
     data: updateData
-  })
+  }) as Promise<BlogPost>
 }
 
-export async function deleteBlogPost(id: string) {
+export async function deleteBlogPost(id: string): Promise<BlogPost> {
   return prisma.blogPost.delete({
     where: { id }
-  })
+  }) as Promise<BlogPost>
 }

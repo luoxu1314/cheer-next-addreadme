@@ -18,8 +18,10 @@ export async function GET() {
     
     tags.forEach((item) => {
       if (item.tags && Array.isArray(item.tags)) {
-        item.tags.forEach((tag: string) => {
-          tagCounts[tag] = (tagCounts[tag] || 0) + item._count.tags
+        item.tags.forEach((tag) => {
+          if (typeof tag === 'string') {
+            tagCounts[tag] = (tagCounts[tag] || 0) + (item._count?.tags || 1)
+          }
         })
       }
     })
