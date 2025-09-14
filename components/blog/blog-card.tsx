@@ -13,7 +13,7 @@ export function BlogCard({ post }: BlogCardProps) {
   const tags = Array.isArray(post.tags) ? post.tags : []
 
   return (
-    <article className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
+    <article className="group bg-card rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
       {post.coverImage && (
         <div className="relative h-48 overflow-hidden">
           <Image
@@ -26,7 +26,7 @@ export function BlogCard({ post }: BlogCardProps) {
       )}
       
       <div className="p-6">
-        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-3">
+        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
           <time dateTime={post.createdAt.toISOString()}>
             {format(post.createdAt, 'MM月dd日', { locale: zhCN })}
           </time>
@@ -37,14 +37,14 @@ export function BlogCard({ post }: BlogCardProps) {
           </div>
         </div>
 
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+        <h2 className="text-xl font-semibold text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors">
           <Link href={`/blog/${post.slug}`}>
             {post.title}
           </Link>
         </h2>
 
         {post.excerpt && (
-          <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+          <p className="text-muted-foreground mb-4 line-clamp-3">
             {post.excerpt}
           </p>
         )}
@@ -54,13 +54,13 @@ export function BlogCard({ post }: BlogCardProps) {
             {tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded"
+                className="text-xs px-2 py-1 bg-muted text-muted-foreground rounded"
               >
                 {tag}
               </span>
             ))}
             {tags.length > 3 && (
-              <span className="text-xs text-gray-500 dark:text-gray-400">
+              <span className="text-xs text-muted-foreground">
                 +{tags.length - 3}
               </span>
             )}

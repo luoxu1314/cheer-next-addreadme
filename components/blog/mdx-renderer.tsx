@@ -49,18 +49,18 @@ function CodeBlock({ children, className }: { children: string; className?: stri
   return (
     <div className="relative my-6">
       <div className="absolute top-2 right-2 flex items-center space-x-2 z-10">
-        <span className="text-xs text-gray-400 font-mono bg-gray-800 px-2 py-1 rounded">
+        <span className="text-xs text-muted-foreground font-mono bg-muted px-2 py-1 rounded">
           {language}
         </span>
         <button
           onClick={copyToClipboard}
-          className="text-xs bg-gray-700 hover:bg-gray-600 text-white px-2 py-1 rounded transition-colors"
+          className="text-xs bg-secondary hover:bg-secondary/80 text-secondary-foreground px-2 py-1 rounded transition-colors"
         >
           {copied ? '已复制!' : '复制'}
         </button>
       </div>
       <div 
-        className="rounded-lg overflow-hidden shadow-lg border border-gray-700"
+        className="rounded-lg overflow-hidden shadow-lg border border-border"
         dangerouslySetInnerHTML={{ __html: highlightedCode }}
       />
     </div>
@@ -70,7 +70,7 @@ function CodeBlock({ children, className }: { children: string; className?: stri
 // 内联代码组件
 function InlineCode({ children }: { children: React.ReactNode }) {
   return (
-    <code className="bg-gray-100 dark:bg-gray-800 text-sm rounded px-1.5 py-0.5 font-mono text-purple-600 dark:text-purple-400 border border-gray-200 dark:border-gray-700">
+    <code className="bg-muted text-sm rounded px-1.5 py-0.5 font-mono text-accent border border-border">
       {children}
     </code>
   )
@@ -81,20 +81,20 @@ const components = {
   pre: (props: any) => <div {...props} />,
   code: CodeBlock,
   inlineCode: InlineCode,
-  h1: (props: any) => <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6 border-b border-gray-200 dark:border-gray-700 pb-3" {...props} />,
-  h2: (props: any) => <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white mt-10 mb-4 border-b border-gray-200 dark:border-gray-700 pb-2" {...props} />,
-  h3: (props: any) => <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white mt-8 mb-3 border-b border-gray-200 dark:border-gray-700 pb-2" {...props} />,
-  p: (props: any) => <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4 text-base" {...props} />,
-  a: (props: any) => <a className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 underline underline-offset-4 decoration-2 decoration-blue-300 hover:decoration-blue-600 transition-all duration-200" {...props} />,
-  ul: (props: any) => <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 mb-6 space-y-2" {...props} />,
-  ol: (props: any) => <ol className="list-decimal list-inside text-gray-700 dark:text-gray-300 mb-6 space-y-2" {...props} />,
-  li: (props: any) => <li className="text-gray-700 dark:text-gray-300" {...props} />,
-  blockquote: (props: any) => <blockquote className="border-l-4 border-blue-500 pl-6 italic text-gray-700 dark:text-gray-300 my-6 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-r-lg" {...props} />,
-  img: (props: any) => <img className="rounded-xl shadow-lg my-8 max-w-full h-auto mx-auto border border-gray-200 dark:border-gray-700" {...props} />,
-  table: (props: any) => <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm my-8" {...props} />,
-  th: (props: any) => <th className="px-4 py-3 bg-gray-50 dark:bg-gray-800 text-left text-sm font-semibold text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-700" {...props} />,
-  td: (props: any) => <td className="px-4 py-3 text-sm text-gray-900 dark:text-gray-300 border-b border-gray-100 dark:border-gray-800" {...props} />,
-  hr: (props: any) => <hr className="my-8 border-gray-200 dark:border-gray-700" {...props} />,
+  h1: (props: any) => <h1 className="text-3xl font-extrabold tracking-tight text-foreground mb-6 border-b border-border pb-3" {...props} />,
+  h2: (props: any) => <h2 className="text-2xl font-bold tracking-tight text-foreground mt-10 mb-4 border-b border-border pb-2" {...props} />,
+  h3: (props: any) => <h3 className="text-xl font-bold tracking-tight text-foreground mt-8 mb-3 border-b border-border pb-2" {...props} />,
+  p: (props: any) => <p className="text-muted-foreground leading-relaxed mb-4 text-base" {...props} />,
+  a: (props: any) => <a className="text-primary hover:text-primary/80 underline underline-offset-4 decoration-2 decoration-primary/30 hover:decoration-primary transition-all duration-200" {...props} />,
+  ul: (props: any) => <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2" {...props} />,
+  ol: (props: any) => <ol className="list-decimal list-inside text-muted-foreground mb-6 space-y-2" {...props} />,
+  li: (props: any) => <li className="text-muted-foreground" {...props} />,
+  blockquote: (props: any) => <blockquote className="border-l-4 border-primary pl-6 italic text-muted-foreground my-6 bg-muted/50 p-4 rounded-r-lg" {...props} />,
+  img: (props: any) => <img className="rounded-xl shadow-lg my-8 max-w-full h-auto mx-auto border border-border" {...props} />,
+  table: (props: any) => <table className="min-w-full divide-y divide-border border border-border rounded-lg overflow-hidden shadow-sm my-8" {...props} />,
+  th: (props: any) => <th className="px-4 py-3 bg-muted text-left text-sm font-semibold text-foreground border-b border-border" {...props} />,
+  td: (props: any) => <td className="px-4 py-3 text-sm text-foreground border-b border-border" {...props} />,
+  hr: (props: any) => <hr className="my-8 border-border" {...props} />,
 }
 
 export function MDXRenderer({ content }: MDXRendererProps) {
@@ -132,9 +132,9 @@ export function MDXRenderer({ content }: MDXRendererProps) {
     return (
       <div className="prose prose-lg dark:prose-invert max-w-none">
         <div className="animate-pulse">
-          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-4"></div>
-          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2 mb-4"></div>
-          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full mb-4"></div>
+          <div className="h-4 bg-muted rounded w-3/4 mb-4"></div>
+          <div className="h-4 bg-muted rounded w-1/2 mb-4"></div>
+          <div className="h-4 bg-muted rounded w-full mb-4"></div>
         </div>
       </div>
     )
@@ -143,7 +143,7 @@ export function MDXRenderer({ content }: MDXRendererProps) {
   if (error) {
     return (
       <div className="prose prose-lg dark:prose-invert max-w-none">
-        <p className="text-red-500">{error}</p>
+        <p className="text-destructive">{error}</p>
       </div>
     )
   }
@@ -151,7 +151,7 @@ export function MDXRenderer({ content }: MDXRendererProps) {
   if (!mdxSource) {
     return (
       <div className="prose prose-lg dark:prose-invert max-w-none">
-        <p className="text-gray-500">暂无内容</p>
+        <p className="text-muted-foreground">暂无内容</p>
       </div>
     )
   }

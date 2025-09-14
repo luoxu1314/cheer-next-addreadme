@@ -60,7 +60,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const tags = Array.isArray(post.tags) ? post.tags : [];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <Button asChild variant="ghost" className="mb-6">
@@ -70,7 +70,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </Link>
           </Button>
 
-          <article className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+          <article className="bg-card rounded-2xl shadow-lg overflow-hidden">
             {post.coverImage && (
               <div className="relative h-64 md:h-96">
                 <Image
@@ -84,7 +84,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             )}
 
             <div className="p-8 md:p-12">
-              <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-6">
+              <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
                 <div className="flex items-center gap-1">
                   <Calendar className="w-4 h-4" />
                   <time dateTime={post.publishedAt?.toISOString()}>
@@ -101,12 +101,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </div>
               </div>
 
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+              <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
                 {post.title}
               </h1>
 
               {post.excerpt && (
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                   {post.excerpt}
                 </p>
               )}
@@ -116,7 +116,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   {tags.map((tag) => (
                     <span
                       key={tag}
-                      className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+                      className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm bg-primary/10 text-primary-foreground"
                     >
                       <Tag className="w-3 h-3" />
                       {tag}
@@ -130,7 +130,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </div>
             </div>
 
-            <div className="mt-12 pt-8 border-t">
+            <div className="mt-12 pt-8 border-t border-border">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className="text-sm text-muted-foreground">

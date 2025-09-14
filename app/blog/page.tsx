@@ -28,13 +28,13 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const totalPages = Math.ceil(total / limit);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold gradient-blue bg-clip-text text-transparent mb-4">
             技术博客
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             分享技术见解、开发经验和学习心得
           </p>
         </div>
@@ -47,7 +47,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           <div className="mb-6 text-center">
             <h2 className="text-2xl font-semibold mb-4">
               标签:{" "}
-              <span className="text-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text">
+              <span className="text-transparent gradient-purple bg-clip-text">
                 {tag}
               </span>
             </h2>
@@ -56,7 +56,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
         {posts.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-500 dark:text-gray-400">暂无文章</p>
+            <p className="text-muted-foreground">暂无文章</p>
           </div>
         ) : (
           <>
