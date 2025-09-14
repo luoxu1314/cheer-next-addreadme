@@ -23,7 +23,7 @@ export function BlogPostList() {
   const fetchPosts = async () => {
     try {
       const token = localStorage.getItem('adminToken')
-      const response = await fetch('/api/blog/posts?published=false', {
+      const response = await fetch('/api/blog/posts?published=all', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
