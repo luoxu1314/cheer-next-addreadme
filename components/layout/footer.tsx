@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Calendar, Mail, Github, Heart, MessageCircle, ExternalLink } from "lucide-react";
 import { contactConfig } from "@/lib/config/contact.config";
+import { footerConfig } from "@/lib/config/footer.config";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -13,14 +14,14 @@ export function Footer() {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2">
               <Calendar className="h-8 w-8 text-primary" />
-              <span className="font-bold text-xl text-foreground">绮课</span>
+              <span className="font-bold text-xl text-foreground">{footerConfig.brand.name}</span>
             </div>
             <p className="mt-4 text-sm text-muted-foreground max-w-md">
-              绮课是专为中南大学师生打造的课程表查询平台，致力于提供便捷、准确、实时的课表查询服务。
+              {footerConfig.brand.description}
             </p>
             <div className="mt-4 flex items-center space-x-2 text-sm text-muted-foreground">
               <Heart className="h-4 w-4 text-destructive" />
-              <span>用心服务每一位中南人</span>
+              <span>{footerConfig.brand.slogan}</span>
             </div>
           </div>
 
@@ -30,38 +31,16 @@ export function Footer() {
               快速链接
             </h3>
             <ul className="mt-4 space-y-3">
-              <li>
-                <Link 
-                  href="/" 
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  首页
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/search/student" 
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  学生课表
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/search/teacher" 
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  教师课表
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/search/classroom" 
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  教室课表
-                </Link>
-              </li>
+              {footerConfig.quickLinks.map((link, index) => (
+                <li key={index}>
+                  <Link 
+                    href={link.href} 
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -71,28 +50,17 @@ export function Footer() {
               友情链接
             </h3>
             <ul className="mt-4 space-y-3">
-              <li>
-                <a
-                  href="https://huayemao.run"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                  <span>花野猫的数字花园</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="http://csujwc.its.csu.edu.cn/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                  <span>中南大学教务系统</span>
-                </a>
-              </li>
+              {footerConfig.friendlyLinks.map((link, index) => (
+                <li key={index}>
+                  <a
+                    href={link.href}
+                    className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    <span>{link.label}</span>
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -137,10 +105,10 @@ export function Footer() {
         <div className="mt-8 border-t border-border pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-muted-foreground">
-              © {currentYear} 绮课. All rights reserved.
+              {footerConfig.copyright.replace('{year}', currentYear.toString())}
             </p>
             <p className="text-sm text-muted-foreground mt-2 md:mt-0">
-              中南大学课程表查询平台
+              {footerConfig.platformName}
             </p>
           </div>
         </div>
