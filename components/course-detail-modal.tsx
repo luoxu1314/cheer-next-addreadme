@@ -144,7 +144,7 @@ export function CourseDetailModal({
               <div>
                 <p className="text-sm font-medium text-foreground">授课教师</p>
                 <p className="text-sm text-muted-foreground">
-                  {currentCourse.teachers.map((t,i) => <>
+                  {currentCourse.teachers.map((t, i) => <>
                     {i !== 0 && '、'}<Link href={`/table/teacher/${t.id}`} className="hover:text-primary transition-colors underline underline-offset-2">
                       {t.name}
                     </Link>
@@ -222,17 +222,21 @@ export function CourseDetailModal({
               上一个
             </Button>
           )}
-          <Link
-            href={`/course/${currentCourse.courseId}`}
-            className={cn("w-full", {
+
+          <Button variant="default" size="sm"
+            asChild
+            className={cn({
+              "w-full": courses.length > 1,
               "flex-1": courses.length > 1,
               "ml-auto": courses.length < 2,
-            })}
-          >
-            <Button variant="default" size="sm">
-              查看详情页
-            </Button>
-          </Link>
+            })}>
+            <Link
+              href={`/course/${currentCourse.courseId}`}
+            >
+              查看开课详情
+            </Link>
+
+          </Button>
           {courses.length > 1 && (
             <Button
               variant="outline"

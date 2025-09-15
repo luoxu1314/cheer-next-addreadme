@@ -92,7 +92,7 @@ async function CourseDetailContent({ id }: { id: string }) {
                               <Link
                                 key={teacher.id}
                                 href={`/table/teacher/${teacher.id}`}
-                                className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors text-sm"
+                                className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors underline underline-offset-2 text-sm"
                               >
                                 {teacher.name}
                               </Link>
@@ -108,7 +108,7 @@ async function CourseDetailContent({ id }: { id: string }) {
                     <BookOpen className="w-5 h-5 text-chart-4 mt-0.5 shrink-0" />
                     <div>
                       <p className="text-sm font-medium text-foreground">班级</p>
-                      <p className="text-sm text-muted-foreground">{course.className}</p>
+                      <Link href={`/table/class/${course.className}`} className="text-sm text-muted-foreground underline underline-offset-2">{course.className}</Link>
                     </div>
                   </div>
 
@@ -127,7 +127,7 @@ async function CourseDetailContent({ id }: { id: string }) {
                     <Users className="w-5 h-5 text-chart-4 mt-0.5 shrink-0" />
                     <div>
                       <p className="text-sm font-medium text-foreground">选课人数</p>
-                      <p className="text-sm text-muted-foreground">{course.electCount} 人</p>
+                      <Link href={`#students`} className="text-sm text-muted-foreground underline underline-offset-2">{course.electCount} 人</Link>
                     </div>
                   </div>
 
@@ -191,7 +191,7 @@ async function CourseDetailContent({ id }: { id: string }) {
         {/* 学生列表 */}
         <Card className="overflow-hidden">
           <div className="p-6">
-            <h2 className="text-xl font-bold text-foreground mb-4">选课学生 ({course.enrollments.length} 人)</h2>
+            <h2 id='students' className="text-xl font-bold text-foreground mb-4">选课学生 ({course.enrollments.length} 人)</h2>
 
             {Object.entries(studentsByClass).map(([className, enrollments]) => (
               <div key={className} className="mb-6 last:mb-0">
@@ -225,7 +225,7 @@ async function CourseDetailContent({ id }: { id: string }) {
                             </Link>
                           </TableCell>
                           <TableCell>
-                            <Link href={`/table/class/${enrollment.student.className}`} className="hover:text-primary transition-colors">
+                            <Link href={`/table/class/${enrollment.student.className}`} className="hover:text-primary transition-colors ">
                               {enrollment.student.className}
                             </Link>
                           </TableCell>
