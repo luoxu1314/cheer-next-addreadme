@@ -6,6 +6,7 @@ import prisma from '@/lib/prisma'
 import { getTimetableByLocationId } from './getTimetableByLocationId'
 import { getTimetableByStudentId } from './getTimetableByStudentId'
 import { getTimetableByTeacherId } from './getTimetableByTeacherId'
+import { getTimetableByClassId } from './getTimetableByClassId'
 
 export const getTimetable = unstable_cache(
   async (
@@ -24,6 +25,7 @@ export const getTimetable = unstable_cache(
       [OwnerType.student]: getTimetableByStudentId,
       [OwnerType.location]: getTimetableByLocationId,
       [OwnerType.profession]: getTimetableByProfessionName,
+      [OwnerType.class]: getTimetableByClassId,
     } as const
     // 根据类型调用不同的函数，并传递正确的参数
     const result = await fnMapping[type as keyof typeof fnMapping](id, term, grade);

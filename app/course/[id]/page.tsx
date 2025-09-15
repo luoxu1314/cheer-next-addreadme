@@ -218,21 +218,17 @@ async function CourseDetailContent({ id }: { id: string }) {
                               href={`/table/student/${enrollment.student.id}`}
                               className="flex items-center gap-2 hover:text-primary transition-colors"
                             >
-                              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                                enrollment.student.sex === '男' 
-                                  ? 'bg-blue-100 dark:bg-blue-900/30' 
-                                  : 'bg-pink-100 dark:bg-pink-900/30'
-                              }`}>
-                                <User className={`w-4 h-4 ${
-                                  enrollment.student.sex === '男' 
-                                    ? 'text-blue-600 dark:text-blue-400' 
-                                    : 'text-pink-600 dark:text-pink-400'
-                                }`} />
+                              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${enrollment.student.sex === '男' ? 'bg-blue-100 dark:bg-blue-900/30' : 'bg-pink-100 dark:bg-pink-900/30'}`}>
+                                <User className={`w-4 h-4 ${enrollment.student.sex === '男' ? 'text-blue-600 dark:text-blue-400' : 'text-pink-600 dark:text-pink-400'}`} />
                               </div>
                               <span>{enrollment.student.name}</span>
                             </Link>
                           </TableCell>
-                          <TableCell>{enrollment.student.className}</TableCell>
+                          <TableCell>
+                            <Link href={`/table/class/${enrollment.student.className}`} className="hover:text-primary transition-colors">
+                              {enrollment.student.className}
+                            </Link>
+                          </TableCell>
                           <TableCell>{enrollment.student.facultyName}</TableCell>
                         </TableRow>
                       ))}

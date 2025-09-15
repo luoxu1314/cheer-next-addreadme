@@ -159,7 +159,9 @@ export function CourseDetailModal({
                   班级
                 </p>
                 <p className="text-sm font-medium text-foreground">
-                  {currentCourse.classId}
+                  <Link href={`/table/class/${currentCourse.classId}`} className="hover:text-primary transition-colors underline underline-offset-2">
+                    {currentCourse.classId}
+                  </Link>
                 </p>
               </div>
             </div>
@@ -170,7 +172,7 @@ export function CourseDetailModal({
                 <p className="text-xs text-muted-foreground/70">人数</p>
                 <Link
                   href={`/course/${currentCourse.courseId}`}
-                  className="text-sm font-medium text-foreground"
+                  className="text-sm font-medium text-foreground underline underline-offset-2"
                 >
                   {currentCourse.studentCount}人
                 </Link>
