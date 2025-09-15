@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Switch } from '@/components/ui/switch'
 import { Card } from '@/components/ui/card'
+import Image from 'next/image'
 
 interface BlogPostEditorProps {
   postId: string | null
@@ -22,6 +23,7 @@ export function BlogPostEditor({ postId }: BlogPostEditorProps) {
   const [featured, setFeatured] = useState(false)
   const [loading, setLoading] = useState(false)
   const [editingPostId, setEditingPostId] = useState<string | null>(null)
+  const [coverImage, setCoverImage] = useState<string>('')
 
   // 当组件挂载或标签页切换过来时，检查是否有要编辑的文章
   useEffect(() => {
@@ -45,10 +47,11 @@ export function BlogPostEditor({ postId }: BlogPostEditorProps) {
       setTitle(data.title || '');
       setSlug(data.slug || '');
       setContent(data.content || '');
-      setExcerpt(data.excerpt || '');
-      setTags(Array.isArray(data.tags) ? data.tags.join(', ') : '');
-      setPublished(data.published || false);
-      setFeatured(data.featured || false);
+      setExcerpt(data.excerpt || '')
+      setTags(Array.isArray(data.tags) ? data.tags.join(', ') : '')
+      setPublished(data.published || false)
+      setFeatured(data.featured || false)
+      setCoverImage(data.coverImage || '')
       setEditingPostId(id);
     } catch (error) {
       console.error('加载文章数据失败:', error);
@@ -79,6 +82,7 @@ export function BlogPostEditor({ postId }: BlogPostEditorProps) {
           slug,
           content,
           excerpt,
+          coverImage,
           tags: tags.split(',').map(t => t.trim()).filter(t => t),
           published,
           featured
@@ -98,6 +102,7 @@ export function BlogPostEditor({ postId }: BlogPostEditorProps) {
           setSlug('')
           setContent('')
           setExcerpt('')
+          setCoverImage('')
           setTags('')
           setPublished(false)
           setFeatured(false)
@@ -146,6 +151,44 @@ export function BlogPostEditor({ postId }: BlogPostEditorProps) {
             onChange={(e) => setExcerpt(e.target.value)}
             rows={3}
           />
+        </div>
+
+        <div>
+          <Label htmlFor="coverImage">封面图片</Label>
+          <div className="space-y-2">
+            <div className="flex space-x-2">
+              <Input
+                id="coverImage"
+                value={coverImage}
+                onChange={(e) => setCoverImage(e.target.value)}
+                placeholder="图片URL，例如：/uploads/cover.jpg"
+              />
+              {coverImage && (
+                <Button
+                  type="button"
+                  variant="secondary"
+                  onClick={() => setCoverImage('')}
+                >
+                  清除
+                </Button>
+              )}
+            </div>
+            {coverImage && (
+              <div className="mt-2 border rounded p-2 bg-gray-50 dark:bg-gray-800">
+                <div className="relative w-full h-48 overflow-hidden rounded">
+                  <Image
+                    src={coverImage}
+                    alt="封面图片预览"
+                    fill
+                    className="object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = 'https://via.placeholder.com/800x400?text=图片加载失败';
+                    }}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         <div>
