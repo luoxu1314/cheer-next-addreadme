@@ -42,6 +42,10 @@ export const footerConfig: FooterConfig = {
     {
       href: '/search/classroom',
       label: '教室课表'
+    },
+    {
+      href: '/ads/pricing',
+      label: '广告合作'
     }
   ],
   friendlyLinks: [

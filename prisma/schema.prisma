@@ -169,6 +169,17 @@ model BlogPost {
     views       Int       @default(0)
     tags        Json      @default("[]")
     meta        Json      @default("{}")
+    
+    // 广告相关字段
+    isAd        Boolean   @default(false)
+    adClient    String?   @db.Text
+    adContact   String?   @db.Text
+    adStartDate DateTime?
+    adEndDate   DateTime?
+    adStatus    String    @default("pending") // pending, active, expired, rejected
+    adPrice     Int?      // 价格，单位：分
+    adDuration  Int?      // 时长，单位：月
+    
     createdAt   DateTime  @default(now())
     updatedAt   DateTime  @default(now()) @updatedAt()
     publishedAt DateTime?
@@ -176,6 +187,9 @@ model BlogPost {
     @@index([published])
     @@index([slug])
     @@index([createdAt])
+    @@index([isAd])
+    @@index([adStatus])
+    @@index([adEndDate])
 }
 
 model File {

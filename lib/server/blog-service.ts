@@ -7,10 +7,16 @@ export async function getBlogPosts(options: {
   offset?: number
   tag?: string
   search?: string
+  excludeAds?: boolean
 } = {}): Promise<{ posts: BlogPost[]; total: number; hasMore: boolean }> {
-  const { published = true, limit = 10, offset = 0, tag, search } = options
+  const { published = true, limit = 10, offset = 0, tag, search, excludeAds = true } = options
 
   const where: any = { published }
+
+  // 排除广告
+  if (excludeAds) {
+    where.isAd = false
+  }
 
   if (tag) {
     where.tags = { has: tag }
