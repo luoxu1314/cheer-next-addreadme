@@ -122,11 +122,11 @@ export function CourseDetailModal({
                 <p className="text-sm sm:text-base font-medium text-foreground">
                   上课地点
                 </p>
-                {currentCourse.location.name!=='无'? (
+                {currentCourse.location.name !== '无' ? (
                   <Link className="underline" href={`/table/location/${currentCourse.location.id}`}>
                     <span className="text-sm text-muted-foreground">
                       {currentCourse.location.name}
-                    </span> · 
+                    </span> ·
                     <span className="text-xs sm:text-sm text-muted-foreground/70">
                       {currentCourse.location.building}
                     </span>
@@ -144,7 +144,11 @@ export function CourseDetailModal({
               <div>
                 <p className="text-sm font-medium text-foreground">授课教师</p>
                 <p className="text-sm text-muted-foreground">
-                  {currentCourse.teachers.map((t) => t.name).join("、")}
+                  {currentCourse.teachers.map((t,i) => <>
+                    {i !== 0 && '、'}<Link href={`/table/teacher/${t.id}`} className="hover:text-primary transition-colors underline underline-offset-2">
+                      {t.name}
+                    </Link>
+                  </>)}
                 </p>
               </div>
             </div>
