@@ -11,7 +11,12 @@ import { format } from 'date-fns'
 import { zhCN } from 'date-fns/locale'
 import { Eye, Edit, Trash2, Calendar } from 'lucide-react'
 
-export function BlogPostList() {
+interface BlogPostListProps {
+  onEditPost: () => void;
+  setEditingPostId: (id: string) => void;
+}
+
+export function BlogPostList({ onEditPost, setEditingPostId }: BlogPostListProps) {
   const [posts, setPosts] = useState<BlogPost[]>([])
   const [loading, setLoading] = useState(true)
   const [deleteId, setDeleteId] = useState<string | null>(null)
@@ -121,7 +126,11 @@ export function BlogPostList() {
                       checked={post.published}
                       onCheckedChange={(checked) => togglePublish(post.id, checked)}
                     />
-                    <Button variant="ghost" size="sm">
+                    <Button variant="ghost" size="sm" onClick={() => {
+                      setEditingPostId(post.id);
+                      // 调用回调函数切换到编辑标签页
+                      onEditPost();
+                    }}>
                       <Edit className="w-4 h-4" />
                     </Button>
                     <Button

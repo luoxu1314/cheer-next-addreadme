@@ -14,6 +14,7 @@ import { verifyToken } from '@/lib/server/auth'
 export default function AdminDashboardPage() {
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState('posts')
+  const [editingPostId, setEditingPostId] = useState<string | null>(null)
   const router = useRouter()
 
   useEffect(() => {
@@ -80,7 +81,7 @@ export default function AdminDashboardPage() {
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
           <TabsList>
             <TabsTrigger value="posts">文章管理</TabsTrigger>
-            <TabsTrigger value="editor">新建文章</TabsTrigger>
+            <TabsTrigger value="editor">新建/编辑文章</TabsTrigger>
             <TabsTrigger value="upload">图片上传</TabsTrigger>
           </TabsList>
 
@@ -90,7 +91,10 @@ export default function AdminDashboardPage() {
                 <CardTitle>文章列表</CardTitle>
               </CardHeader>
               <CardContent>
-                <BlogPostList />
+                <BlogPostList 
+                  onEditPost={() => setActiveTab('editor')} 
+                  setEditingPostId={(id) => setEditingPostId(id)}
+                />
               </CardContent>
             </Card>
           </TabsContent>
@@ -101,7 +105,7 @@ export default function AdminDashboardPage() {
                 <CardTitle>文章编辑器</CardTitle>
               </CardHeader>
               <CardContent>
-                <BlogPostEditor />
+                <BlogPostEditor postId={editingPostId} />
               </CardContent>
             </Card>
           </TabsContent>
