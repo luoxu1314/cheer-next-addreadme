@@ -6,8 +6,8 @@ export interface HomeConfig {
     searchButton: string;
     learnMoreButton: string;
     stats: {
-      students: string;
-      teachers: string;
+      subjects: string;
+      courses: string;
       classrooms: string;
     };
   };
@@ -48,8 +48,8 @@ export const homeConfig: HomeConfig = {
     searchButton: "立即查询",
     learnMoreButton: "了解更多",
     stats: {
-      students: "10万+",
-      teachers: "5000+",
+      subjects: "9000+",
+      courses: "10万+",
       classrooms: "1000+"
     }
   },

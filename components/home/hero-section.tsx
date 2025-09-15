@@ -59,16 +59,16 @@ export function HeroSection() {
         {/* Stats */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div className="text-center p-6 bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg">
-            <div className="text-3xl font-bold text-primary mb-2">{homeConfig.hero.stats.students}</div>
-            <div className="text-sm text-muted-foreground">学生用户</div>
+            <div className="text-3xl font-bold text-primary mb-2">{homeConfig.hero.stats.subjects}</div>
+            <div className="text-sm text-muted-foreground">课程</div>
           </div>
           <div className="text-center p-6 bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg">
-            <div className="text-3xl font-bold text-secondary mb-2">{homeConfig.hero.stats.teachers}</div>
-            <div className="text-sm text-muted-foreground">教师信息</div>
+            <div className="text-3xl font-bold text-secondary mb-2">{homeConfig.hero.stats.courses}</div>
+            <div className="text-sm text-muted-foreground">开课</div>
           </div>
           <div className="text-center p-6 bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg">
             <div className="text-3xl font-bold text-gradient-pink-end mb-2">{homeConfig.hero.stats.classrooms}</div>
-            <div className="text-sm text-muted-foreground">教室资源</div>
+            <div className="text-sm text-muted-foreground">上课地点</div>
           </div>
         </div>
 
