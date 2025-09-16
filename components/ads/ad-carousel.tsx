@@ -51,7 +51,7 @@ export function AdCarousel() {
 
   useEffect(() => {
     if (ads.length <= 1) return
-    
+
     const interval = setInterval(nextSlide, 5000)
     return () => clearInterval(interval)
   }, [ads.length])
@@ -75,20 +75,24 @@ export function AdCarousel() {
       <div className="w-full max-w-4xl mx-auto p-6">
         <Card className="gradient-purple text-primary-foreground">
           <CardHeader>
-            <CardTitle className="text-2xl">🚀 绮课校园推广</CardTitle>
+            <CardTitle className="text-2xl">🚀 绮课校园推广计划 —— 让好创意遇上对的人</CardTitle>
             <CardDescription className="text-primary-foreground/80">
-              想要在这里展示你的创意？我们提供最酷的校园推广服务！
+              ——你认真做的事，值得被更多有趣的人看见。
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm mb-2">仅需 20元/6个月</p>
-                <p className="text-xs text-primary-foreground/70">覆盖全校，精准投放</p>
+                <p className="text-sm mb-2">正在筹备一场酷炫的社团活动？🎉有一个超棒的大创想法？💡
+                  <br />
+                  又或是，你想分享自己的开源项目、创意作品？🚀
+                  <br />
+                  绮课✨为你预留了最显眼的校园推广位<br />
+                  ——你敢把想法变成行动，在绮课，就能让行动遇见对的人。 ❤️‍🔥</p>
               </div>
               <Button variant="secondary" size="sm" asChild>
                 <Link href="/ads/pricing">
-                  立即咨询 <ExternalLink className="ml-2 h-4 w-4" />
+                  立即申请发布 <ExternalLink className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </div>
@@ -105,9 +109,8 @@ export function AdCarousel() {
           {ads.map((ad, index) => (
             <div
               key={ad.id}
-              className={`transition-all duration-500 ease-in-out ${
-                index === currentIndex ? 'opacity-100' : 'opacity-0 absolute inset-0'
-              }`}
+              className={`transition-all duration-500 ease-in-out ${index === currentIndex ? 'opacity-100' : 'opacity-0 absolute inset-0'
+                }`}
             >
               <Card className="hover:shadow-lg transition-shadow">
                 {ad.coverImage && (
@@ -119,16 +122,16 @@ export function AdCarousel() {
                       className="object-cover rounded-t-lg"
                     />
                     <Badge className="absolute top-2 right-2 bg-chart-3 text-primary-foreground">
-                    绮选推荐
-                  </Badge>
+                      绮选推荐
+                    </Badge>
                   </div>
                 )}
                 <CardHeader>
                   <CardTitle className="text-lg flex items-center justify-between">
                     {ad.title}
                     <Badge variant="outline" className="text-xs border-chart-3 text-chart-3">
-                    {ad.adClient} · {ad.adPrice / 100}元/{ad.adDuration}个月
-                  </Badge>
+                      {ad.adClient} · {ad.adPrice / 100}元/{ad.adDuration}个月
+                    </Badge>
                   </CardTitle>
                   <CardDescription className="text-sm">
                     {ad.excerpt}
@@ -174,16 +177,15 @@ export function AdCarousel() {
 
         {ads.length > 1 && (
           <div className="flex justify-center space-x-2 mt-4">
-              {ads.map((_, index) => (
-                <button
-                  key={index}
-                  className={`h-2 w-2 rounded-full transition-colors ${
-                    index === currentIndex ? 'bg-chart-3' : 'bg-muted'
+            {ads.map((_, index) => (
+              <button
+                key={index}
+                className={`h-2 w-2 rounded-full transition-colors ${index === currentIndex ? 'bg-chart-3' : 'bg-muted'
                   }`}
-                  onClick={() => setCurrentIndex(index)}
-                />
-              ))}
-            </div>
+                onClick={() => setCurrentIndex(index)}
+              />
+            ))}
+          </div>
         )}
       </div>
     </div>

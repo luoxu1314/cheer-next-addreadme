@@ -58,11 +58,11 @@ const benefits = [
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-background py-12">
+    <div className="min-h-screen bg-background py-12 pt-16">
       <div className="max-w-6xl mx-auto px-4">
         {/* 头部 */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold gradient-purple bg-clip-text text-transparent mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold gradient-purple  text-primary-foreground mb-4">
             🚀 绮课校园推广计划
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
