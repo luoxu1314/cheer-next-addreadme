@@ -7,13 +7,17 @@ export async function getSubjects(
     offset: 0,
     pageSize: 100,
   },
-  publicElectiveOnly: string
+  publicElectiveOnly: string,
+  credit?: number,
+  category?: string
 ) {
   const where = {
     department: departmentName || undefined,
     name: {
       contains: q || undefined,
     },
+    credit: credit || undefined,
+    category: category || undefined,
     courses: {
       some: {},
     },
