@@ -91,7 +91,7 @@ export function Navigation() {
                       </NavigationMenuLink>
                       <NavigationMenuLink asChild>
                         <a
-                          href="/search/classroom"
+                          href="/search/location"
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primary/20 hover:text-accent-foreground focus:bg-secondary focus:text-secondary-foreground"
                         >
                           <div className="text-sm font-medium leading-none">
@@ -219,7 +219,7 @@ export function Navigation() {
                 教师课表
               </Link>
               <Link
-                href="/search/classroom"
+                href="/search/location"
                 className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-secondary hover:text-secondary-foreground"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
