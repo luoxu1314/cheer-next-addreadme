@@ -60,11 +60,11 @@ export function SettingsSidebar({
                 <Calendar className="h-4 w-4 text-muted-foreground" />
                 <div>
                   <Label htmlFor="weekend-mode" className="text-sm font-medium">
-                    显示周末
-                  </Label>
-                  <p className="text-xs text-muted-foreground">
-                    在课表中显示周六和周日
-                  </p>
+                  移动端显示周末
+                </Label>
+                <p className="text-xs text-muted-foreground">
+                  在移动设备课表中显示周六和周日
+                </p>
                 </div>
               </div>
               <Switch

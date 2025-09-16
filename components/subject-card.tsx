@@ -106,7 +106,7 @@ export const SubjectCard: React.FC<SubjectCardProps> = ({ subject }) => {
 
       <Separator className="my-1" />
 
-      <CardFooter className="flex justify-between items-center pt-3 pb-6 px-6">
+      <CardFooter className="flex justify-between items-center px-6">
         <div className="text-xs text-muted-foreground">
           更新于 {formatDate(subject.updatedAt || subject.createdAt)}
         </div>

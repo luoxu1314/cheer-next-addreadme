@@ -23,7 +23,6 @@ interface CourseItem {
 
 interface DesktopTimetableProps {
   courses: CourseItem[]
-  showWeekend: boolean
   firstColumnMode: "time" | "index"
 }
 
@@ -51,17 +50,16 @@ function groupCoursesByDayAndTime(courses: CourseItem[]) {
   return grouped
 }
 
-export function DesktopTimetable({ courses, showWeekend, firstColumnMode }: DesktopTimetableProps) {
+export function DesktopTimetable({ courses, firstColumnMode }: DesktopTimetableProps) {
   const groupedCourses = groupCoursesByDayAndTime(courses)
-  const displayDays = showWeekend ? days : days.slice(0, 5)
 
   return (
-    <div className={`hidden lg:grid gap-4 ${showWeekend ? "grid-cols-8" : "grid-cols-6"}`}>
+    <div className="hidden lg:grid gap-4 grid-cols-8">
       <div className="font-semibold text-center py-3 text-sm text-muted-foreground bg-card/50 backdrop-blur-md rounded-xl border border-border/50 shadow-lg">
         {firstColumnMode === "time" ? "时间" : "节次"}
       </div>
 
-      {displayDays.map((day, dayIndex) => (
+      {days.map((day) => (
         <div
           key={day}
           className="font-semibold text-center py-3 text-sm bg-gradient-to-br from-card/70 to-card/50 backdrop-blur-md rounded-xl border border-border/50 shadow-lg text-foreground"
@@ -81,7 +79,7 @@ export function DesktopTimetable({ courses, showWeekend, firstColumnMode }: Desk
             : `${timeIndex + 1}`
           }
         </div>,
-        ...displayDays.map((day, dayIndex) => {
+        ...days.map((day, dayIndex) => {
           const dayKey = (dayIndex + 1).toString()
           const timeKey = (timeIndex + 1).toString()
           const coursesInThisSlot = groupedCourses[dayKey]?.[timeKey] || []

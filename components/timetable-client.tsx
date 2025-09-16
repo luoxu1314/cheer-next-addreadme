@@ -45,7 +45,17 @@ export default function TimetableClient({
   id,
   grades = [],
 }: TimetableClientProps) {
-  const [showWeekend, setShowWeekend] = useState(true);
+  // 默认关闭移动端显示周末，并从 localStorage 读取设置
+  const [mobileShowWeekend, setMobileShowWeekend] = useState<boolean>(() => {
+    const saved = localStorage.getItem('mobileShowWeekend');
+    return saved === null ? false : saved === 'true';
+  });
+
+  // 当设置改变时保存到 localStorage
+  const handleMobileShowWeekendChange = (value: boolean) => {
+    setMobileShowWeekend(value);
+    localStorage.setItem('mobileShowWeekend', value.toString());
+  };
   const [firstColumnMode, setFirstColumnMode] = useState<"time" | "index">("time");
   const router = useRouter();
   const pathname = usePathname();
@@ -85,8 +95,8 @@ export default function TimetableClient({
         terms={terms}
         currentTerm={currentTerm}
         onTermChange={handleTermChange}
-        showWeekend={showWeekend}
-        onShowWeekendChange={setShowWeekend}
+        showWeekend={mobileShowWeekend}
+        onShowWeekendChange={handleMobileShowWeekendChange}
         type={type}
         grades={grades}
         currentGrade={currentGrade}
@@ -95,8 +105,8 @@ export default function TimetableClient({
 
       {/* Settings Sidebar for Desktop */}
       <SettingsSidebar
-        showWeekend={showWeekend}
-        onShowWeekendChange={setShowWeekend}
+        showWeekend={mobileShowWeekend}
+        onShowWeekendChange={handleMobileShowWeekendChange}
         firstColumnMode={firstColumnMode}
         onFirstColumnModeChange={setFirstColumnMode}
       />
@@ -105,13 +115,12 @@ export default function TimetableClient({
       <div id="timetable-content" className="space-y-6">
         <DesktopTimetable
           courses={courses}
-          showWeekend={showWeekend}
           firstColumnMode={firstColumnMode}
         />
         <MobileTimetable
           courses={courses}
-          showWeekend={showWeekend}
-          firstColumnMode={firstColumnMode}
+          showWeekend={mobileShowWeekend} // 移动端根据设置显示周末
+        firstColumnMode={firstColumnMode}
         />
       </div>
     </div>
