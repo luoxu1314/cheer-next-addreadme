@@ -56,7 +56,18 @@ export default function TimetableClient({
     setMobileShowWeekend(value);
     localStorage.setItem('mobileShowWeekend', value.toString());
   };
-  const [firstColumnMode, setFirstColumnMode] = useState<"time" | "index">("time");
+  
+  // 从 localStorage 读取第一列显示模式设置
+  const [firstColumnMode, setFirstColumnMode] = useState<"time" | "index">(() => {
+    const saved = localStorage.getItem('firstColumnMode');
+    return saved === 'index' ? 'index' : 'time';
+  });
+  
+  // 当第一列显示模式改变时保存到 localStorage
+  const handleFirstColumnModeChange = (value: "time" | "index") => {
+    setFirstColumnMode(value);
+    localStorage.setItem('firstColumnMode', value);
+  };
   const router = useRouter();
   const pathname = usePathname();
 
@@ -105,11 +116,11 @@ export default function TimetableClient({
 
       {/* Settings Sidebar for Desktop */}
       <SettingsSidebar
-        showWeekend={mobileShowWeekend}
-        onShowWeekendChange={handleMobileShowWeekendChange}
-        firstColumnMode={firstColumnMode}
-        onFirstColumnModeChange={setFirstColumnMode}
-      />
+          showWeekend={mobileShowWeekend}
+          onShowWeekendChange={handleMobileShowWeekendChange}
+          firstColumnMode={firstColumnMode}
+          onFirstColumnModeChange={handleFirstColumnModeChange}
+        />
 
       {/* Timetable Content */}
       <div id="timetable-content" className="space-y-6">
