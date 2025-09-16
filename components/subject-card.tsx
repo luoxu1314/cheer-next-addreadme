@@ -58,7 +58,7 @@ export const SubjectCard: React.FC<SubjectCardProps> = ({ subject }) => {
             {subject.name}
           </CardTitle>
           {isPublicElective && (
-            <Badge className="ml-auto bg-blue-500 hover:bg-blue-600 text-white">
+            <Badge className="ml-auto bg-primary text-primary-foreground">
               公共选修
             </Badge>
           )}
@@ -114,7 +114,6 @@ export const SubjectCard: React.FC<SubjectCardProps> = ({ subject }) => {
           variant="default" 
           size="sm" 
           onClick={handleViewDetails}
-          className="bg-primary hover:bg-primary/90 text-primary-foreground"
         >
           查看详情
         </Button>
