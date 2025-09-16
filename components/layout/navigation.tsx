@@ -54,14 +54,18 @@ export function Navigation() {
                   <NavigationMenuContent className="animate-in fade-in zoom-in-95 duration-150 data-[state=open]:animate-in data-[state=open]:fade-in data-[state=open]:zoom-in-95">
                     <div className="grid gap-3 p-6 w-[400px] md:w-[500px] lg:w-[600px] lg:grid-cols-2 bg-background">
                       <div className="row-span-3">
-                        <div className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md">
-                          <div className="mb-2 mt-4 text-lg font-medium text-foreground">
-                            快速查询
-                          </div>
-                          <p className="text-sm leading-tight">
-                            输入学号、姓名或教室名称，快速查找课表信息
-                          </p>
-                        </div>
+                        <SearchDialog 
+                          customTrigger={
+                            <div className="flex h-full w-full select-none cursor-pointer flex-col justify-end rounded-md gradient-blue-lavender p-6 no-underline outline-none transition-all duration-300 hover:shadow-lg focus:shadow-lg">
+                              <div className="mb-2 mt-4 text-lg font-medium text-white">
+                                快速查询
+                              </div>
+                              <p className="text-sm leading-tight text-white/90">
+                                输入学号、姓名或教室名称，快速查找课表信息
+                              </p>
+                            </div>
+                          }
+                        />
                       </div>
                       <NavigationMenuLink asChild>
                         <a

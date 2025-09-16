@@ -10,9 +10,11 @@ import { SearchUI } from "@/components/shared/search/search-ui";
 interface SearchDialogProps {
   // 可选的初始查询参数
   initialQuery?: string;
+  // 可选的自定义触发器内容
+  customTrigger?: React.ReactNode;
 }
 
-export function SearchDialog({ initialQuery }: SearchDialogProps) {
+export function SearchDialog({ initialQuery, customTrigger }: SearchDialogProps) {
   const searchData = SearchComponent({
     type: 'all',
     initialQuery,
@@ -28,13 +30,18 @@ export function SearchDialog({ initialQuery }: SearchDialogProps) {
     }
   }, []);
 
+  // 默认触发器
+  const defaultTrigger = (
+    <Button variant="ghost" size="icon" className="relative">
+      <Search className="h-5 w-5 text-muted-foreground" />
+      <span className="sr-only">搜索</span>
+    </Button>
+  );
+
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon" className="relative">
-          <Search className="h-5 w-5 text-muted-foreground" />
-          <span className="sr-only">搜索</span>
-        </Button>
+        {customTrigger || defaultTrigger}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden">
         <DialogHeader className="p-6 pb-0">
