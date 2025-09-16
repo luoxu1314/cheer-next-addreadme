@@ -129,6 +129,13 @@ export function Navigation() {
                     院系列表
                   </Link>
                 </NavigationMenuItem>
+                
+                <NavigationMenuItem>
+                  <Link href="/discovery" className={navigationMenuTriggerStyle()+ " bg-transparent"}>
+                    <Palette className="w-4 h-4 mr-2" />
+                    数据发现
+                  </Link>
+                </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
 
@@ -235,6 +242,13 @@ export function Navigation() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 院系列表
+              </Link>
+              <Link
+                href="/discovery"
+                className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-secondary hover:text-secondary-foreground"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                数据发现
               </Link>
             </div>
           </div>
