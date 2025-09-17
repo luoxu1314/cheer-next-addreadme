@@ -35,6 +35,13 @@ export async function getSubjects(
       orderBy: {
         name: 'asc',
       },
+      include: {
+        courses: {
+          select: {
+            _count: true,
+          }
+        },
+      },
       where,
     }),
     prisma.subject.count({

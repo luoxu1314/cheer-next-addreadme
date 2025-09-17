@@ -100,7 +100,7 @@ export const SubjectCard: React.FC<SubjectCardProps> = ({ subject }) => {
         {/* 班级数量 */}
         <div className="flex items-center text-sm text-muted-foreground gap-2">
           <Users className="h-4 w-4 text-primary shrink-0" />
-          <span>{subject.courses?.length || 0} 个班级</span>
+          <span>{subject.courses?.length || 0} 次开课</span>
         </div>
       </CardContent>
 
