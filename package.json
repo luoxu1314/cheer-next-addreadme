@@ -9,6 +9,9 @@
     "start": "next start",
     "postinstall": "prisma generate",
     "seed:ads": "tsx scripts/seed-ads.ts",
+    "seed:config": "tsx scripts/seed-config.ts",
+    "seed:blog": "tsx scripts/seed-blog.ts",
+    "seed:admin": "tsx scripts/create-admin.ts",
     "check:expired-ads": "node scripts/check-expired-ads.js"
   },
   "dependencies": {

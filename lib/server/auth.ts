@@ -52,3 +52,40 @@ export function verifyToken(token: string): { adminId: string } | null {
     return null
   }
 }
+
+/**
+ * 从请求头中验证管理员权限
+ * @param request Next.js请求对象
+ * @returns 管理员对象或null
+ */
+export async function authAdmin(request: Request): Promise<any | null> {
+  try {
+    // 从请求头中获取Authorization
+    const authHeader = request.headers.get('Authorization')
+    if (!authHeader) {
+      return null
+    }
+    
+    // 提取JWT令牌
+    const token = authHeader.replace('Bearer ', '')
+    if (!token) {
+      return null
+    }
+    
+    // 验证令牌
+    const decoded = verifyToken(token)
+    if (!decoded) {
+      return null
+    }
+    
+    // 验证管理员存在
+    const admin = await prisma.admin.findUnique({
+      where: { id: decoded.adminId }
+    })
+    
+    return admin
+  } catch (error) {
+    console.error('Admin authentication error:', error)
+    return null
+  }
+}

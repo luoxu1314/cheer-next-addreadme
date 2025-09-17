@@ -38,6 +38,11 @@ export interface HomeConfig {
     cardDescription: string;
     placeholder: string;
   };
+  // 广告轮播配置
+  ads: {
+    // 是否在首页显示广告轮播
+    showOnHomepage: boolean;
+  };
 }
 
 export const homeConfig: HomeConfig = {
@@ -52,6 +57,11 @@ export const homeConfig: HomeConfig = {
       courses: "10万+",
       classrooms: "1000+"
     }
+  },
+  // 广告轮播配置
+  ads: {
+    // 默认在首页显示广告轮播
+    showOnHomepage: true
   },
   features: {
     title: "为什么选择绮课",

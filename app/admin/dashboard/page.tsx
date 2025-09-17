@@ -10,6 +10,7 @@ import { BlogPostEditor } from '@/components/admin/blog-post-editor'
 import { ImageUpload } from '@/components/admin/image-upload'
 import { StatsCards } from '@/components/admin/stats-cards'
 import { AdManagement } from '@/components/admin/ad-management'
+import { ConfigManagement } from '@/components/admin/config-management'
 // 客户端不需要导入verifyToken，通过API验证
 
 export default function AdminDashboardPage() {
@@ -85,6 +86,7 @@ export default function AdminDashboardPage() {
             <TabsTrigger value="editor">新建/编辑文章</TabsTrigger>
             <TabsTrigger value="upload">图片上传</TabsTrigger>
             <TabsTrigger value="ads">广告管理</TabsTrigger>
+            <TabsTrigger value="config">系统配置</TabsTrigger>
           </TabsList>
 
           <TabsContent value="posts">
@@ -130,6 +132,17 @@ export default function AdminDashboardPage() {
               </CardHeader>
               <CardContent>
                 <AdManagement />
+              </CardContent>
+            </Card>
+          </TabsContent>
+          
+          <TabsContent value="config">
+            <Card>
+              <CardHeader>
+                <CardTitle>系统配置</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ConfigManagement />
               </CardContent>
             </Card>
           </TabsContent>
