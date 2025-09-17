@@ -41,12 +41,12 @@ export function ShareButtons({ title, url, summary }: ShareButtonsProps) {
 
   return (
     <Popover>
-      <PopoverTrigger asChild>
-        <Button variant="outline" size="sm">
+      <Button asChild variant="outline" size="sm">
+        <PopoverTrigger>
           <Share2 className="h-4 w-4 mr-2" />
           分享
-        </Button>
-      </PopoverTrigger>
+        </PopoverTrigger>
+      </Button>
       <PopoverContent className="w-56" align="end">
         <div className="grid gap-2">
           <Button

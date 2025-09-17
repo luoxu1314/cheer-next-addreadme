@@ -224,7 +224,7 @@ export function AdManagement() {
       coverImage: "",
       adClient: "",
       adContact: "",
-      adStartDate: new Date().toISOString().split("T")[0] ,
+      adStartDate: new Date().toISOString().split("T")[0],
       adDuration: 6,
       adPrice: 2000,
       adStatus: "pending",
@@ -306,17 +306,18 @@ export function AdManagement() {
             检查过期
           </Button>
           <Dialog open={isCreateOpen} onOpenChange={setIsCreateOpen}>
-            <DialogTrigger asChild>
-              <Button
-                onClick={() => {
-                  setEditingAd(null);
-                  resetForm();
-                }}
-              >
+            <Button
+              asChild
+              onClick={() => {
+                setEditingAd(null);
+                resetForm();
+              }}
+            >
+              <DialogTrigger >
                 <Plus className="h-4 w-4 mr-2" />
                 创建广告
-              </Button>
-            </DialogTrigger>
+              </DialogTrigger>
+            </Button>
             <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
               <DialogHeader>
                 <DialogTitle>
@@ -403,7 +404,7 @@ export function AdManagement() {
                             ...formData,
                             adStartDate: new Date(e.target.value).toISOString().split("T")[0],
                           });
-                        } catch (error) {}
+                        } catch (error) { }
                       }}
                       required
                     />
