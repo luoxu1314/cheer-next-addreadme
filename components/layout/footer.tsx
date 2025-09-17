@@ -1,9 +1,20 @@
 import Link from "next/link";
-import { Calendar, Mail, Github, Heart, MessageCircle, ExternalLink } from "lucide-react";
+import { Calendar, Mail, Github, Heart, MessageCircle, ExternalLink, Link as LinkIcon } from "lucide-react";
 import { contactConfig } from "@/lib/config/contact.config";
 import { footerConfig } from "@/lib/config/footer.config";
 
-export function Footer() {
+/**
+ * Footer组件属性接口
+ */
+interface FooterProps {
+  authors: Array<{ name: string; link: string }>;
+}
+
+/**
+ * 页脚组件
+ * 在Next.js 13+的App Router中，此组件作为客户端组件，通过props接收数据
+ */
+export function Footer({ authors }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -19,6 +30,27 @@ export function Footer() {
             <p className="mt-4 text-sm text-muted-foreground max-w-md">
               {footerConfig.brand.description}
             </p>
+            {/* 作者信息 */}
+            {authors.length > 0 && (
+              <div className="mt-4 text-sm text-muted-foreground">
+                <div className="flex items-center space-x-2">
+                  <LinkIcon className="h-4 w-4" />
+                  <span>作者:</span>
+                  {authors.map((author, index) => (
+                    <a
+                      key={index}
+                      href={author.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline transition-colors"
+                    >
+                      {author.name}
+                    </a>
+                  ))}
+                </div>
+
+              </div>
+            )}
             <div className="mt-4 flex items-center space-x-2 text-sm text-muted-foreground">
               <Heart className="h-4 w-4 text-destructive" />
               <span>{footerConfig.brand.slogan}</span>
@@ -33,8 +65,8 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               {footerConfig.quickLinks.map((link, index) => (
                 <li key={index}>
-                  <Link 
-                    href={link.href} 
+                  <Link
+                    href={link.href}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.label}

@@ -6,6 +6,7 @@ import './globals.css'
 import { Navigation } from '@/components/layout/navigation'
 import { Footer } from '@/components/layout/footer'
 import { ThemeProvider } from '@/components/theme-provider'
+import { getConfigValue } from '@/lib/server/config-service'
 
 export const metadata: Metadata = {
   title: {
@@ -52,11 +53,13 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  // 在服务器端获取作者信息配置
+  const authors = await getConfigValue<Array<{ name: string; link: string }>>("footer.authors", [])
   return (
     <html lang="zh-CN" suppressHydrationWarning>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} min-h-screen flex flex-col`}>
@@ -70,7 +73,7 @@ export default function RootLayout({
           <main className="flex-1">
             {children}
           </main>
-          <Footer />
+          <Footer authors={authors} />
         </ThemeProvider>
         <Analytics />
       </body>

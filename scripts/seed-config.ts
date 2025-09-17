@@ -4,6 +4,17 @@ const prisma = new PrismaClient()
 
 // 默认配置项
 const defaultConfigs = [
+  // 作者信息配置
+  {
+    key: "footer.authors",
+    value: [
+      { name: "花野猫", link: "https://huayemao.run" },
+      { name: "steamFinder", link: "https://github.com/SteamFinder" }
+    ],
+    description: "页脚显示的作者信息列表",
+    type: "array",
+    group: "footer"
+  },
   {
     key: "home.showAds",
     value: false,
