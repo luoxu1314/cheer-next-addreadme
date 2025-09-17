@@ -23,14 +23,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://qike.huayemao.run'),
+  metadataBase: new URL('https://qike.site'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: '绮课 - 中南大学课程表查询平台',
     description: '专为中南大学学生打造的课程表查询平台，支持学生课表、教师课表、教室课表查询',
-    url: 'https://qike.huayemao.run',
+    url: 'https://qike.site',
     siteName: '绮课',
     locale: 'zh_CN',
     type: 'website',
