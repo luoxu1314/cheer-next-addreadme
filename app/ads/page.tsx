@@ -1,5 +1,5 @@
 import { getActiveAds } from "@/lib/server/ad-service";
-import { AdCard } from "@/components/ads/ad-card";
+import { AdCarousel } from "@/components/ads/ad-carousel";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
@@ -28,28 +28,8 @@ export default async function AdsPage() {
           </Button>
         </div>
 
-        {ads.length === 0 ? (
-          <div className="text-center py-12">
-            <div className="max-w-md mx-auto">
-              <div className="text-6xl mb-4">{adsConfig.mainPage.emptyState.emoji}</div>
-              <h3 className="text-xl font-semibold mb-2 text-foreground">{adsConfig.mainPage.emptyState.title}</h3>
-              <p className="text-muted-foreground mb-4">
-                {adsConfig.mainPage.emptyState.description}
-              </p>
-              <Button asChild variant="outline" className="border-border text-foreground hover:bg-accent/10 hover:text-accent">
-                <Link href="/ads/pricing">
-                  {adsConfig.mainPage.emptyState.buttonText}
-                </Link>
-              </Button>
-            </div>
-          </div>
-        ) : (
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {ads.map((ad) => (
-              <AdCard key={ad.id} ad={ad} />
-            ))}
-          </div>
-        )}
+        {/* 使用轮播组件展示所有广告卡片，包括功能说明卡片 */}
+        <AdCarousel serverAds={ads} />
       </div>
     </div>
   );
