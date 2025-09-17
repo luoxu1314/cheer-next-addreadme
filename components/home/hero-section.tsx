@@ -2,8 +2,32 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Calendar, Search, Users, Clock, AlertTriangle } from "lucide-react";
 import { homeConfig } from "@/lib/config/home.config";
+import prisma from '@/lib/prisma';
+import { unstable_cache } from 'next/cache';
 
-export function HeroSection() {
+// 创建缓存的统计数据获取函数
+const getStatsData = unstable_cache(
+  async () => {
+    const [
+      totalCourses,
+      totalSubjects,
+      totalLocations
+    ] = await Promise.all([
+      prisma.course.count(),
+      prisma.subject.count(),
+      prisma.location.count({ where: { id: { not: "00default" } } })
+    ]);
+    
+    return { totalCourses, totalSubjects, totalLocations };
+  },
+  ['stats-data'], // 缓存键
+  { revalidate: 3600 } // 缓存时间(秒)
+);
+
+export async function HeroSection() {
+  // 获取缓存的统计数据
+  const { totalCourses, totalSubjects, totalLocations } = await getStatsData();
+  
   return (
     <section className="relative overflow-hidden pt-16 min-h-screen">
       {/* Semantic Background Gradient - 使用天青色主题色 */}
@@ -59,15 +83,15 @@ export function HeroSection() {
         {/* Stats */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div className="text-center p-6 bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg">
-            <div className="text-3xl font-bold text-primary mb-2">{homeConfig.hero.stats.subjects}</div>
+            <div className="text-3xl font-bold text-primary mb-2">{totalSubjects.toLocaleString()}</div>
             <div className="text-sm text-muted-foreground">课程</div>
           </div>
           <div className="text-center p-6 bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg">
-            <div className="text-3xl font-bold text-secondary mb-2">{homeConfig.hero.stats.courses}</div>
+            <div className="text-3xl font-bold text-secondary mb-2">{totalCourses.toLocaleString()}</div>
             <div className="text-sm text-muted-foreground">开课</div>
           </div>
           <div className="text-center p-6 bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg">
-            <div className="text-3xl font-bold text-gradient-pink-end mb-2">{homeConfig.hero.stats.classrooms}</div>
+            <div className="text-3xl font-bold text-gradient-pink-end mb-2">{totalLocations.toLocaleString()}</div>
             <div className="text-sm text-muted-foreground">上课地点</div>
           </div>
         </div>

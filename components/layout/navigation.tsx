@@ -147,7 +147,7 @@ export function Navigation() {
                 <NavigationMenuItem>
                   <Link href="/blog" className={navigationMenuTriggerStyle()+ " bg-transparent"}>
                     <MessageCircle className="w-4 h-4 mr-2" />
-                    技术博客
+                    博客
                   </Link>
                 </NavigationMenuItem>
               </NavigationMenuList>
@@ -276,7 +276,7 @@ export function Navigation() {
                 className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-secondary hover:text-secondary-foreground"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                技术博客
+                博客
               </Link>
             </div>
           </div>
