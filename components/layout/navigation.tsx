@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
-import { Menu, X, Calendar, Search, Home, Users, Palette, Moon, Sun } from "lucide-react";
+import { Menu, X, Calendar, Search, Home, Users, Palette, Moon, Sun, MessageCircle, BookOpen } from "lucide-react";
 import { SearchDialog } from "@/components/search/search-dialog";
 import { Button } from "@/components/ui/button";
 import {
@@ -136,6 +136,20 @@ export function Navigation() {
                     数据发现
                   </Link>
                 </NavigationMenuItem>
+                
+                <NavigationMenuItem>
+                  <Link href="/subjects" className={navigationMenuTriggerStyle()+ " bg-transparent"}>
+                    <BookOpen className="w-4 h-4 mr-2" />
+                    课程查询
+                  </Link>
+                </NavigationMenuItem>
+                
+                <NavigationMenuItem>
+                  <Link href="/blog" className={navigationMenuTriggerStyle()+ " bg-transparent"}>
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    技术博客
+                  </Link>
+                </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
 
@@ -249,6 +263,20 @@ export function Navigation() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 数据发现
+              </Link>
+              <Link
+                href="/subjects"
+                className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-secondary hover:text-secondary-foreground"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                课程查询
+              </Link>
+              <Link
+                href="/blog"
+                className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-secondary hover:text-secondary-foreground"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                技术博客
               </Link>
             </div>
           </div>

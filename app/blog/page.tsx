@@ -31,11 +31,11 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold gradient-blue bg-clip-text text-transparent mb-4">
-            技术博客
+          <h1 className="text-4xl md:text-5xl font-bold gradient-blue text-primary-foreground mb-4">
+            博客
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            分享技术见解、开发经验和学习心得
+            分享关于绮课的功能更新和开发经验
           </p>
         </div>
 

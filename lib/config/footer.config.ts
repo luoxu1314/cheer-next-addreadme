@@ -33,19 +33,31 @@ export const footerConfig: FooterConfig = {
     },
     {
       href: '/search/student',
-      label: '学生课表'
+      label: '学生课表查询'
     },
     {
       href: '/search/teacher',
-      label: '教师课表'
+      label: '教师课表查询'
     },
     {
-      href: '/search/classroom',
-      label: '教室课表'
+      href: '/search/location',
+      label: '教室课表查询'
     },
     {
-      href: '/ads/pricing',
-      label: '广告合作'
+      href: '/search/profession',
+      label: '专业课表查询'
+    },
+    {
+      href: '/blog',
+      label: '博客'
+    },
+    {
+      href: '/discovery',
+      label: '数据发现'
+    },
+    {
+      href: '/subjects',
+      label: '课程查询'
     }
   ],
   friendlyLinks: [
