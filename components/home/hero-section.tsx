@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Calendar, Search, Users, Clock, AlertTriangle } from "lucide-react";
+import Link from "next/link";
 import { homeConfig } from "@/lib/config/home.config";
 import prisma from '@/lib/prisma';
 import { unstable_cache } from 'next/cache';
@@ -17,7 +17,7 @@ const getStatsData = unstable_cache(
       prisma.subject.count(),
       prisma.location.count({ where: { id: { not: "00default" } } })
     ]);
-    
+
     return { totalCourses, totalSubjects, totalLocations };
   },
   ['stats-data'], // 缓存键
@@ -27,7 +27,7 @@ const getStatsData = unstable_cache(
 export async function HeroSection() {
   // 获取缓存的统计数据
   const { totalCourses, totalSubjects, totalLocations } = await getStatsData();
-  
+
   return (
     <section className="relative overflow-hidden pt-16 min-h-screen">
       {/* Semantic Background Gradient - 使用天青色主题色 */}
@@ -35,13 +35,13 @@ export async function HeroSection() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[var(--chart-4)]/40 via-transparent to-transparent dark:from-[var(--chart-4)]/50"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-[var(--chart-5)]/40 via-transparent to-transparent dark:from-[var(--chart-5)]/50"></div>
       <div className="absolute inset-0 bg-[conic-gradient(from_90deg_at_50%_50%,var(--tw-gradient-stops))] from-transparent via-[var(--primary)]/15 to-transparent dark:via-[var(--primary)]/25"></div>
-      
+
       {/* Semantic Animated Orbs - 使用主色调 */}
       <div className="absolute top-20 md:top-1/5 left-1/6 md:left-1/5 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-[var(--primary)] via-[var(--chart-1)] to-[var(--chart-2)] rounded-full blur-3xl opacity-40 animate-float dark:opacity-50"></div>
       <div className="absolute top-12 md:top-1/7 right-1/5 w-64 h-64 md:w-96 md:h-96 bg-gradient-to-r from-[var(--chart-2)] via-[var(--chart-3)] to-[var(--secondary)] rounded-full blur-3xl opacity-40 animate-float animation-delay-1000 dark:opacity-50"></div>
       <div className="absolute bottom-32  md:bottom-1/5 left-1/4 w-64 h-64 md:w-96 md:h-96 bg-gradient-to-r from-[var(--chart-4)] via-[var(--chart-5)] to-[var(--primary)] rounded-full blur-3xl opacity-40 animate-float animation-delay-2000 dark:opacity-50"></div>
 
-      
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
         <div className="text-center">
           <div className="flex justify-center mb-6">
@@ -52,19 +52,19 @@ export async function HeroSection() {
               </div>
             </div>
           </div>
-          
+
           <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-secondary bg-clip-text text-transparent mb-6">
             {homeConfig.hero.title}
           </h1>
-          
+
           <p className="text-xl md:text-2xl text-foreground mb-4 font-medium">
             {homeConfig.hero.subtitle}
           </p>
-          
+
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             {homeConfig.hero.description}
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white px-8 py-3 rounded-full shadow-lg">
               <Link href="#search">
@@ -78,6 +78,7 @@ export async function HeroSection() {
               </Link>
             </Button>
           </div>
+
         </div>
 
         {/* Stats */}
