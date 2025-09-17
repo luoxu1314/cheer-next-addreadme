@@ -1,11 +1,12 @@
-import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { NextResponse } from 'next/server'
 import { verifyToken } from '@/lib/server/auth'
 
 const ADMIN_ROUTES = ['/api/admin']
 const AUTH_ROUTES = ['/api/admin/login']
 
-export function middleware(request: NextRequest) {
+
+export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
 
   // 只处理管理员API路由

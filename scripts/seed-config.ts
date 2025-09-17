@@ -45,6 +45,48 @@ const defaultConfigs = [
     description: "是否开启维护模式",
     type: "boolean",
     group: "general"
+  },
+  {
+    key: "security.enableCaptcha",
+    value: true,
+    description: "是否启用验证码",
+    type: "boolean",
+    group: "security"
+  },
+  {
+    key: "security.captchaExpiry",
+    value: 300,
+    description: "验证码有效期(秒)",
+    type: "number",
+    group: "security"
+  },
+  {
+    key: "security.captchaLength",
+    value: 4,
+    description: "验证码长度",
+    type: "number",
+    group: "security"
+  },
+  {
+    key: "security.rateLimitEnabled",
+    value: true,
+    description: "是否启用速率限制",
+    type: "boolean",
+    group: "security"
+  },
+  {
+    key: "security.rateLimitRequests",
+    value: 10,
+    description: "速率限制请求数",
+    type: "number",
+    group: "security"
+  },
+  {
+    key: "security.rateLimitDuration",
+    value: 60,
+    description: "速率限制时间窗口(秒)",
+    type: "number",
+    group: "security"
   }
 ]
 

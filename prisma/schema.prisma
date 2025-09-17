@@ -223,3 +223,15 @@ model Configuration {
     @@index([key])
     @@index([group])
 }
+
+// 验证码表 - 存储生成的验证码信息
+model Captcha {
+    id        String   @id @default(cuid())
+    token     String   @unique // 验证码对应的token
+    code      String   // 验证码内容
+    expiresAt DateTime // 过期时间
+    createdAt DateTime @default(now())
+    
+    @@index([token])
+    @@index([expiresAt])
+}
