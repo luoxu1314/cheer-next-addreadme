@@ -208,3 +208,18 @@ model File {
     
     @@index([url])
 }
+
+// 系统配置表
+model Configuration {
+    id          String   @id @default(cuid())
+    key         String   @unique
+    value       Json     // 使用Json类型支持多种数据类型
+    description String?  // 配置项描述
+    type        String   // 配置项类型：boolean, string, number, array, object等
+    group       String   // 配置项分组
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @default(now()) @updatedAt()
+    
+    @@index([key])
+    @@index([group])
+}
