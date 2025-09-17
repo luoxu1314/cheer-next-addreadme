@@ -2,8 +2,14 @@
 FROM node:18-alpine AS base
 
 # 安装必要的系统依赖
-RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache libc6-compat openssl openssl-dev
 WORKDIR /app
+
+# 设置构建参数
+ARG DATABASE_URL
+
+# 设置环境变量
+ENV DATABASE_URL=$DATABASE_URL
 
 # 复制包管理文件
 COPY package.json pnpm-lock.yaml ./
@@ -45,9 +51,8 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# 复制 Prisma schema 和生成客户端
+# 复制 Prisma schema
 COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 
 USER nextjs
 
