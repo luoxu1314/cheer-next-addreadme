@@ -69,7 +69,7 @@ export function DesktopTimetable({ courses, firstColumnMode }: DesktopTimetableP
       ))}
 
       {/* 生成时间槽和课程网格 */}
-      {Array.from({ length: 12 }, (_, timeIndex) => [
+      {Array.from({ length: 6 }, (_, timeIndex) => [
         <div
           key={`time-${timeIndex}`}
           className="text-xs  text-muted-foreground flex justify-center items-center py-2 font-mono bg-muted/80 backdrop-blur-md rounded-lg border border-border/40"

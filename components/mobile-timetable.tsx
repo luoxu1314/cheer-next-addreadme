@@ -92,7 +92,7 @@ export function MobileTimetable({
         </div>
 
         <div className="overflow-y-auto max-h-[70vh]">
-          {Array.from({ length: 12 }, (_, timeIndex) => (
+          {Array.from({ length: 6 }, (_, timeIndex) => (
             <div
               key={`mobile-time-${timeIndex}`}
               className={`grid gap-0 border-t border-border/30`}

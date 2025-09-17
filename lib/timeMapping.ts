@@ -1,34 +1,32 @@
-export const timeMapping = {
-  1: "08-00",
-  2: "09-40",
-  3: "10-00",
-  4: "11-40",
-  5: "14-00",
-  6: "15-40",
-  7: "16-00",
-  8: "17-40",
-  9: "19-00",
-  10: "20-40",
-  11: "21-00",
-  12: "22-40",
-} as const
+export const timeMapping = [
+  { key: 1, start: "08-00", end: "09-40" },
+  { key: 2, start: "10-00", end: "11-40" },
+  { key: 3, start: "14-00", end: "15-40" },
+  { key: 4, start: "16-00", end: "17-40" },
+  { key: 5, start: "19-00", end: "20-40" },
+  { key: 6, start: "21-00", end: "22-40" },
+] as const
 
-export type TimeSlotNumber = keyof typeof timeMapping
+export type TimeSlot = typeof timeMapping[number]
+export type TimeSlotKey = TimeSlot['key']
 
-export function getTimeRange(startSlot: number, endSlot: number): string {
-  const startTime = timeMapping[startSlot as TimeSlotNumber]
-  const endTime = timeMapping[endSlot as TimeSlotNumber]
+// 查找指定key的时间段
+export function getTimeSlot(key: number): TimeSlot | undefined {
+  return timeMapping.find(slot => slot.key === key)
+}
 
-  if (!startTime || !endTime) return ""
+export function getTimeRange(startSlot: number): string {
+  const slot = getTimeSlot(startSlot)
+  
+  if (!slot) return ""
 
-  return `${startTime.replace('-', ':')}-${endTime.replace('-', ':')}`
+  return `${slot.start.replace('-', ':')}-${slot.end.replace('-', ':')}`
 }
 
 export function formatTimeRange(rowIds: number[]): string {
   if (rowIds.length === 0) return ""
 
-  const start = Math.min(...rowIds)
-  const end = Math.max(...rowIds) + 1
-
-  return getTimeRange(start, end)
+  // 取最小的行ID来获取时间段
+  const minRowId = Math.min(...rowIds)
+  return getTimeRange(minRowId)
 }
