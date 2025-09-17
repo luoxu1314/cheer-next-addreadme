@@ -15,32 +15,14 @@ import {
   getDepartmentCourseDistribution,
   getCourseCategoryDistribution,
   getMostUsedLocations,
+  getLeastUsedLocations,
   getMostActiveTeachers,
   getMostPopularElectiveCourses,
 } from "@/lib/server/service/stats-service";
 
-// 加载状态组件
-const LoadingState = () => (
-  <div className="container mx-auto px-4 py-12">
-    <div className="mb-12">
-      <Skeleton className="h-8 w-64 mb-4" />
-      <Skeleton className="h-4 w-96" />
-    </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {[1, 2, 3, 4].map((_, index) => (
-        <Card key={index} className="overflow-hidden">
-          <CardHeader>
-            <Skeleton className="h-6 w-40 mb-2" />
-            <Skeleton className="h-4 w-64" />
-          </CardHeader>
-          <CardContent>
-            <Skeleton className="h-64 w-full" />
-          </CardContent>
-        </Card>
-      ))}
-    </div>
-  </div>
-);
+// 导入prisma客户端用于直接查询总数
+import prisma from '@/lib/prisma';
+
 
 // 发现页面组件 - 作为Next.js服务器组件直接导出
 export default async function DiscoveryPage() {
@@ -53,6 +35,11 @@ export default async function DiscoveryPage() {
     mostUsedLocations,
     mostActiveTeachers,
     mostPopularElectiveCourses,
+    leastUsedLocations,
+    // 直接获取总数
+    totalCourses,
+    totalSubjects,
+    totalLocations
   ] = await Promise.all([
     getMostCommonSubjects(10),
     getMostPopularCourses(10),
@@ -61,6 +48,11 @@ export default async function DiscoveryPage() {
     getMostUsedLocations(10),
     getMostActiveTeachers(10),
     getMostPopularElectiveCourses(10),
+    getLeastUsedLocations(10),
+    // 使用prisma直接查询总数
+    prisma.course.count(),
+    prisma.subject.count(),
+    prisma.location.count({ where: { id: { not: "00default" } } })
   ]);
 
   // 构建统计数据对象
@@ -72,16 +64,17 @@ export default async function DiscoveryPage() {
     mostUsedLocations,
     mostActiveTeachers,
     mostPopularElectiveCourses,
+    leastUsedLocations,
     basic: {
-      // 从各统计数据中计算基础统计
-      courses: mostPopularCourses.length,
-      subjects: mostCommonSubjects.length,
-      departments: departmentDistribution.length,
+      // 使用直接查询得到的准确总数
+      courses: totalCourses,
+      subjects: totalSubjects,
+      locations: totalLocations
     },
   };
 
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto px-4 py-12 pt-16">
       {/* 页面标题 */}
       <div className="text-center mb-16">
         <h1 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-400">
@@ -94,39 +87,39 @@ export default async function DiscoveryPage() {
 
       {/* 基本统计卡片 */}
       {stats?.basic && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-0 shadow-md">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+          <Card className="border-0 shadow-md gradient-blue text-primary-foreground">
             <CardHeader className="pb-2">
-              <CardTitle className="text-xl text-blue-700">开设课程</CardTitle>
-              <CardDescription>总课程数量</CardDescription>
+              <CardTitle className="text-xl text-primary-foreground">开设课程</CardTitle>
+              <CardDescription className="text-primary-foreground/80">总课程数量</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="text-4xl font-bold text-blue-600">
+              <div className="text-4xl font-bold text-primary-foreground">
                 {stats.basic.courses.toLocaleString()}
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-gradient-to-br from-emerald-50 to-teal-50 border-0 shadow-md">
+          <Card className="border-0 shadow-md gradient-lavender text-secondary-foreground">
             <CardHeader className="pb-2">
-              <CardTitle className="text-xl text-emerald-700">
+              <CardTitle className="text-xl text-secondary-foreground">
                 课程科目
               </CardTitle>
-              <CardDescription>总科目数量</CardDescription>
+              <CardDescription className="text-secondary-foreground/80">总科目数量</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="text-4xl font-bold text-emerald-600">
+              <div className="text-4xl font-bold text-secondary-foreground">
                 {stats.basic.subjects.toLocaleString()}
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-gradient-to-br from-amber-50 to-orange-50 border-0 shadow-md">
+          <Card className="border-0 shadow-md gradient-purple text-accent-foreground">
             <CardHeader className="pb-2">
-              <CardTitle className="text-xl text-amber-700">教学院系</CardTitle>
-              <CardDescription>总院系数量</CardDescription>
+              <CardTitle className="text-xl text-accent-foreground">上课地点</CardTitle>
+              <CardDescription className="text-accent-foreground/80">总教室数量</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="text-4xl font-bold text-amber-600">
-                {stats.basic.departments.toLocaleString()}
+              <div className="text-4xl font-bold text-accent-foreground">
+                {stats.basic.locations.toLocaleString()}
               </div>
             </CardContent>
           </Card>
@@ -135,6 +128,7 @@ export default async function DiscoveryPage() {
 
       {/* 图表内容区域 - 使用客户端组件 */}
       <DiscoveryCharts 
+        leastUsedLocations={stats.leastUsedLocations}
         mostCommonSubjects={stats.mostCommonSubjects}
         mostPopularCourses={stats.mostPopularCourses}
         departmentDistribution={stats.departmentDistribution}
