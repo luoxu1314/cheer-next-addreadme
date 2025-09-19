@@ -4,6 +4,7 @@ import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import { useEffect, useState, useRef } from 'react'
 import { createHighlighter } from 'shiki'
+import remarkGfm from 'remark-gfm'
 
 interface MDXRendererProps {
   content: string
@@ -109,7 +110,7 @@ export function MDXRenderer({ content }: MDXRendererProps) {
         const serialized = await serialize(content, {
           parseFrontmatter: false,
           mdxOptions: {
-            remarkPlugins: [],
+            remarkPlugins: [remarkGfm],
             rehypePlugins: [],
           },
         })
