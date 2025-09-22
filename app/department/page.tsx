@@ -5,7 +5,7 @@ import { getDepartmentsAndProfessions } from '@/lib/server/service/profession';
 // 生成页面元数据
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: '院系列表 - 绮课',
+    title: '院系列表',
     description: '中南大学各院系和专业信息列表，方便查询各专业课程表',
     keywords: ['中南大学', '院系', '专业', '课程表', '绮课'],
   };

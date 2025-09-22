@@ -24,12 +24,14 @@ export async function generateMetadata({ params }: SearchPageProps): Promise<Met
     student: "学生课表查询 - 绮课",
     teacher: "教师课表查询 - 绮课",
     location: "教室课表查询 - 绮课",
+    profession: "专业课表查询 - 绮课",
   };
 
   const descriptions = {
     student: "中南大学学生课程表在线查询，支持按学号、姓名快速查找课程信息",
     teacher: "中南大学教师课程表在线查询，支持按教师姓名快速查找授课信息",
     location: "中南大学教室课程表在线查询，支持按教室名称快速查找教室使用情况",
+    profession: "中南大学专业课程表在线查询，支持按专业名称快速查找专业课程",
   };
 
   return {

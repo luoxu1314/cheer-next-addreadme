@@ -92,9 +92,8 @@ export async function generateMetadata({
       location: "教室",
       profession: "专业",
     };
-
     return {
-      title: `${owner.name} - ${
+      title: `${(owner.label || "") + owner.name} - ${
         typeMap[type as keyof typeof typeMap] || ""
       }课表`,
       description: `中南大学${owner.label}${owner.name}${
