@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { getBlogPosts } from "@/lib/server/blog-service";
 import { BlogCard } from "@/components/blog/blog-card";
 import { FeaturedPosts } from "@/components/blog/featured-posts";
@@ -7,6 +8,141 @@ import Link from "next/link";
 
 interface BlogPageProps {
   searchParams: { [key: string]: string | string[] | undefined };
+}
+
+// 动态生成博客页面的SEO元数据
+export async function generateMetadata({ searchParams }: BlogPageProps): Promise<Metadata> {
+  const page = Number(searchParams.page) || 1;
+  const tag = searchParams.tag as string | undefined;
+  const limit = 9;
+
+  // 获取博客文章数据用于SEO
+  const { posts, total } = await getBlogPosts({
+    published: true,
+    limit: 1,
+    offset: 0,
+    tag,
+  });
+  const totalPages = Math.ceil(total / limit);
+
+  // 基础URL
+  const baseUrl = 'https://qike.site/blog';
+  const currentUrl = tag 
+    ? `${baseUrl}?tag=${encodeURIComponent(tag)}${page > 1 ? `&page=${page}` : ''}`
+    : `${baseUrl}${page > 1 ? `?page=${page}` : ''}`;
+
+  // 生成标题
+  let title = '绮课博客 - 分享关于绮课的功能更新和开发经验';
+  if (tag) {
+    title = `${tag}相关文章 - 绮课博客`;
+  }
+  if (page > 1) {
+    title = `第${page}页 - ${title}`;
+  }
+
+  // 生成描述
+  let description = '绮课博客分享关于绮课的功能更新、开发经验和使用技巧，帮助你更好地使用绮课平台。';
+  if (tag) {
+    description = `浏览所有关于${tag}的博客文章，了解绮课的最新动态和相关技术分享。`;
+  }
+
+  // 生成关键词
+  const baseKeywords = ['绮课', '博客', '中南大学', '课程表', '功能更新', '开发经验'];
+  const keywords = tag ? [...baseKeywords, tag] : baseKeywords;
+
+  // 生成OG和Twitter图像 - 使用screenshots目录下的qike.png作为备选
+  const ogImage = posts.length > 0 && posts[0].coverImage 
+    ? posts[0].coverImage 
+    : 'https://qike.site/screenshots/qike.png';
+
+  // 生成JSON-LD结构化数据
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    'name': '绮课博客',
+    'description': '分享关于绮课的功能更新和开发经验',
+    'url': baseUrl,
+    'mainEntityOfPage': {
+      '@type': 'WebPage',
+      '@id': baseUrl
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': '绮课',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://qike.site/favicon.ico',
+        'width': 64,
+        'height': 64
+      }
+    },
+    'image': {
+      '@type': 'ImageObject',
+      'url': ogImage,
+      'width': 1200,
+      'height': 630
+    }
+  };
+
+  return {
+    title,
+    description,
+    keywords,
+    metadataBase: new URL('https://qike.site'),
+    alternates: {
+      canonical: currentUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      url: currentUrl,
+      siteName: '绮课',
+      locale: 'zh_CN',
+      type: 'website',
+      images: [
+        {
+          url: ogImage,
+          alt: title,
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [ogImage],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+        'max-video-preview': -1,
+      },
+    },
+    // JSON-LD结构化数据
+    other: {
+      'application/ld+json': JSON.stringify(jsonLd)
+    },
+    // 分页信息
+    ...(totalPages > 1 && {
+      pagination: {
+        current: page,
+        total: totalPages,
+        prev: page > 1 ? 
+          (tag ? `/blog?tag=${encodeURIComponent(tag)}&page=${page - 1}` : `/blog?page=${page - 1}`) : 
+          undefined,
+        next: page < totalPages ? 
+          (tag ? `/blog?tag=${encodeURIComponent(tag)}&page=${page + 1}` : `/blog?page=${page + 1}`) : 
+          undefined,
+      },
+    }),
+  };
 }
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
