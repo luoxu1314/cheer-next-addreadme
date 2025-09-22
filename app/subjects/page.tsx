@@ -14,6 +14,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { SubjectCard } from '@/components/subject-card';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { format } from 'date-fns';
+import { PageHeader } from '@/components/layout/page-header';
 
 export default function SubjectsPage() {
   const router = useRouter();
@@ -252,14 +253,11 @@ export default function SubjectsPage() {
       <div className="absolute inset-0 bg-[var(--glass-effect)] dark:bg-[var(--glass-dark-effect)]"></div>
       <div className="relative z-10">
         {/* 页面标题 */}
-        <div className="gradient-blue-lavender text-primary-foreground py-12 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-4">课程查询</h1>
-            <p className="text-lg opacity-90 max-w-2xl">
-              探索中南大学的所有课程，按照不同维度筛选，找到您感兴趣的学习内容
-            </p>
-          </div>
-        </div>
+        <PageHeader
+          title="课程查询"
+          description="探索中南大学的所有课程，按照不同维度筛选，找到您感兴趣的学习内容"
+        />
+
 
         {/* 主要内容区 */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

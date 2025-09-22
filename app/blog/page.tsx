@@ -5,6 +5,7 @@ import { FeaturedPosts } from "@/components/blog/featured-posts";
 import { BlogPagination } from "@/components/blog/blog-pagination";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { PageHeader } from "@/components/layout/page-header";
 
 interface BlogPageProps {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -165,15 +166,13 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold gradient-blue text-primary-foreground mb-4">
-            博客
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            分享关于绮课的功能更新和开发经验
-          </p>
-        </div>
+      <div className="container mx-auto px-4">
+        {/* 页面标题 - 使用可复用组件 */}
+        <PageHeader
+          title="博客"
+          description="分享关于绮课的功能更新和开发经验"
+          className='mb-8'
+        />
 
         {/* {featuredPosts.length > 0 && page === 1 && !tag && (
           <FeaturedPosts posts={featuredPosts} />
