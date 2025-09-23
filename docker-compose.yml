@@ -1,17 +1,15 @@
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
+  cheer-next:
+    image: ${IMAGE_NAME}
+    container_name: ${CONTAINER_NAME}
+    restart: always
     environment:
-      - NODE_ENV=production
       - DATABASE_URL=${DATABASE_URL}
-    restart: unless-stopped
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
+      - NODE_ENV=${NODE_ENV}
+    ports:
+      - "${PORT}:3000"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
