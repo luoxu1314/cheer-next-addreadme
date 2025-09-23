@@ -51,12 +51,14 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: |
+            ${{ steps.meta.outputs.tags }}
+            ${{ env.REGISTRY }}/${{ github.repository }}:latest
           labels: ${{ steps.meta.outputs.labels }}
           # cache-from: type=gha 用于从 GitHub Actions 缓存中获取之前构建的缓存层，加快当前构建过程。
           # cache-to: type=gha,mode=max 用于将当前构建的缓存层保存到 GitHub Actions 缓存中，供后续构建使用，mode=max 表示保存所有缓存。
-          # cache-from: type=gha
-          # cache-to: type=gha,mode=max
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           build-args: |
             DATABASE_URL=${{ secrets.DATABASE_URL }}
 
