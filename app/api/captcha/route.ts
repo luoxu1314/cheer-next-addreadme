@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { generateCaptcha, verifyCaptcha } from '@/lib/server/captcha-service'
+import { generateCaptcha } from '@/lib/server/captcha-service'
+
+export const dynamic = "force-dynamic"
 
 /**
  * GET /api/captcha

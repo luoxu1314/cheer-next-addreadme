@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { generateCaptcha, verifyCaptcha } from '@/lib/server/captcha-service'
+import { verifyCaptcha } from '@/lib/server/captcha-service'
 
 
 /**
@@ -9,17 +9,17 @@ import { generateCaptcha, verifyCaptcha } from '@/lib/server/captcha-service'
 export async function POST(request: NextRequest) {
   try {
     const { token, code } = await request.json()
-    
+
     if (!token || !code) {
       return NextResponse.json(
         { error: '验证码和token不能为空' },
         { status: 400 }
       )
     }
-    
+
     // 验证验证码
     const isValid = await verifyCaptcha(token, code)
-    
+
     if (isValid) {
       return NextResponse.json({ valid: true })
     } else {
