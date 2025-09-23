@@ -1,9 +1,10 @@
-# 使用官方 Node.js 运行时作为基础镜像
-FROM node:18-alpine AS base
+# 构建阶段
+FROM node:20-alpine AS builder
 
-# 安装必要的系统依赖
-RUN apk add --no-cache libc6-compat openssl openssl-dev
+# 设置工作目录
 WORKDIR /app
+
+RUN npm install -g pnpm
 
 # 设置构建参数
 ARG DATABASE_URL
@@ -11,54 +12,50 @@ ARG DATABASE_URL
 # 设置环境变量
 ENV DATABASE_URL=$DATABASE_URL
 
-# 复制包管理文件
+# 安装必要的系统依赖
+RUN apk add --no-cache openssl
+
 COPY package.json pnpm-lock.yaml ./
 
-# 安装 pnpm
-RUN npm install -g pnpm
+# 配置 yarn 镜像源
+RUN pnpm config set sharp_libvips_binary_host "https://npmmirror.com/mirrors/sharp-libvips" && \
+    pnpm config set sharp_binary_host "https://npmmirror.com/mirrors/sharp" && \
+    pnpm config set registry https://registry.npmmirror.com
 
 # 安装依赖
-FROM base AS deps
 RUN pnpm install --frozen-lockfile
 
-# 构建应用
-FROM base AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+# 复制源代码
 COPY . .
 
-# 设置环境变量
-ENV NEXT_TELEMETRY_DISABLED 1
-
 # 生成 Prisma 客户端
-RUN npx prisma generate
+RUN pnpm prisma generate
 
-# 构建 Next.js 应用
+# 构建应用
 RUN pnpm build
 
-# 生产环境
-FROM node:18-alpine AS runner
+# 运行阶段
+FROM node:20-alpine AS runner
+
 WORKDIR /app
 
-ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
-
+# 设置环境变量
+ENV NODE_ENV=production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
+# 安装必要的系统依赖
+RUN apk add --no-cache openssl
 
-# 复制构建产物
+# 复制必要的文件
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-# 复制 Prisma schema
 COPY --from=builder /app/prisma ./prisma
 
 USER nextjs
 
+# 暴露端口
 EXPOSE 3000
 
-ENV PORT 3000
-ENV HOSTNAME "0.0.0.0"
-
-CMD ["node", "server.js"]
+# 启动应用
+CMD ["node", "server.js"] 
