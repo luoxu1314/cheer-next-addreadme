@@ -23,7 +23,7 @@ export interface FooterConfig {
 export const footerConfig: FooterConfig = {
   brand: {
     name: '绮课',
-    description: '绮课是专为中南大学师生打造的课程表查询平台，致力于提供便捷、准确、实时的课表查询服务。',
+    description: '绮课是专为中南大学师生打造的课程表查询平台，致力于提供便捷、准确的课表查询服务。',
     slogan: '用心服务每一位中南人'
   },
   quickLinks: [
