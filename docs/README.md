@@ -14,7 +14,7 @@
 
 **专为中南大学师生打造的课程表查询平台** ✨
 
-[🚀 立即使用](https://qike.site) · [📊 数据发现](https://qike.site/discovery) · [📚 课程查询](https://qike.site/subjects) · [💬 反馈建议](https://qm.qq.com/q/Z8tLiFJzCk)
+[🚀 立即使用](https://qike.site) · [📊 数据发现](https://qike.site/discovery) · [📚 课程查询](https://qike.site/subjects) · [💬 反馈建议](https://qm.qq.com/q/dSso71mByM)
 
 </div>
 
@@ -22,7 +22,7 @@
 
 ## 📖 网站简介
 
-> 🎯 **绮课（qike.site）** 是专为中南大学师生打造的课程表查询平台，致力于为学生、教师、教务人员等提供便捷、准确、实时的课表查询服务。
+> 🎯 **绮课（qike.site）** 为学生、教师提供便捷的课程信息查询服务，支持学生课表、教师课表、教室课表快速查找，提供完整的课程、开课数据和优异的用户体验。
 
 <table>
 <tr>
@@ -49,7 +49,6 @@
 - ✅ 支持通过学号、姓名、教室、专业名称等多种方式查找课程信息
 - ✅ 支持模糊搜索，输入部分信息即可秒查课表
 - ✅ 查询范围涵盖学生课表、教师课表、教室课表、专业课表
-- ✅ 实时数据同步，确保信息准确性
 
 </details>
 
@@ -79,7 +78,7 @@
 **桌面端界面**
 <img src="./images/desktop-screenshot.png" alt="绮课桌面端截图" width="800"/>
 
-<!-- 移动端界面展示 - 暂时注释，以后需要时可以取消注释
+<!-- 移动端界面展示-->
 **移动端界面**
 <table>
 <tr>
@@ -93,7 +92,7 @@
 <td align="center">课表展示</td>
 </tr>
 </table>
--->
+
 
 </div>
 
